@@ -1,1 +1,33 @@
-Nom : Grand Line Legends 
+Nom : Grand Line Legends (GLL)
+
+Description : Jeu de RPG sur le théme de la licence de One piece. Créer votre propre équipage afin d'avancer d'île en île et atteindre (Grand Line ou le one piece on ne sait pas encore où sr'arrêter).
+
+A faire :
+    - classe personnage
+    - classe boss (mini et final)
+    - classe niveau
+    - classe île 
+    - cinématique ?
+    - classe berry
+    - classe trésors (récuper des cartes personnages plus rare : Shanks, mihawk,...)
+    - classe XP
+    - classe merry 
+    - classe poneyglyph
+
+Rareté : commun (gris), rare (vert), super rare (bleu),épique (violet), légendaire (jaune), mythique (rouge).
+
+Classe personnage :
+    -support : Vivi, Chopper, BonClay, Ivankov, Marco, Crocus, Baggy, Bepo, Law, BigMom, Smoker (11)
+    -défence : Doggy-Broggy, Sengoku, Bege, Berouge, Kaido, Zunesha, Emeth, Momonosuke, Burgess, Kuma (10)
+    -inteligence : Jinbe, Robin, Kobby, XDrake, Rayleigh, Veggapunk, Crocodile, Shanks, Franky, Nami(10)
+    -attaque : Luffy, Zoro, Sanji, Brook, Lucci, Garp, Barbe blanche, Kid, Killer, Fujitora, Doflamingo, King, Katakuri, Carrot, Yamato, Shiliew, Mihawk (17)
+    -snipper : Usopp, Yasopp, Benbeckman, Van Augur, Izo, Ener (6)
+    -Magicien : GeckoMoria, Boa Hancok, Akainu, Barbe noire, Bonney, Hawkins, Kizaru, Aokiji, Ryokugyu, Sabo, Dragon, Appo, Ace (12)
+
+Commun : Luffy, Kobby, nami, BonClay, Baggy, Beppo, Zoro, Sanjin, Brook, Lucci, Killer, Usopp, Franky, Vivi, Shopper (15)
+Rare : Bege, Berouge, Momonosuke, Burgess, Carrot, Van Augur, Bonney, Appo, Ivankov, XDrake, GeckoMoria, Izo, Smoker (13)
+Super rare : Jinbe, Robin, crocodile, Kuma, Kid, Yamato, Boa Hancok, Hawkins, Ace, Shiliew, Yasopp, Doflamingo (12)
+Epique : Veggapunk, Doggy-Broggy, Zunesha, Emeth, Fujitora, King, Katakuri, Benbeckman, Ener, Ryokugyu, Marco (11)
+Légendaire : Rayleigh, Law, Sengoku, Akainu, Kizaru, Aokiji, Akainu, Sabo, Crocus (9)
+Mythique : Shanks, Garp, Dragon, Mihawk, Kaido, BigMom, Barbe noire, barbe blanche (8)
+
