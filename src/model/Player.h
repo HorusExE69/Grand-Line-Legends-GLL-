@@ -2,7 +2,7 @@
 #define PLAYER_H
 
 #include <string>
-#include "Personnage.h"
+#include "Characters.h"
 
 using namespace std;
 

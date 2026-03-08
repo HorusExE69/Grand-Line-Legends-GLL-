@@ -1,0 +1,71 @@
+#ifndef PERSONNAGE_H
+#define PERSONNAGE_H
+
+#include <string>
+#include "Capacity.h"
+
+using namespace std;
+
+enum class Rarity
+{
+	c,
+	r,
+	sr,
+	e,
+	l,
+	m
+};
+
+enum class Type_
+{
+	snp_,
+	int_,
+	mag_,
+	atk_,
+	def_,
+	sup_
+};
+
+Type_ stringToType_(const string& str);
+Rarity stringToRarity(const string& str);
+
+class Character
+{
+	private:
+		string name;
+		Type_ type;
+		Rarity rarity;
+
+		int pv;
+		int speed;
+		int lvl;
+		
+		Capacity* tabCapa;
+
+	public:
+		Character(void);
+		Character(string n, Type_ tc, Rarity rar, int pv, int speed, Capacity* tabC);
+		Character(ifstream file);
+		~Character(void);
+
+		Type_ typeC(void);
+		bool isSup(void);
+		bool isDef(void);
+		bool isInt(void);
+		bool isAtk(void);
+		bool isSnp(void);
+		bool isMag(void);
+
+		Rarity rarC(void);
+		bool isC(void);
+		bool isR(void);
+		bool isSR(void);
+		bool isE(void);
+		bool isL(void);
+		bool isM(void);
+
+		void updateLvl(int nbLvl);
+
+};
+
+#endif PERSONNAGE_H
