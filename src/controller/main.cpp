@@ -2,8 +2,8 @@
 #include <fstream>
 #include <string>
 #include <cstdlib>
-#include "Player.h"
-#include "Characters.h"
+#include "../model/Player.h"
+#include "../model/Characters.h"
 
 using namespace std;
 

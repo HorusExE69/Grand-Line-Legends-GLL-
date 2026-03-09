@@ -31,6 +31,8 @@ Rarity stringToRarity(const std::string& str);
 std::string Type_Tostring(const Type_& typ);
 std::string RarityTostring(const Rarity& rar);
 
+class Capacity;
+
 class Character
 {
 	private:
@@ -49,11 +51,15 @@ class Character
 		int hakiA;
 		int lvl;
 		
-		Capacity* tabCapa;
+		Capacity** tabCapa;
+
+		Effect** tabEffects;
+		int nbEffects;
+		int maxEffects;
 
 	public:
 		Character(void);
-		Character(std::string n, Type_ tc, Rarity rar, int basePv, int baseSpeed, int hR=0, int hO=0, int hA=0, Capacity* tabC=nullptr, Square* xy=nullptr);
+		Character(std::string n, Type_ tc, Rarity rar, int basePv, int baseSpeed, int hR=0, int hO=0, int hA=0, Capacity** tabC=nullptr, Square* xy=nullptr, Effect** tabE=nullptr, int nbE=0, int maxE=3);
 		Character(std::ifstream& file);
 		~Character(void);
 
@@ -76,6 +82,8 @@ class Character
 		void updateLvl(int nbLvl);
 		std::string getName(void);
 		int getPV(void);
+
+		void applyEffect(Effect* e);
 };
 
 #endif

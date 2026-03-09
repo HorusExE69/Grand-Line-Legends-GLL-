@@ -2,42 +2,36 @@
 # Makefile pour Grand Line Legends
 # ----------------------------
 
-# Nom de l'exécutable
 NAME = GLL
 
 # Dossiers
-SRC_DIR = src/model
+SRC_DIRS = src/model src/controller
 OBJ_DIR = obj
 BIN_DIR = bin
 
-# Fichiers sources et objets
-SRCS := $(wildcard $(SRC_DIR)/*.cpp)
-OBJS := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
+# Sources
+SRCS = $(wildcard src/model/*.cpp) $(wildcard src/controller/*.cpp)
 
-# Compilateur et flags
+# Objets
+OBJS = $(patsubst src/%.cpp,$(OBJ_DIR)/%.o,$(SRCS))
+
+# Compilateur
 CXX = g++
-CXXFLAGS = -g -Wall
-
-# Règles
+CXXFLAGS = -Wall -Wextra -std=c++17 -g
 
 all: $(BIN_DIR)/$(NAME)
 
-# Compilation de l'exécutable
 $(BIN_DIR)/$(NAME): $(OBJS) | $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
 # Compilation des objets
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: src/%.cpp
+	mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Création des dossiers obj et bin si manquants
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
-
+# Création des dossiers
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
-
-# Nettoyage
 
 clean:
 	rm -rf $(OBJ_DIR)

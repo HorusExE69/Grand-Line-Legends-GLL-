@@ -1,5 +1,6 @@
 #include "Characters.h"
 #include "Capacity.h"
+#include "Effects.h"
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -18,6 +19,9 @@ Character::Character(void)
 	speed = 0;
 	lvl = 1;
 	tabCapa = nullptr;
+	tabEffects = nullptr;
+	nbEffects = 0;
+	maxEffects = 3;
 	pos = nullptr;
 	hakiA = 0;
 	hakiO = 0;
@@ -25,7 +29,7 @@ Character::Character(void)
 }
 
 // Constructeur avec paramètres
-Character::Character(string n, Type_ tc, Rarity rar, int basePv, int baseSpeed, int hR, int hO, int hA, Capacity* tabC, Square* xy)
+Character::Character(string n, Type_ tc, Rarity rar, int basePv, int baseSpeed, int hR, int hO, int hA, Capacity** tabC, Square* xy, Effect** tabE, int nbE, int maxE)
 {
 	name = n;
 	type = tc;
@@ -34,6 +38,9 @@ Character::Character(string n, Type_ tc, Rarity rar, int basePv, int baseSpeed, 
 	speed = baseSpeed;
 	lvl = 1;
 	tabCapa = tabC;
+	tabEffects = tabE;
+	nbEffects = nbE;
+	maxEffects = maxE;
 	pos = xy;
 	hakiA = hA;
 	hakiO = hO;
@@ -88,7 +95,6 @@ Character::Character(ifstream& file)
 		hakiA = stoi(line.substr(0, cur));
 		line = line.substr(cur + 1);
 
-
 		// hakiO
 		if (!line.empty())
 			hakiO = stoi(line);
@@ -97,6 +103,9 @@ Character::Character(ifstream& file)
 
 		lvl = 1;
 		tabCapa = nullptr;
+		tabEffects = nullptr;
+		nbEffects = 0;
+		maxEffects = 3;
 		pos = nullptr;
 	}
 }
@@ -108,9 +117,47 @@ Character::~Character(void)
 		delete[] tabCapa;
 	if(pos != nullptr)
 		delete pos;
+	if(tabEffects != nullptr)
+		delete[] tabEffects;
 }
 
 // FONCTIONS MEMBRE
+
+// Effets
+
+void Character::applyEffect(Effect* e)
+{
+	if (nbEffects < maxEffects)
+	{
+		tabEffects[nbEffects] = e;
+		nbEffects++;
+
+		switch(e->getType())
+		{
+			case EffectType::Damage:
+				pv -= e->getValue();
+				if (pv < 0) pv = 0;
+				break;
+
+			case EffectType::Heal:
+				pv += e->getValue();
+				break;
+
+			case EffectType::Swap:
+				if (e->getExtraTarget1() && e->getExtraTarget2())
+				{
+					Square* s1 = e->getExtraTarget1()->pos;
+					Square* s2 = e->getExtraTarget2()->pos;
+					if (s1 && s2) s1->swap(s2);
+				}
+				break;
+
+			default:
+				break;
+		}
+	}
+}
+
 
 // Accesseurs
 Type_ Character::typeC(void)

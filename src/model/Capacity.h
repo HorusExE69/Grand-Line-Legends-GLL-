@@ -4,6 +4,7 @@
 #include <string>
 #include "Effects.h"
 #include "Squares.h"
+#include "Characters.h"
 
 enum class TypeC
 {
@@ -26,22 +27,32 @@ struct TupleTC
 class Capacity
 {
 	private:
-
 		std::string nameCapa;
-
 		int damage;
 		int heal;
 		int loadTime;
 
-		Effect* tabEft;
+		Effect** effects;
+		int nbEffects;
 
 		TupleTC typeC;
 
-		Square* launcher;
-		Square* tabTarget;
 	public:
-		Capacity(void);
-		~Capacity(void);
+		Square* launcher;
+		Square** targets;
+		int nbTargets;
+
+	public:
+		Capacity(const std::string& name="", int dmg=0, int hl=0, int lt=0);
+		~Capacity();
+
+		void addEffect(Effect* e);
+		void addTarget(Square* s);
+		void use();
+
+		const std::string& getName() const;
+		int getDamage() const;
+		int getHeal() const;
 };
 
 #endif
