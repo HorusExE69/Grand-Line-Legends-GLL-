@@ -1,4 +1,5 @@
 #include "Characters.h"
+#include "Capacity.h"
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -11,7 +12,7 @@ using namespace std;
 Character::Character(void)
 {
 	name = "";
-	type = Type_::atk;
+	type = Type_::atk_;
 	rarity = Rarity::c;
 	pv = 0;
 	speed = 0;
@@ -24,7 +25,7 @@ Character::Character(void)
 }
 
 // Constructeur avec paramètres
-Character::Character(string n, Type_ tc, Rarity rar, int pv, int speed, int hR, int hO, int hA, Capacity* tabC, Square* xy)
+Character::Character(string n, Type_ tc, Rarity rar, int basePv, int baseSpeed, int hR, int hO, int hA, Capacity* tabC, Square* xy)
 {
 	name = n;
 	type = tc;
@@ -40,52 +41,52 @@ Character::Character(string n, Type_ tc, Rarity rar, int pv, int speed, int hR, 
 }
 
 // Constructeur depuis fichier (CSV)
-Character::Character(ifstream file)
+Character::Character(ifstream& file)
 {
 	string line;
 	if (getline(file, line))
 	{
-		size_t pos = 0;
+		size_t cur = 0;
 		string token;
 
-		pos = line.find(',');
-		line = line.substr(pos + 1);
+		cur = line.find(',');
+		line = line.substr(cur + 1);
 
 		// name
-		pos = line.find(',');
-		name = line.substr(0, pos);
-		line = line.substr(pos + 1);
+		cur = line.find(',');
+		name = line.substr(0, cur);
+		line = line.substr(cur + 1);
 
 		// type
-		pos = line.find(',');
-		type = stringToType_(line.substr(0, pos));
-		line = line.substr(pos + 1);
+		cur = line.find(',');
+		type = stringToType_(line.substr(0, cur));
+		line = line.substr(cur + 1);
 
 		// rarity
-		pos = line.find(',');
-		rarity = stringToRarity(line.substr(0, pos));
-		line = line.substr(pos + 1);
+		cur = line.find(',');
+		rarity = stringToRarity(line.substr(0, cur));
+		line = line.substr(cur + 1);
 
 		// pv
-		pos = line.find(',');
-		pv = stoi(line.substr(0, pos));
-		line = line.substr(pos + 1);
+		cur = line.find(',');
+		pv = stoi(line.substr(0, cur));
+		line = line.substr(cur + 1);
 
 		// speed
-		pos = line.find(',');
-		speed = stoi(line.substr(0, pos));
-		line = line.substr(pos + 1);
+		cur = line.find(',');
+		speed = stoi(line.substr(0, cur));
+		line = line.substr(cur + 1);
 
 
 		// hakiR
-		pos = line.find(',');
-		hakiR = stoi(line.substr(0, pos));
-		line = line.substr(pos + 1);
+		cur = line.find(',');
+		hakiR = stoi(line.substr(0, cur));
+		line = line.substr(cur + 1);
 
 		// hakiA
-		pos = line.find(',');
-		hakiA = stoi(line.substr(0, pos));
-		line = line.substr(pos + 1);
+		cur = line.find(',');
+		hakiA = stoi(line.substr(0, cur));
+		line = line.substr(cur + 1);
 
 
 		// hakiO
@@ -110,6 +111,8 @@ Character::~Character(void)
 }
 
 // FONCTIONS MEMBRE
+
+// Accesseurs
 Type_ Character::typeC(void)
 {
 	return type;
@@ -122,7 +125,6 @@ bool Character::isAtk(void) { return type == Type_::atk_; }
 bool Character::isSnp(void) { return type == Type_::snp_; }
 bool Character::isMag(void) { return type == Type_::mag_; }
 
-// Fonctions de rareté
 Rarity Character::rarC(void)
 {
 	return rarity;
@@ -135,6 +137,9 @@ bool Character::isE(void) { return rarity == Rarity::e; }
 bool Character::isL(void) { return rarity == Rarity::l; }
 bool Character::isM(void) { return rarity == Rarity::m; }
 
+string Character::getName(void) { return name; }
+int Character::getPV(void) { return pv; }
+
 // Update niveau
 void Character::updateLvl(int nbLvl)
 {
@@ -145,6 +150,7 @@ void Character::updateLvl(int nbLvl)
 	if (speed > 125)
 		speed = 125;
 }
+
 
 
 // FONCTIONS
@@ -171,9 +177,9 @@ Rarity stringToRarity(const string& str)
 	return Rarity::c; // valeur par défaut
 }
 
-string Type_Totring(const Type_& typ)
+string Type_Tostring(const Type_& typ)
 {
-	if (str == Type_::atk) return "atk";
+	if (typ == Type_::atk_) return "atk";
 	if (typ == Type_::def_) return "def";
 	if (typ == Type_::sup_) return "sup";
 	if (typ == Type_::int_) return "int";
@@ -184,11 +190,11 @@ string Type_Totring(const Type_& typ)
 
 string RarityTostring(const Rarity& rar)
 {
-	if (typ == Rarity::c) return "c";
-	if (typ == Rarity::r) return "r";
-	if (typ == Rarity::sr) return "sr";
-	if (typ == Rarity::e) return "e";
-	if (typ == Rarity::l) return "l";
-	if (typ == Rarity::m) return "m";
+	if (rar == Rarity::c) return "c";
+	if (rar == Rarity::r) return "r";
+	if (rar == Rarity::sr) return "sr";
+	if (rar == Rarity::e) return "e";
+	if (rar == Rarity::l) return "l";
+	if (rar == Rarity::m) return "m";
 	return "c"; // valeur par défaut
 }

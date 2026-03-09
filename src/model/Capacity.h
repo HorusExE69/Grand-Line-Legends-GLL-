@@ -33,7 +33,7 @@ class Capacity
 		int heal;
 		int loadTime;
 
-		Effect* eft;
+		Effect* tabEft;
 
 		TupleTC typeC;
 

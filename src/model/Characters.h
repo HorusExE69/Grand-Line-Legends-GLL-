@@ -28,8 +28,8 @@ enum class Type_
 
 Type_ stringToType_(const std::string& str);
 Rarity stringToRarity(const std::string& str);
-string Type_Totring(const Type_& typ);
-string RarityTostring(const Rarity& rar);
+std::string Type_Tostring(const Type_& typ);
+std::string RarityTostring(const Rarity& rar);
 
 class Character
 {
@@ -53,7 +53,7 @@ class Character
 
 	public:
 		Character(void);
-		Character(std::string n, Type_ tc, Rarity rar, int pv, int speed, int hR=0, int hO=0, int hA=0, Capacity* tabC=nullptr, Square* xy=nullptr);
+		Character(std::string n, Type_ tc, Rarity rar, int basePv, int baseSpeed, int hR=0, int hO=0, int hA=0, Capacity* tabC=nullptr, Square* xy=nullptr);
 		Character(std::ifstream& file);
 		~Character(void);
 
@@ -74,7 +74,8 @@ class Character
 		bool isM(void);
 
 		void updateLvl(int nbLvl);
-
+		std::string getName(void);
+		int getPV(void);
 };
 
 #endif

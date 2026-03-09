@@ -30,22 +30,22 @@ Square::~Square(void)
         delete inmate;
 }
 
-Square::hold(Character* C)
+void Square::hold(Character* C)
 {
 	fill = 1;
 	inmate = C;
 }
 
-Square::unhold(void)
+void Square::unhold(void)
 {
 	fill = 0;
 	inmate = nullptr;
 }
 
-Square::swap(Square* S)
+void Square::swap(Square* S)
 {
 	Character* temp;
-	temp = S->inmate:
+	temp = S->inmate;
 	S->hold(inmate);
 	inmate = temp;
 }
