@@ -40,17 +40,20 @@ class Character
 		
 		Rarity rarity;
 
-		Square pos;
+		Square* pos;
 
 		int pv;
 		int speed;
+		int hakiR;
+		int hakiO;
+		int hakiA;
 		int lvl;
 		
 		Capacity* tabCapa;
 
 	public:
 		Character(void);
-		Character(std::string n, Type_ tc, Rarity rar, int pv, int speed, Capacity* tabC, Square xy=0);
+		Character(std::string n, Type_ tc, Rarity rar, int pv, int speed, int hR=0, int hO=0, int hA=0, Capacity* tabC=nullptr, Square* xy=nullptr);
 		Character(std::ifstream& file);
 		~Character(void);
 

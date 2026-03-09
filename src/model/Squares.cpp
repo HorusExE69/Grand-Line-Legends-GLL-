@@ -26,7 +26,8 @@ Square::~Square(void)
 	x=0;
 	y=0;
 	fill=0;
-	inmate=nullptr;
+	if(inmate != nullptr)
+        delete inmate;
 }
 
 Square::hold(Character* C)

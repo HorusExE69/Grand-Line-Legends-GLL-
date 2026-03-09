@@ -17,10 +17,14 @@ Character::Character(void)
 	speed = 0;
 	lvl = 1;
 	tabCapa = nullptr;
+	pos = nullptr;
+	hakiA = 0;
+	hakiO = 0;
+	hakiR = 0;
 }
 
 // Constructeur avec paramètres
-Character::Character(string n, Type_ tc, Rarity rar, int basePv, int baseSpeed, Capacity* tabC)
+Character::Character(string n, Type_ tc, Rarity rar, int pv, int speed, int hR, int hO, int hA, Capacity* tabC, Square* xy)
 {
 	name = n;
 	type = tc;
@@ -29,6 +33,10 @@ Character::Character(string n, Type_ tc, Rarity rar, int basePv, int baseSpeed, 
 	speed = baseSpeed;
 	lvl = 1;
 	tabCapa = tabC;
+	pos = xy;
+	hakiA = hA;
+	hakiO = hO;
+	hakiR = hR;
 }
 
 // Constructeur depuis fichier (CSV)
@@ -64,13 +72,31 @@ Character::Character(ifstream file)
 		line = line.substr(pos + 1);
 
 		// speed
+		pos = line.find(',');
+		speed = stoi(line.substr(0, pos));
+		line = line.substr(pos + 1);
+
+
+		// hakiR
+		pos = line.find(',');
+		hakiR = stoi(line.substr(0, pos));
+		line = line.substr(pos + 1);
+
+		// hakiA
+		pos = line.find(',');
+		hakiA = stoi(line.substr(0, pos));
+		line = line.substr(pos + 1);
+
+
+		// hakiO
 		if (!line.empty())
-			speed = stoi(line);
+			hakiO = stoi(line);
 		else
-			speed = 100;
+			hakiO = 0;
 
 		lvl = 1;
 		tabCapa = nullptr;
+		pos = nullptr;
 	}
 }
 
@@ -79,6 +105,8 @@ Character::~Character(void)
 {
 	if (tabCapa != nullptr)
 		delete[] tabCapa;
+	if(pos != nullptr)
+		delete pos;
 }
 
 // FONCTIONS MEMBRE
