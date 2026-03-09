@@ -3,8 +3,8 @@
 
 #include <string>
 #include "Capacity.h"
+#include "Squares.h"
 
-using namespace std;
 
 enum class Rarity
 {
@@ -26,15 +26,21 @@ enum class Type_
 	sup_
 };
 
-Type_ stringToType_(const string& str);
-Rarity stringToRarity(const string& str);
+Type_ stringToType_(const std::string& str);
+Rarity stringToRarity(const std::string& str);
+string Type_Totring(const Type_& typ);
+string RarityTostring(const Rarity& rar);
 
 class Character
 {
 	private:
-		string name;
+		std::string name;
+
 		Type_ type;
+		
 		Rarity rarity;
+
+		Square pos;
 
 		int pv;
 		int speed;
@@ -44,8 +50,8 @@ class Character
 
 	public:
 		Character(void);
-		Character(string n, Type_ tc, Rarity rar, int pv, int speed, Capacity* tabC);
-		Character(ifstream file);
+		Character(std::string n, Type_ tc, Rarity rar, int pv, int speed, Capacity* tabC, Square xy=0);
+		Character(std::ifstream& file);
 		~Character(void);
 
 		Type_ typeC(void);
@@ -68,4 +74,4 @@ class Character
 
 };
 
-#endif PERSONNAGE_H
+#endif

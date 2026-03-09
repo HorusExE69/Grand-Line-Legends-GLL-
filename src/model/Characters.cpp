@@ -1,6 +1,7 @@
 #include "Characters.h"
 #include <fstream>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -10,8 +11,8 @@ using namespace std;
 Character::Character(void)
 {
 	name = "";
-	type = "";
-	rarity = "";
+	type = Type_::atk;
+	rarity = Rarity::c;
 	pv = 0;
 	speed = 0;
 	lvl = 1;
@@ -80,7 +81,7 @@ Character::~Character(void)
 		delete[] tabCapa;
 }
 
-// FONCTIONS
+// FONCTIONS MEMBRE
 Type_ Character::typeC(void)
 {
 	return type;
@@ -93,7 +94,7 @@ bool Character::isAtk(void) { return type == Type_::atk_; }
 bool Character::isSnp(void) { return type == Type_::snp_; }
 bool Character::isMag(void) { return type == Type_::mag_; }
 
-// ===== Fonctions de rareté =====
+// Fonctions de rareté
 Rarity Character::rarC(void)
 {
 	return rarity;
@@ -106,7 +107,7 @@ bool Character::isE(void) { return rarity == Rarity::e; }
 bool Character::isL(void) { return rarity == Rarity::l; }
 bool Character::isM(void) { return rarity == Rarity::m; }
 
-// ===== Update niveau =====
+// Update niveau
 void Character::updateLvl(int nbLvl)
 {
 	lvl += nbLvl;
@@ -117,24 +118,49 @@ void Character::updateLvl(int nbLvl)
 		speed = 125;
 }
 
+
+// FONCTIONS
+
 Type_ stringToType_(const string& str)
 {
-    if (str == "atk") return Type_::atk_;
-    if (str == "def") return Type_::def_;
-    if (str == "sup") return Type_::sup_;
-    if (str == "int") return Type_::int_;
-    if (str == "snp") return Type_::snp_;
-    if (str == "mag") return Type_::mag_;
-    return Type_::atk_; // valeur par défaut
+	if (str == "atk") return Type_::atk_;
+	if (str == "def") return Type_::def_;
+	if (str == "sup") return Type_::sup_;
+	if (str == "int") return Type_::int_;
+	if (str == "snp") return Type_::snp_;
+	if (str == "mag") return Type_::mag_;
+	return Type_::atk_; // valeur par défaut
 }
 
 Rarity stringToRarity(const string& str)
 {
-    if (str == "c") return Rarity::c;
-    if (str == "r") return Rarity::r;
-    if (str == "sr") return Rarity::sr;
-    if (str == "e") return Rarity::e;
-    if (str == "l") return Rarity::l;
-    if (str == "m") return Rarity::m;
-    return Rarity::c; // valeur par défaut
+	if (str == "c") return Rarity::c;
+	if (str == "r") return Rarity::r;
+	if (str == "sr") return Rarity::sr;
+	if (str == "e") return Rarity::e;
+	if (str == "l") return Rarity::l;
+	if (str == "m") return Rarity::m;
+	return Rarity::c; // valeur par défaut
+}
+
+string Type_Totring(const Type_& typ)
+{
+	if (str == Type_::atk) return "atk";
+	if (typ == Type_::def_) return "def";
+	if (typ == Type_::sup_) return "sup";
+	if (typ == Type_::int_) return "int";
+	if (typ == Type_::snp_) return "snp";
+	if (typ == Type_::mag_) return "mag";
+	return "atk"; // valeur par défaut
+}
+
+string RarityTostring(const Rarity& rar)
+{
+	if (typ == Rarity::c) return "c";
+	if (typ == Rarity::r) return "r";
+	if (typ == Rarity::sr) return "sr";
+	if (typ == Rarity::e) return "e";
+	if (typ == Rarity::l) return "l";
+	if (typ == Rarity::m) return "m";
+	return "c"; // valeur par défaut
 }

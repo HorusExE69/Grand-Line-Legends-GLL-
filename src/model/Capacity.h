@@ -3,20 +3,45 @@
 
 #include <string>
 #include "Effects.h"
+#include "Squares.h"
 
-using namespace std;
+enum class TypeC
+{
+	heal,
+	proj,
+	fire,
+	light,
+	sup,
+	blade,
+	punch,
+	other
+};
+
+struct TupleTC
+{
+	TypeC t1;
+	TypeC t2;
+};
 
 class Capacity
 {
 	private:
+
+		std::string nameCapa;
+
 		int damage;
 		int heal;
-		int type;
-		int nbAffect;
 		int loadTime;
+
 		Effect* eft;
 
+		TupleTC typeC;
+
+		Square* launcher;
+		Square* tabTarget;
 	public:
+		Capacity(void);
+		~Capacity(void);
 };
 
-#endif PERSONNAGE_H
+#endif

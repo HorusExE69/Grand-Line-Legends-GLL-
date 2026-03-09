@@ -4,19 +4,19 @@
 #include <string>
 #include "Characters.h"
 
-using namespace std;
-
 class Player
 {
 	private:
-		string pseudo;
-		string lvl;
+		std::string pseudo;
+		std::string lvl;
 
 		int berries;
 
 		Character* ownCharacter;
 
 	public:
+		Player(void);
+		~Player(void);
 };
 
-#endif PERSONNAGE_H
+#endif
