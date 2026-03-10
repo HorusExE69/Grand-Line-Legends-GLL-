@@ -1,0 +1,7 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,Carrot,Sulong Form,self_buff,other,0,0,Self,1,2,30,buffAtk,20
+2,Carrot,Thunder Kick,kick,other,300,0,Enemy,1,1,1,none,13
+3,Carrot,Flash Jump,kick,other,250,0,Enemy,2,1,5,none,10
+4,Carrot,Lightning Charge,punch,other,350,0,Enemy,1,1,7,none,15
+5,Carrot,Thunder Strike,punch,other,400,0,Enemy,2,1,10,none,30
+6,Carrot,Electro Dash,kick,other,300,0,Enemy,3,1,12,none,12

@@ -1,0 +1,10 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,Baggy,Gear 1,self_buff,other,0,0,Self,1,1,1,None,5
+2,Baggy,Fragment Punch,punch,other,200,0,Enemy,1,1,1,None,10
+3,Baggy,Fragment Freesbee,punch,other,250,0,Enemy,1,1,5,None,10
+4,Baggy,Dispersion d'urgence,proj,other,300,0,Enemy,2,1,8,None,12
+5,Baggy,Fragment Festival,punch,other,350,0,Enemy,2,1,12,None,12
+6,Baggy,Fragment Bolide,proj,other,400,0,Enemy,3,1,15,None,15
+7,Baggy,Bara Bara Hou,proj,other,450,0,Enemy,3,1,18,None,18
+8,Baggy,Special Muggy Ball,proj,other,500,0,Enemy,4,1,20,None,18
+9,Baggy,Passif Baggy,resist,other,0,0,Self,1,1,1,Ne subit pas les attaques d'épée,100

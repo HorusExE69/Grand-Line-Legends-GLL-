@@ -1,0 +1,7 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,Van Augur,Passif Van Augur,resist,other,0,0,Self,1,1,1,50% chance to evade attacks targeting only him,100
+2,Van Augur,Sniper Shot,proj,other,400,0,Enemy,1,1,1,none,25
+3,Van Augur,Rapid Fire,proj,other,350,0,Enemy,2,1,3,none,22
+4,Van Augur,Long Range Strike,proj,other,450,0,Enemy,1,1,5,none,18
+5,Van Augur,Precision Bullet,proj,other,500,0,Enemy,1,1,7,none,20
+6,Van Augur,Multi Target Shot,proj,other,400,0,Enemy,3,1,10,none,15
