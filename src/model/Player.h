@@ -15,24 +15,38 @@ private:
 	int nbBank;
 	int bankCapacity;
 
+	Character** unlocked;
+	int nbUnlock;
+	int ulkCapacity;
+
 	Character** team;
 	int teamSize;
 	int teamCapacity;
 
 public:
 	Player(std::string p="Player");
+	Player(std::ifstream& file, std::string p="Player");
 	~Player();
+
 	void addToBank(Character* c);
 	Character* getBankCharacter(int index) const;
 	int getNbBank() const;
+	void showBank() const;
+
+	void addToUnlocked(Character* c);
+	Character* getUnlockCharacter(int index) const;
+	int getNbUnlock() const;
+	void showUnlocked() const;
+
 	bool addToTeam(Character* c);
 	void removeFromTeam(int index);
 	void showTeam() const;
-	void showBank() const;
 	void addTeamSize(int nb);
+
 	std::string getPseudo() const;
 	int getLvl() const;
 	int getBerries() const;
+
 	void setLvl(int l);
 	void addLvl(int l);
 	void setBerries(int b);

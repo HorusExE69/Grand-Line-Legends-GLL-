@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+const int CAPA_BANK = 67;
+
 // Constructeur
 Player::Player(string p)
 {
@@ -10,9 +12,93 @@ Player::Player(string p)
 	berries = 0;
 
 	// Bank
-	bankCapacity = 8;
+	bankCapacity = CAPA_BANK;
 	nbBank = 0;
 	bank = new Character*[bankCapacity];
+
+	// Unlocked
+	ulkCapacity = bankCapacity;
+	nbUnlock = 0;
+	unlocked = new Character*[ulkCapacity];
+
+	// Équipe
+	teamCapacity = 1;
+	teamSize = 0;
+	team = new Character*[teamCapacity];
+}
+
+Player::Player(ifstream& file, string p)
+{
+	pseudo = p;
+	lvl = 1;
+	berries = 0;
+
+	// Bank
+	bankCapacity = CAPA_BANK;
+	nbBank = 0;
+	bank = new Character*[bankCapacity];
+
+	string line;
+	getline(file, line); // ignorer l'en-tête
+
+	// Lire toutes les lignes du CSV
+	while (getline(file, line))
+	{
+		if (line.empty()) continue;
+
+		size_t pos = 0;
+
+		// Ignorer l'ID
+		pos = line.find(',');
+		line = line.substr(pos + 1);
+
+		// Name
+		pos = line.find(',');
+		string name = clean(line.substr(0, pos));
+		line = line.substr(pos + 1);
+
+		// Type
+		pos = line.find(',');
+		Type_ type = stringToType_(clean(line.substr(0, pos)));
+		line = line.substr(pos + 1);
+
+		// Rarity
+		pos = line.find(',');
+		Rarity rar = stringToRarity(clean(line.substr(0, pos)));
+		line = line.substr(pos + 1);
+
+		// PV
+		pos = line.find(',');
+		int pv = stoi(clean(line.substr(0, pos)));
+		line = line.substr(pos + 1);
+
+		// Speed
+		pos = line.find(',');
+		int speed = stoi(clean(line.substr(0, pos)));
+		line = line.substr(pos + 1);
+
+		// HakiR
+		pos = line.find(',');
+		int hakiR = stoi(clean(line.substr(0, pos)));
+		line = line.substr(pos + 1);
+
+		// HakiA
+		pos = line.find(',');
+		int hakiA = stoi(clean(line.substr(0, pos)));
+		line = line.substr(pos + 1);
+
+		// HakiO (dernier champ)
+		int hakiO = stoi(clean(line));
+
+		// Créer le personnage et l'ajouter à la bank
+		Character* c = new Character(name, type, rar, pv, speed, hakiR, hakiO, hakiA);
+		addToBank(c);
+	}
+
+	// Unlocked
+	ulkCapacity = bankCapacity;
+	nbUnlock = 0;
+	unlocked = new Character*[ulkCapacity];
 
 	// Équipe
 	teamCapacity = 1;
@@ -28,7 +114,7 @@ Player::~Player()
 		delete bank[i];
 	}
 	delete[] bank;
-
+	delete[] unlocked;
 	delete[] team;
 }
 
@@ -67,6 +153,45 @@ void Player::showBank() const
 		cout << "  " << c->getName() << " - PV: " << c->getPV() << endl;
 	}
 }
+
+// Unlocked
+
+void addToUnlocked(Character* c)
+{
+	if (c == nullptr) return;
+
+	if (nbUnlock >= ulkCapacity)
+	{
+		int newCap = ulkCapacity * 2;
+		Character** newUlk = new Character*[newUlk];
+		for (int i = 0; i < nbUnlock; i++) newUlk[i] = unlocked[i];
+		delete[] unlocked;
+		unlocked = newUlk;
+		ulkCapacity = newUlk;
+	}
+
+	unlocked[nbUnlock++] = c;
+}
+
+
+Character* getUnlockCharacter(int index) const
+{
+	if (index >= 0 && index < nbUnlock) return unlocked[index];
+	return nullptr;
+}
+
+int getNbUnlock() const { return nbUnlock; }
+
+void showUnlocked() const
+{
+	cout << "Unlocked (" << nbUnlock << " persos):" << endl;
+	for (int i = 0; i < nbUnlock; i++)
+	{
+		Character* c = unlocked[i];
+		cout << "  " << c->getName() << " - PV: " << c->getPV() << endl;
+	}
+}
+
 
 // Équipe
 bool Player::addToTeam(Character* c)
