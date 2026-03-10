@@ -1,0 +1,12 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,Lucci,Gear 1,self_buff,other,0,0,Self,1,1,1,stat_normal,5
+2,Lucci,Gear 2,self_buff,other,0,0,Self,1,1,2,stat_boost,7
+3,Lucci,Gear 3,self_buff,other,0,0,Self,1,1,3,stat_super_boost,8
+4,Lucci,Lame Rasoir,blade,air,250,0,Enemy,1,1,1,damage,6
+5,Lucci,Index Gun,punch,none,300,0,Enemy,1,1,3,damage,6
+6,Lucci,Pied Ouragan,kick,air,350,0,Enemy,1,1,5,damage,7
+7,Lucci,Tir des 6 Pouvoirs,proj,none,400,0,Enemy,all,1,8,damage,10
+8,Lucci,Index Gun Gatling,punch,none,450,0,Enemy,1,1,10,damage,10
+9,Lucci,Hyoubi,blade,air,500,0,Enemy,1,1,12,damage,10
+10,Lucci,Gaichou,blade,air,550,0,Enemy,1,1,15,damage,11
+11,Lucci,Index Gun Volant,punch,air,600,0,Enemy,1,1,18,damage,15
