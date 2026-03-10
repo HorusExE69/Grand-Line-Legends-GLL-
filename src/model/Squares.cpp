@@ -1,14 +1,6 @@
 #include "Squares.h"
 #include "Characters.h"
 
-Square::Square(void)
-{
-	x=0;
-	y=0;
-	fill=0;
-	inmate=nullptr;
-}
-
 Square::Square(int posX, int posY, Character* C)
 {
 	x=posX;
