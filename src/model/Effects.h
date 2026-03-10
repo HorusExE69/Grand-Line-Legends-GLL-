@@ -42,7 +42,7 @@ class Effect
 		Character* extraTarget2;
 
 	public:
-		Effect(EffectType t, TargetType tgt, int val=0, int dur=0, Character* c1=nullptr, Character* c2=nullptr);
+		Effect(EffectType t=EffectType::Damage, TargetType tgt=TargetType::Enemy, int val=0, int dur=0, Character* c1=nullptr, Character* c2=nullptr);
 		~Effect();
 
 		EffectType getType() const;
