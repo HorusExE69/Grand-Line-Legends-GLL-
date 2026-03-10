@@ -15,6 +15,10 @@ enum class TypeC
 	sup,
 	blade,
 	punch,
+	electricity,
+	water,
+	magic,
+	self_buff,
 	other
 };
 
