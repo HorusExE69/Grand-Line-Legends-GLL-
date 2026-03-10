@@ -8,6 +8,6 @@ id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unloc
 7,Law,Radio Knife,blade,magic,2500,0,Enemy,1,1,15,Damage,10
 8,Law,Gamma Knife,blade,electricity,3100,0,Enemy,1,1,15,Bleeding,5
 9,Law,Injection Shot,blade,magic,3000,0,Enemy,1,1,15,Damage,10
-5,Law,KRoom,self_buff,self_buff,0,0,Self,1,1,10,Buff,10
-5,Law,RRoom,magic,magic,0,0,AllEnemies,1,1,10,Debuff,10
+10,Law,KRoom,self_buff,self_buff,0,0,Self,1,1,10,Buff,10
+11,Law,RRoom,magic,magic,0,0,AllEnemies,1,1,10,Debuff,10
 
