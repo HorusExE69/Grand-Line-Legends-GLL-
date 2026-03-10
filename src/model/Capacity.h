@@ -37,20 +37,21 @@ class Capacity
 		std::string nameCapa;
 		int damage;
 		int heal;
-		int loadTime;
+		int percentage;
+		bool isPassive;
 
-		Effect** effects;
-		int nbEffects;
+		Effect* tabEft;
+		int nbEfts;
 
 		TupleTC typeC;
 
 	public:
 		Square* launcher;
-		Square** targets;
+		Square* tabTargets;
 		int nbTargets;
 
 	public:
-		Capacity(const std::string& name="", int dmg=0, int hl=0, int lt=0);
+		Capacity();
 		~Capacity();
 
 		void addEffect(Effect* e);

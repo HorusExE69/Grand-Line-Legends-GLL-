@@ -3,78 +3,94 @@
 
 using namespace std;
 
-Capacity::Capacity(const string& name, int dmg, int hl, int lt)
+Capacity::Capacity()
 {
-    nameCapa = name;
-    damage = dmg;
-    heal = hl;
-    loadTime = lt;
+	nameCapa = "";
+	damage = 0;
+	heal = 0;
+	percentage = 0;
+	isPassive = false;
 
-    typeC.t1 = TypeC::other;
-    typeC.t2 = TypeC::other;
+	typeC.t1 = TypeC::other;
+	typeC.t2 = TypeC::other;
 
-    launcher = nullptr;
-    effects = nullptr;
-    nbEffects = 0;
+	launcher = nullptr;
+	tabEft = nullptr;
 
-    targets = nullptr;
-    nbTargets = 0;
+	tabTargets = nullptr;
+
+	nbEfts = 0;
+	nbTargets = 0;
 }
 
 Capacity::~Capacity()
 {
-    if (effects != nullptr)
-    {
-        for (int i = 0; i < nbEffects; ++i)
-            delete effects[i];
-        delete[] effects;
-    }
+	if (tabEft != nullptr)
+	{
+		delete[] tabEft;
+		tabEft = nullptr;
+	}
 
-    if (targets != nullptr)
-        delete[] targets;
+	if (tabTargets != nullptr)
+		delete[] tabTargets;
+		tabEft = nullptr;
 }
 
 // Ajouter un effet
 void Capacity::addEffect(Effect* e)
 {
-    Effect** tmp = new Effect*[nbEffects + 1];
-    for (int i = 0; i < nbEffects; ++i)
-        tmp[i] = effects[i];
-    tmp[nbEffects] = e;
-    delete[] effects;
-    effects = tmp;
-    nbEffects++;
+	if(tabEft==nullptr)
+	{
+		tabEft = new Effect[1];
+		tabEft[0] = *e;
+		nbEfts = 1;
+	}
+	else
+	{
+		Effect* old = tabEft;
+		Effect* tmp = new Effect[nbEfts + 1];
+		for(int i=0; i < nbEfts; i++)
+			tmp[i] = old[i];
+		tmp[nbEfts] = *e;
+		nbEfts++;
+		delete[] old;
+		tabEft = tmp;
+	}
 }
 
 // Ajouter une cible
-void Capacity::addTarget(Square* s)
-{
-    Square** tmp = new Square*[nbTargets + 1];
-    for (int i = 0; i < nbTargets; ++i)
-        tmp[i] = targets[i];
-    tmp[nbTargets] = s;
-    delete[] targets;
-    targets = tmp;
-    nbTargets++;
+void Capacity::addTarget(Square* s) {
+	if(tabTargets == nullptr) {
+		tabTargets = new Square[1];
+		tabTargets[0] = *s;
+		nbTargets = 1;
+	} else {
+		Square* old = tabTargets;
+		Square* tmp = new Square[nbTargets + 1];
+		for(int i = 0; i < nbTargets; i++)
+			tmp[i] = old[i];
+		tmp[nbTargets] = *s;
+		nbTargets++;
+		delete[] old;
+		tabTargets = tmp;
+	}
 }
 
 // Appliquer la capacité
-void Capacity::use()
-{
-    if (!launcher)
-    {
-        cout << "Erreur : capacité sans lanceur" << endl;
-        return;
-    }
+void Capacity::use() {
+	for(int i = 0; i < nbEfts; i++) {
+		Effect& e = tabEft[i];
+		
+		for(int j = 0; j < nbTargets; j++) {
+			Square& sq = tabTargets[j];
 
-    for (int i = 0; i < nbEffects; ++i)
-    {
-        for (int j = 0; j < nbTargets; ++j)
-        {
-            if (targets[j] && targets[j]->inmate)
-                targets[j]->inmate->applyEffect(effects[i]);
-        }
-    }
+			if(sq.inmate != nullptr) {
+				Character* c = sq.inmate;
+
+				c->applyEffect(&e);
+			}
+		}
+	}
 }
 
 // Getters
