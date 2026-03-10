@@ -17,7 +17,7 @@ OBJS = $(patsubst src/%.cpp,$(OBJ_DIR)/%.o,$(SRCS))
 
 # Compilateur
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++17 -g
+CXXFLAGS = -Wall -g
 
 all: $(BIN_DIR)/$(NAME)
 
