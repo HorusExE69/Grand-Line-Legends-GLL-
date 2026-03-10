@@ -9,7 +9,7 @@ id,name,type,rarity,pv,speed,hakiR,hakiA,hakiO
 8,Franky,int,c,1200,95,0,0,0
 9,Vivi,sup,c,950,110,0,0,0
 10,Nami,int,c,950,115,0,0,0
-11,Kobby,int,c,1000,105,10,85,20
+11,Koby,int,c,1000,105,10,85,20
 12,BonClay,sup,c,1050,108,0,0,0
 13,Baggy,sup,c,1100,100,0,0,0
 14,Bepo,sup,c,1000,105,0,30,5
@@ -19,7 +19,7 @@ id,name,type,rarity,pv,speed,hakiR,hakiA,hakiO
 17,Berouge,def,r,1600,88,0,55,0
 18,Momonosuke,def,r,1400,95,0,0,0
 19,Burgess,def,r,1700,90,0,40,0
-20,Carrot,atk,r,1050,115,0,0,0
+20,Carrot,atk,r,1050,125,0,0,0
 21,VanAugur,snp,r,950,122,0,0,90
 22,Bonney,mag,r,1000,108,0,60,15
 23,Appo,mag,r,1050,105,0,0,0
