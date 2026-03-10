@@ -1,5 +1,5 @@
 id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
-1,BarbeBlanche,EarthQuake,punch,other,1200,0,All,All,2,15,Stun,25
-2,BarbeBlanche,AerialCrack,air,punch,900,0,All,3,2,20,Stun,20
-3,BarbeBlanche,Tsunami,water,punch,1500,0,All,All,3,30,Slow,30
-4,BarbeBlanche,Bouclier,self_buff,other,0,0,Self,1,1,5,Shield,100
+1,BarbeBlanche,EarthQuake,sup,other,2400,0,Enemy,All,4,20,Push,40
+2,BarbeBlanche,Aerial Crack,air,sup,2200,0,Enemy,3,3,15,Stun,30
+3,BarbeBlanche,Tsunami,water,sup,2500,0,Enemy,All,5,25,Push,45
+4,BarbeBlanche,Bouclier,self_buff,other,0,0,Self,1,2,10,Resist,100

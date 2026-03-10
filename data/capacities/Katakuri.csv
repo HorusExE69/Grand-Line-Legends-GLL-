@@ -1,0 +1,6 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,Katakuri,Mochi Fist,punch,other,2200,0,Enemy,1,3,15,Damage,35
+2,Katakuri,Mochi Slash,blade,other,2300,0,Enemy,3,4,18,Push,40
+3,Katakuri,Mochi Bullet,proj,other,2100,0,Enemy,All,4,20,Bleeding,35
+4,Katakuri,Mochi Armor,self_buff,other,0,0,Self,1,2,10,Resist,100
+5,Katakuri,Observation Mastery,self_buff,magic,0,0,Self,1,3,12,Buff,100

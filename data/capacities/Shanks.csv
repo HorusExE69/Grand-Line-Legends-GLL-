@@ -1,5 +1,6 @@
 id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
-1,Shanks,Poing de Haki,punch,light,2000,0,Enemy,1,3,15,Stun,30
-2,Shanks,Sabre Rouge,blade,other,2200,0,Enemy,1,4,20,None,20
-3,Shanks,Onde Haki,light,proj,2500,0,Enemy,All,5,25,Knockback,35
-4,Shanks,Ultime Coup de Sabre,blade,air,3000,0,Enemy,1,5,30,None,25
+1,Shanks,Poing de Haki,punch,light,1900,0,Enemy,1,3,15,Stun,35
+2,Shanks,Sabre Rouge,blade,other,2100,0,Enemy,1,4,20,Damage,30
+3,Shanks,Onde Haki,light,proj,2300,0,Enemy,All,5,25,Push,40
+4,Shanks,Esprit du Yonko,self_buff,sup,0,0,Self,1,2,10,Buff,100
+5,Shanks,Passif Shanks,sup,other,0,0,Self,1,1,1,Resist,100

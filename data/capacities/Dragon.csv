@@ -1,7 +1,6 @@
 id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
-1,Dragon,Wind Roar,air,proj,1800,0,Enemy,All,5,10,Stun,40
-2,Dragon,Tempest Slash,air,blade,2000,0,Enemy,3,5,20,None,10
-3,Dragon,Hurricane Crush,air,punch,2200,0,Enemy,All,6,15,Knockback,50
-4,Dragon,Dragon Cyclone,air,magic,2500,0,Enemy,All,7,20,Slow,35
-5,Dragon,Skyfall Maelstrom,air,proj,2800,0,Enemy,All,8,25,Burn,30
-6,Dragon,Dragon’s Roar,self_buff,other,0,0,Self,1,1,1,Augmente dégâts + vitesse,100
+1,Dragon,Wind Blade,air,blade,2100,0,Enemy,1,2,10,Damage,30
+2,Dragon,Tempête Révolutionnaire,air,proj,2400,0,Enemy,All,4,20,Push,40
+3,Dragon,Cyclone Crush,air,punch,2300,0,Enemy,3,3,18,Pull,35
+4,Dragon,Hurricane Storm,air,magic,2600,0,Enemy,All,5,25,Stun,40
+5,Dragon,Volonté du Révolutionnaire,self_buff,sup,0,0,Self,1,1,5,Buff,100
