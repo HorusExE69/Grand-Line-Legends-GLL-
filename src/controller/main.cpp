@@ -7,14 +7,8 @@
 
 using namespace std;
 
-int main() {
-	// Nettoyage des sous-chaînes (espaces et \r)
-	auto clean = [](string s) -> string {
-		while (!s.empty() && (s.back() == '\r' || s.back() == ' ')) s.pop_back();
-		while (!s.empty() && (s.front() == ' ')) s.erase(0,1);
-		return s;
-	};
-
+int main()
+{
 	// Ouvrir le CSV depuis le dossier data (relatif à bin/)
 	ifstream file("./data/Characters.csv");
 	if (!file.is_open())
@@ -28,11 +22,11 @@ int main() {
 
 	file.close();
 
-	cout << "Total de personnages chargés dans la bank : " << player.getNbBank() << endl;
+	cout << "Total de personnages charges dans la bank : " << player.getNbBank() << endl;
 
 	player.showBank();
 
-	cout << "\nÉquipe initiale :" << endl;
+	cout << "\nEquipe initiale :" << endl;
 	player.addToTeam(player.getBankCharacter(0));
 	player.showTeam();
 
@@ -42,7 +36,7 @@ int main() {
 	player.addToTeam(player.getBankCharacter(rand()%67));
 	player.addToTeam(player.getBankCharacter(rand()%67));
 
-	cout << "\nÉquipe après déblocage d'un slot :" << endl;
+	cout << "\nEquipe apres deblocage d'un slot :" << endl;
 	player.showTeam();
 
 	return(0);

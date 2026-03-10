@@ -2,31 +2,7 @@
 #define EFFECT_H
 
 #include <string>
-
-enum class EffectType
-{
-	Damage,
-	Heal,
-	Buff,
-	Debuff,
-	Resist,
-	Stun,
-	Swap,
-	Bleeding,
-	Push,
-	Pull,
-	Other
-};
-
-enum class TargetType
-{
-	Self,
-	Ally,
-	Enemy,
-	AllAllies,
-	AllEnemies,
-	All
-};
+#include "Utils.h"
 
 class Character;
 

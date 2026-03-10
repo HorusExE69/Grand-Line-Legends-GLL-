@@ -1,5 +1,7 @@
 #include "Player.h"
+#include "Utils.h"
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 const int CAPA_BANK = 67;
@@ -7,6 +9,7 @@ const int CAPA_BANK = 67;
 // Constructeur
 Player::Player(string p)
 {
+
 	pseudo = p;
 	lvl = 1;
 	berries = 0;
@@ -26,6 +29,8 @@ Player::Player(string p)
 	teamSize = 0;
 	team = new Character*[teamCapacity];
 }
+
+
 
 Player::Player(ifstream& file, string p)
 {
@@ -150,45 +155,45 @@ void Player::showBank() const
 	for (int i = 0; i < nbBank; i++)
 	{
 		Character* c = bank[i];
-		cout << "  " << c->getName() << " - PV: " << c->getPV() << endl;
+		cout << "  " << RarityTostring(c->rarC()) << " - " << c->getName() << " - PV: " << c->getPV() << endl;
 	}
 }
 
 // Unlocked
 
-void addToUnlocked(Character* c)
+void Player::addToUnlocked(Character* c)
 {
 	if (c == nullptr) return;
 
 	if (nbUnlock >= ulkCapacity)
 	{
 		int newCap = ulkCapacity * 2;
-		Character** newUlk = new Character*[newUlk];
+		Character** newUlk = new Character*[newCap];
 		for (int i = 0; i < nbUnlock; i++) newUlk[i] = unlocked[i];
 		delete[] unlocked;
 		unlocked = newUlk;
-		ulkCapacity = newUlk;
+		ulkCapacity = newCap;
 	}
 
 	unlocked[nbUnlock++] = c;
 }
 
 
-Character* getUnlockCharacter(int index) const
+Character* Player::getUnlockCharacter(int index) const
 {
 	if (index >= 0 && index < nbUnlock) return unlocked[index];
 	return nullptr;
 }
 
-int getNbUnlock() const { return nbUnlock; }
+int Player::getNbUnlock() const { return nbUnlock; }
 
-void showUnlocked() const
+void Player::showUnlocked() const
 {
 	cout << "Unlocked (" << nbUnlock << " persos):" << endl;
 	for (int i = 0; i < nbUnlock; i++)
 	{
 		Character* c = unlocked[i];
-		cout << "  " << c->getName() << " - PV: " << c->getPV() << endl;
+		cout << "  " << Type_Tostring(c->typeC()) << " - " << c->getName() << " - PV: " << c->getPV() << endl;
 	}
 }
 
@@ -216,7 +221,7 @@ void Player::removeFromTeam(int index)
 
 void Player::showTeam() const
 {
-	cout << "Équipe active (" << teamSize << "/" << teamCapacity << "):" << endl;
+	cout << "Equipe active (" << teamSize << "/" << teamCapacity << "):" << endl;
 	for (int i = 0; i < teamSize; i++)
 	{
 		Character* c = team[i];

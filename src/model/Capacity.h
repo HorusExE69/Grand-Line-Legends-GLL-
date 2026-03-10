@@ -5,31 +5,7 @@
 #include "Effects.h"
 #include "Squares.h"
 #include "Characters.h"
-
-enum class TypeC
-{
-	heal,
-	proj,
-	fire,
-	light,
-	sup,
-	blade,
-	punch,
-	air,
-	ice,
-	kick,
-	electricity,
-	water,
-	magic,
-	self_buff,
-	other
-};
-
-struct TupleTC
-{
-	TypeC t1;
-	TypeC t2;
-};
+#include "Utils.h"
 
 class Capacity
 {
@@ -40,8 +16,7 @@ class Capacity
 		int percentage;
 		bool isPassive;
 
-		Effect* tabEft;
-		int nbEfts;
+		Effect* eft;
 
 		TupleTC typeC;
 
@@ -52,9 +27,9 @@ class Capacity
 
 	public:
 		Capacity();
+		Capacity(std::ifstream& file);
 		~Capacity();
 
-		void addEffect(Effect* e);
 		void addTarget(Square* s);
 		void use();
 

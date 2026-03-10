@@ -6,51 +6,51 @@
 
 class Player
 {
-private:
-	std::string pseudo;
-	int lvl;
-	int berries;
+	private:
+		std::string pseudo;
+		int lvl;
+		int berries;
 
-	Character** bank;
-	int nbBank;
-	int bankCapacity;
+		Character** bank;
+		int nbBank;
+		int bankCapacity;
 
-	Character** unlocked;
-	int nbUnlock;
-	int ulkCapacity;
+		Character** unlocked;
+		int nbUnlock;
+		int ulkCapacity;
 
-	Character** team;
-	int teamSize;
-	int teamCapacity;
+		Character** team;
+		int teamSize;
+		int teamCapacity;
 
-public:
-	Player(std::string p="Player");
-	Player(std::ifstream& file, std::string p="Player");
-	~Player();
+	public:
+		Player(std::string p="Player");
+		Player(std::ifstream& file, std::string p="Player");
+		~Player();
 
-	void addToBank(Character* c);
-	Character* getBankCharacter(int index) const;
-	int getNbBank() const;
-	void showBank() const;
+		void addToBank(Character* c);
+		Character* getBankCharacter(int index) const;
+		int getNbBank() const;
+		void showBank() const;
 
-	void addToUnlocked(Character* c);
-	Character* getUnlockCharacter(int index) const;
-	int getNbUnlock() const;
-	void showUnlocked() const;
+		void addToUnlocked(Character* c);
+		Character* getUnlockCharacter(int index) const;
+		int getNbUnlock() const;
+		void showUnlocked() const;
 
-	bool addToTeam(Character* c);
-	void removeFromTeam(int index);
-	void showTeam() const;
-	void addTeamSize(int nb);
+		bool addToTeam(Character* c);
+		void removeFromTeam(int index);
+		void showTeam() const;
+		void addTeamSize(int nb);
 
-	std::string getPseudo() const;
-	int getLvl() const;
-	int getBerries() const;
+		std::string getPseudo() const;
+		int getLvl() const;
+		int getBerries() const;
 
-	void setLvl(int l);
-	void addLvl(int l);
-	void setBerries(int b);
-	void addBerries(int b);
+		void setLvl(int l);
+		void addLvl(int l);
+		void setBerries(int b);
+		void addBerries(int b);
 };
 
 #endif
