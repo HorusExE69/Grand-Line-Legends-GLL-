@@ -1,10 +1,10 @@
 id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
 1,BigMom,Cognac,blade,fire,900,0,Enemy,1,2,15,Burn,25
-2,BigMom,LameDeDestruction,blade,other,1100,0,Enemy,1,2,20,None,5
-3,BigMom,FlammesDeLaMereLame,blade,sfire,1300,0,Enemy,3,3,30,Burn,30
+2,BigMom,Lame de Destruction,blade,other,1100,0,Enemy,1,2,20,None,5
+3,BigMom,Flammes de la mere lame,blade,sfire,1300,0,Enemy,3,3,30,Burn,30
 4,BigMom,Raitei,electricity,other,1200,0,Enemy,1,3,25,Stun,30
 5,BigMom,Indra,electricity,other,1400,0,Enemy,1,3,35,Shock,35
-6,BigMom,TenmanDaijizaiTenjin,electricity,other,1700,0,Enemy,All,4,50,Stun,40
-7,BigMom,HeavenlyFire,fire,fire,1500,0,Enemy,All,3,40,Burn,35
-8,BigMom,HeavenlyBonbon,fire,proj,1000,0,Enemy,3,3,30,Burn,25
-9,BigMom,LifeOrDie,self_buff,other,0,0,Enemy,All,5,60,Fear,100
+6,BigMom,Tenman daijizai tenjin,electricity,other,1700,0,Enemy,All,4,50,Stun,40
+7,BigMom,Heavenly fire,fire,fire,1500,0,Enemy,All,3,40,Burn,35
+8,BigMom,Heavenly bonbon,fire,proj,1000,0,Enemy,3,3,30,Burn,25
+9,BigMom,Life or die,self_buff,other,0,0,Enemy,All,5,60,Fear,100
