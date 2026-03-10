@@ -25,7 +25,7 @@ enum class TargetType
 	Enemy,
 	AllAllies,
 	AllEnemies,
-	Area
+	All
 };
 
 class Character;
