@@ -1,0 +1,5 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,Mihawk,Petite Épée,self_buff,other,0,0,Self,1,1,5,Augmente précision,100
+2,Mihawk,Grande Épée,self_buff,other,0,0,Self,1,2,10,Augmente puissance,100
+3,Mihawk,Air Slash,air,blade,1500,0,Enemy,1,1,15,Stun,20
+4,Mihawk,Dragon Slash,blade,other,2000,0,Enemy,1,2,25,None,10
