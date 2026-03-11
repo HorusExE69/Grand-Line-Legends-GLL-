@@ -130,34 +130,80 @@ void Character::loadCapacities(string pathCapaFolder)
 
 void Character::applyEffect(Effect* e)
 {
-	if (nbEffects < maxEffects)
+	if (nbEffects >= maxEffects) return;
+
+	tabEffects[nbEffects++] = e;
+
+	switch(e->getType())
 	{
-		tabEffects[nbEffects] = e;
-		nbEffects++;
+		case EffectType::Damage:
+			pv -= e->getValue();
+			if (pv < 0) pv = 0;
+			break;
 
-		switch(e->getType())
-		{
-			case EffectType::Damage:
-				pv -= e->getValue();
-				if (pv < 0) pv = 0;
-				break;
+		case EffectType::Heal:
+			pv += e->getValue();
+			break;
 
-			case EffectType::Heal:
-				pv += e->getValue();
-				break;
+		case EffectType::Buff:
+			applyBuff(e);
+			break;
 
-			case EffectType::Swap:
-				if (e->getExtraTarget1() && e->getExtraTarget2())
-				{
-					Square* s1 = e->getExtraTarget1()->pos;
-					Square* s2 = e->getExtraTarget2()->pos;
-					if (s1 && s2) s1->swap(s2);
-				}
-				break;
+		case EffectType::Debuff:
+			applyDebuff(e);
+			break;
 
-			default:
-				break;
-		}
+		case EffectType::Resist:
+			resistValue += e->getValue();
+			break;
+
+		case EffectType::Stun:
+			stunned = true;
+			break;
+
+		case EffectType::Bleeding:
+			bleedingValue = e->getValue();
+			break;
+
+		case EffectType::Push:
+		case EffectType::Pull:
+			if (e->getExtraTarget1())
+			{
+				Square* s1 = pos;
+				Square* s2 = e->getExtraTarget1()->pos;
+				if(s1 && s2)
+					s1->swap(s2);
+			}
+			break;
+
+		case EffectType::Swap:
+			if (e->getExtraTarget1() && e->getExtraTarget2())
+			{
+				Square* s1 = e->getExtraTarget1()->pos;
+				Square* s2 = e->getExtraTarget2()->pos;
+				if(s1 && s2)
+					s1->swap(s2);
+			}
+			break;
+
+		case EffectType::Other:
+			break;
+	}
+}
+
+void Character::applyPassives()
+{
+	if(nbCapa == 0 || tabCapa == nullptr)
+		return;
+
+	for(int i = 0; i < nbCapa; i++)
+	{
+		Capacity* c = tabCapa[i];
+
+		if(!c->getIsPassive() && c->getActivated())
+			continue;
+
+		c->use();
 	}
 }
 
@@ -204,6 +250,38 @@ void Character::showCapa() const
 
 		cout << endl;
 	}
+}
+
+
+Capacity* Character::chooseCapa()
+{
+	if(nbCapa == 0 || tabCapa == nullptr)
+		return nullptr;
+
+	int total = 0;
+	for(int i = 0; i < nbCapa; i++)
+	{
+		if(tabCapa[i]->getIsPassive())
+			continue;
+
+		total += tabCapa[i]->getPercentage();
+	}
+
+	int roll = rand()%total;
+
+	int sum = 0;
+
+	for(int i = 0; i < nbCapa; i++)
+	{
+		if(tabCapa[i]->getIsPassive())
+			continue;
+		
+		sum += tabCapa[i]->getPercentage();
+		if(roll < sum)
+			return tabCapa[i];
+	}
+
+	return nullptr;
 }
 
 

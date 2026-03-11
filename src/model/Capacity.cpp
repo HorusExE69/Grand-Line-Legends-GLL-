@@ -12,6 +12,7 @@ Capacity::Capacity()
 	heal = 0;
 	percentage = 0;
 	isPassive = false;
+	activated = false;
 
 	typeC.t1 = TypeC::other;
 	typeC.t2 = TypeC::other;
@@ -94,6 +95,7 @@ Capacity::Capacity(string line)
 	if (percentage >= 100) isPassive = true;
 	else isPassive = false;
 
+	activated = false;
 	launcher = nullptr;
 }
 
@@ -132,17 +134,19 @@ void Capacity::addTarget(Square* s) {
 
 // Appliquer la capacité
 void Capacity::use() {
+	if(nbTargets <= 0 || tabTargets == nullptr)
+		return;
+
 	for(int i = 0; i < nbTargets; i++) {
 		Square& sq = tabTargets[i];
+		if(sq.inmate == nullptr) continue;
 
-		if(sq.inmate != nullptr) {
-			Character* c = sq.inmate;
+		Character* c = sq.inmate;
 
-			Effect* e = new Effect(*eft);
-			c->applyEffect(e);
-		}
+		c->applyEffect(eft);
 	}
 }
+
 
 // Getters
 const string& Capacity::getName() const { return nameCapa; }
@@ -150,3 +154,5 @@ int Capacity::getDamage() const { return damage; }
 int Capacity::getHeal() const { return heal; }
 int Capacity::getPercentage() const { return percentage; }
 TupleTC Capacity::getType() const { return typeC; }
+bool Capacity::getIsPassive() const { return isPassive; }
+bool Capacity::getActivated() const { return activated; }

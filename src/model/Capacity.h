@@ -15,6 +15,7 @@ class Capacity
 		int heal;
 		int percentage;
 		bool isPassive;
+		bool activated;
 
 		Effect* eft;
 
@@ -38,6 +39,8 @@ class Capacity
 		int getHeal() const;
 		int getPercentage() const;
 		TupleTC getType() const;
+		bool getIsPassive() const;
+		bool getActivated() const;
 };
 
 #endif

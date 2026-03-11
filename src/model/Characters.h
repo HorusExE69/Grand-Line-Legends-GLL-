@@ -35,6 +35,12 @@ class Character
 		int maxEffects;
 
 	public:
+		int resistValue;
+		int bleedingValue;
+		bool isBleeding;
+		bool stunned;
+
+	public:
 		Character(void);
 		Character(std::string line, std::string pathCapaFolder);
 		~Character(void);
@@ -62,6 +68,15 @@ class Character
 		int getPV(void);
 
 		void applyEffect(Effect* e);
+		Capacity *chooseCapa();
+		void applyPassives();
+
+		void applyBuff(Effect* e);
+		void applyDebuff(Effect* e);
+		void applyDamage(Effect* e);
+		void applyHeal(Effect* e);
+		void applySwap(Effect* e);
+
 
 		void addToCapa(Capacity* c);
 		void showCapa() const;
