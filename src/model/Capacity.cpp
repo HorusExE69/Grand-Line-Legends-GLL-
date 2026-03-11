@@ -149,3 +149,4 @@ const string& Capacity::getName() const { return nameCapa; }
 int Capacity::getDamage() const { return damage; }
 int Capacity::getHeal() const { return heal; }
 int Capacity::getPercentage() const { return percentage; }
+TupleTC Capacity::getType() const { return typeC; }

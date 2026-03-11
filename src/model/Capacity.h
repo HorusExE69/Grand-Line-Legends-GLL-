@@ -37,6 +37,7 @@ class Capacity
 		int getDamage() const;
 		int getHeal() const;
 		int getPercentage() const;
+		TupleTC getType() const;
 };
 
 #endif

@@ -111,7 +111,7 @@ Character::~Character(void)
 void Character::loadCapacities(string pathCapaFolder)
 {
 	string path = pathCapaFolder + name + ".csv";
-	cout << "Chargement des capacites de " << name << " depuis " << path << "...\n";
+	// cout << "Chargement des capacites de " << name << " depuis " << path << "...\n";
 	// string path= "./data/capacities/Sanji.csv";
 
 	ifstream file(path);
@@ -182,7 +182,7 @@ void Character::showCapa() const
 {
 	if(nbCapa == 0 || tabCapa == nullptr)
 	{
-		std::cout << name << " n'a aucune capacite.\n";
+		cout << name << " n'a aucune capacite.\n";
 		return;
 	}
 
@@ -191,18 +191,18 @@ void Character::showCapa() const
 	for(int i = 0; i < nbCapa; i++)
 	{
 		Capacity* c = tabCapa[i];
+		TypeC type1 = c->getType().t1;
+		TypeC type2 = c->getType().t2;
 
-		std::cout << "- " << c->getName();
+		cout << "- " << c->getName();
 
-		if(c->getDamage() > 0)
-			std::cout << " | Damage: " << c->getDamage();
+		cout << " | Type1: " << typeCToString(type1);
 
-		if(c->getHeal() > 0)
-			std::cout << " | Heal: " << c->getHeal();
+		cout << " | Type2: " << typeCToString(type2);
 
-		std::cout << " | Chance: " << c->getPercentage() << "%";
+		cout << " | Chance: " << c->getPercentage() << "%";
 
-		std::cout << std::endl;
+		cout << endl;
 	}
 }
 
