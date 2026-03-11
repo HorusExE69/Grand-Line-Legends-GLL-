@@ -71,11 +71,8 @@ class Character
 		Capacity *chooseCapa();
 		void applyPassives();
 
-		void applyBuff(Effect* e);
-		void applyDebuff(Effect* e);
-		void applyDamage(Effect* e);
-		void applyHeal(Effect* e);
-		void applySwap(Effect* e);
+		// void applyBuff(Effect* e);
+		// void applyDebuff(Effect* e);
 
 
 		void addToCapa(Capacity* c);

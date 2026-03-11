@@ -146,11 +146,11 @@ void Character::applyEffect(Effect* e)
 			break;
 
 		case EffectType::Buff:
-			applyBuff(e);
+			// applyBuff(e);
 			break;
 
 		case EffectType::Debuff:
-			applyDebuff(e);
+			// applyDebuff(e);
 			break;
 
 		case EffectType::Resist:
