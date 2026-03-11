@@ -1,6 +1,6 @@
 id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
 1,Law,Amputate,blade,magic,2200,0,Enemy,1,1,15,Damage,20
-2,Law,Room Manipulation,magic,proj,2300,0,Enemy,All,1,20,Push,20
+2,Law,Room Manipulation,magic,proj,2300,0,All,1,1,20,Push,20
 3,Law,Shambles,magic,other,0,0,Enemy,2,1,18,Swap,25
 4,Law,Counter Operation,self_buff,sup,0,0,Self,1,1,10,Buff,50
 5,Law,Room,self_buff,sup,0,0,AllAllies,1,1,10,Buff,100

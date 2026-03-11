@@ -18,7 +18,7 @@ int main()
 	}
 
 	// Créer le joueur
-	Player player(file, "Horus");
+	Player player(file, "./data/capacities/", "Horus");
 
 	file.close();
 

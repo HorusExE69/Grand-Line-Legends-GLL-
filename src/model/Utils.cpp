@@ -1,4 +1,5 @@
-#include "utils.h"
+#include "Utils.h"
+#include <fstream>
 
 using namespace std;
 
@@ -115,4 +116,48 @@ string targetTypeToString(TargetType t)
 	if (t == TargetType::AllEnemies) return "AllEnemies";
 	if (t == TargetType::All) return "All";
 	return "Enemy"; // valeur par défaut si inconnu
+}
+
+EffectType stringToEffect(const std::string& s)
+{
+	if (s == "Damage") return EffectType::Damage;
+	if (s == "Heal") return EffectType::Heal;
+	if (s == "Buff") return EffectType::Buff;
+	if (s == "Debuff") return EffectType::Debuff;
+	if (s == "Resist") return EffectType::Resist;
+	if (s == "Stun") return EffectType::Stun;
+	if (s == "Swap") return EffectType::Swap;
+	if (s == "Bleeding") return EffectType::Bleeding;
+	if (s == "Push") return EffectType::Push;
+	if (s == "Pull") return EffectType::Pull;
+	return EffectType::Other; // valeur par défaut si inconnu
+}
+
+std::string EffectTostring(EffectType e)
+{
+	if (e == EffectType::Damage) return "Damage";
+	if (e == EffectType::Heal) return "Heal";
+	if (e == EffectType::Buff) return "Buff";
+	if (e == EffectType::Debuff) return "Debuff";
+	if (e == EffectType::Resist) return "Resist";
+	if (e == EffectType::Stun) return "Stun";
+	if (e == EffectType::Swap) return "Swap";
+	if (e == EffectType::Bleeding) return "Bleeding";
+	if (e == EffectType::Push) return "Push";
+	if (e == EffectType::Pull) return "Pull";
+	return "Other"; // valeur par défaut si inconnu
+}
+
+int countLines(std::ifstream& file)
+{
+    int count = 0;
+    std::string line;
+
+    while (getline(file, line))
+        count++;
+
+    file.clear();
+    file.seekg(0);
+
+    return count;
 }

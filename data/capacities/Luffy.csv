@@ -4,24 +4,24 @@ id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unloc
 3,Luffy,Gear 4,self_buff,other,0,0,Self,1,4,50,None,10
 4,Luffy,Red Hawk,fire,other,1000,0,Enemy,1,2,15,None,4
 5,Luffy,Red Rokh,fire,other,1500,0,Enemy,1,2,20,None,4
-6,Luffy,Gum Gum Pistol,punch,200,0,Enemy,1,1,1,None,3
-7,Luffy,Gum Gum Rocket,punch,300,0,Enemy,1,1,5,None,5
-8,Luffy,Gum Gum Gatling,punch,350,0,Enemy,1,1,10,None,6
-9,Luffy,Gum Gum Bullet,punch,250,0,Enemy,1,1,3,None,4
-10,Luffy,Gum Gum Bazooka,punch,400,0,Enemy,1,1,8,None,5
-11,Luffy,Gum Gum Stamp,punch,450,0,Enemy,1,1,12,None,5
-12,Luffy,Gum Gum Jet Pistol,punch,220,0,Enemy,1,2,15,None,3
-13,Luffy,Gum Gum Jet Stamp,punch,470,0,Enemy,1,2,18,None,5
-14,Luffy,Gum Gum Jet Bazooka,punch,420,0,Enemy,1,2,20,None,5
-15,Luffy,Gum Gum Jet Gatling,punch,400,0,Enemy,1,2,22,None,5
-16,Luffy,Gum Gum Incision,punch,350,0,Enemy,1,2,17,None,4
-17,Luffy,Gum Gum Gigant Pistol,punch,500,0,Enemy,1,3,25,None,6
-18,Luffy,Gum Gum Gigant Bazooka,punch,600,0,Enemy,1,3,30,None,6
-19,Luffy,Gum Gum Elephant Gun,punch,650,0,Enemy,1,4,50,None,8
-20,Luffy,Gum Gum Grizzly Magnum,punch,700,0,Enemy,1,4,55,None,8
-21,Luffy,Gum Gum Kong Gun,punch,750,0,Enemy,1,4,60,None,8
-22,Luffy,Gum Gum Culverin,punch,800,0,Enemy,1,4,65,None,9
-23,Luffy,Gum Gum King Kong Gun,punch,850,0,Enemy,1,5,70,None,9
-24,Luffy,Gum Gum Kong Organ,punch,900,0,Enemy,1,5,75,None,9
-25,Luffy,Gum Gum Jack Mamba,punch,950,0,Enemy,1,5,80,None,9
+6,Luffy,Gum Gum Pistol,punch,punch,200,0,Enemy,1,1,1,None,3
+7,Luffy,Gum Gum Rocket,punch,punch,300,0,Enemy,1,1,5,None,5
+8,Luffy,Gum Gum Gatling,punch,punch,350,0,Enemy,1,1,10,None,6
+9,Luffy,Gum Gum Bullet,punch,punch,250,0,Enemy,1,1,3,None,4
+10,Luffy,Gum Gum Bazooka,punch,punch,400,0,Enemy,1,1,8,None,5
+11,Luffy,Gum Gum Stamp,punch,punch,450,0,Enemy,1,1,12,None,5
+12,Luffy,Gum Gum Jet Pistol,punch,air,220,0,Enemy,1,2,15,None,3
+13,Luffy,Gum Gum Jet Stamp,punch,air,470,0,Enemy,1,2,18,None,5
+14,Luffy,Gum Gum Jet Bazooka,punch,air,420,0,Enemy,1,2,20,None,5
+15,Luffy,Gum Gum Jet Gatling,punch,air,400,0,Enemy,1,2,22,None,5
+16,Luffy,Gum Gum Incision,self_buff,air,0,0,Self,1,2,17,None,4
+17,Luffy,Gum Gum Gigant Pistol,punch,punch,500,0,Enemy,1,3,25,None,6
+18,Luffy,Gum Gum Gigant Bazooka,punch,punch,600,0,Enemy,1,3,30,None,6
+19,Luffy,Gum Gum Elephant Gun,punch,punch,650,0,Enemy,1,4,50,None,8
+20,Luffy,Gum Gum Grizzly Magnum,punch,punch,700,0,Enemy,1,4,55,None,8
+21,Luffy,Gum Gum Kong Gun,punch,punch,750,0,Enemy,1,4,60,None,8
+22,Luffy,Gum Gum Culverin,punch,punch,800,0,Enemy,1,4,65,None,9
+23,Luffy,Gum Gum King Kong Gun,punch,punch,850,0,Enemy,1,5,70,None,9
+24,Luffy,Gum Gum Kong Organ,punch,punch,900,0,Enemy,1,5,75,None,9
+25,Luffy,Gum Gum Jack Mamba,punch,punch,950,0,Enemy,1,5,80,None,9
 26,Luffy,Passif Luffy,resist,other,0,0,Self,1,1,1,Immunité Poison + Immunité Punch/Proj/Kick,100

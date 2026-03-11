@@ -4,7 +4,7 @@ id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unloc
 3,BigMom,Haha no Hi,fire,blade,2300,0,Enemy,3,4,20,Bleeding,40
 4,BigMom,Raitei,electricity,magic,2400,0,Enemy,1,4,22,Stun,40
 5,BigMom,Indra,electricity,proj,2300,0,Enemy,3,4,24,Stun,35
-6,BigMom,Tenman Daijizai Tenjin,electricity,magic,2500,0,Enemy,All,5,30,Stun,45
+6,BigMom,Tenman Daijizai Tenjin,electricity,magic,2500,0,AllEnemies,1,5,30,Stun,45
 7,BigMom,Heavenly Fire,fire,proj,2200,0,Enemy,3,3,18,Push,30
 8,BigMom,Heavenly Bonbon,fire,proj,2100,0,Enemy,3,3,16,Bleeding,30
-9,BigMom,LifeOrDie,magic,other,0,0,Enemy,All,5,35,Debuff,60
+9,BigMom,LifeOrDie,magic,other,0,0,AllEnemies,1,5,35,Debuff,60

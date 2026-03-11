@@ -19,6 +19,8 @@ Character::Character(void)
 	speed = 0;
 	lvl = 1;
 	tabCapa = nullptr;
+	nbCapa = 0;
+	maxCapa = 0;
 	tabEffects = nullptr;
 	nbEffects = 0;
 	maxEffects = 3;
@@ -28,86 +30,69 @@ Character::Character(void)
 	hakiR = 0;
 }
 
-// Constructeur avec paramètres
-Character::Character(string n, Type_ tc, Rarity rar, int basePv, int baseSpeed, int hR, int hO, int hA, Capacity** tabC, Square* xy, Effect** tabE, int nbE, int maxE)
-{
-	name = n;
-	type = tc;
-	rarity = rar;
-	pv = basePv;
-	speed = baseSpeed;
-	lvl = 1;
-	tabCapa = tabC;
-	tabEffects = tabE;
-	nbEffects = nbE;
-	maxEffects = maxE;
-	pos = xy;
-	hakiA = hA;
-	hakiO = hO;
-	hakiR = hR;
-}
-
 // Constructeur depuis fichier (CSV)
-Character::Character(ifstream& file)
+Character::Character(string line, string path)
 {
-	string line;
-	if (getline(file, line))
-	{
-		size_t cur = 0;
-		string token;
+	nbCapa = 0;
+	maxCapa = 10;
+	tabCapa = new Capacity*[maxCapa];
 
-		cur = line.find(',');
-		line = line.substr(cur + 1);
+	size_t cur = 0;
+	string token;
 
-		// name
-		cur = line.find(',');
-		name = line.substr(0, cur);
-		line = line.substr(cur + 1);
+	cur = line.find(',');
+	line = line.substr(cur + 1);
 
-		// type
-		cur = line.find(',');
-		type = stringToType_(line.substr(0, cur));
-		line = line.substr(cur + 1);
+	// name
+	cur = line.find(',');
+	name = line.substr(0, cur);
+	line = line.substr(cur + 1);
 
-		// rarity
-		cur = line.find(',');
-		rarity = stringToRarity(line.substr(0, cur));
-		line = line.substr(cur + 1);
+	// type
+	cur = line.find(',');
+	type = stringToType_(line.substr(0, cur));
+	line = line.substr(cur + 1);
 
-		// pv
-		cur = line.find(',');
-		pv = stoi(line.substr(0, cur));
-		line = line.substr(cur + 1);
+	// rarity
+	cur = line.find(',');
+	rarity = stringToRarity(line.substr(0, cur));
+	line = line.substr(cur + 1);
 
-		// speed
-		cur = line.find(',');
-		speed = stoi(line.substr(0, cur));
-		line = line.substr(cur + 1);
+	// pv
+	cur = line.find(',');
+	pv = stoi(clean(line.substr(0, cur)));
+	line = line.substr(cur + 1);
+
+	// speed
+	cur = line.find(',');
+	speed = stoi(clean(line.substr(0, cur)));
+	line = line.substr(cur + 1);
 
 
-		// hakiR
-		cur = line.find(',');
-		hakiR = stoi(line.substr(0, cur));
-		line = line.substr(cur + 1);
+	// hakiR
+	cur = line.find(',');
+	hakiR = stoi(clean(line.substr(0, cur)));
+	line = line.substr(cur + 1);
 
-		// hakiA
-		cur = line.find(',');
-		hakiA = stoi(line.substr(0, cur));
-		line = line.substr(cur + 1);
+	// hakiA
+	cur = line.find(',');
+	hakiA = stoi(clean(line.substr(0, cur)));
+	line = line.substr(cur + 1);
 
-		// hakiO
-		if (!line.empty())
-			hakiO = stoi(line);
-		else
-			hakiO = 0;
+	// hakiO
+	if (!line.empty())
+		hakiO = stoi(line);
+	else
+		hakiO = 0;
 
-		lvl = 1;
-		tabCapa = nullptr;
-		tabEffects = nullptr;
-		nbEffects = 0;
-		maxEffects = 3;
-		pos = nullptr;
-	}
+	loadCapacities(path);
+	
+
+	lvl = 1;
+	tabEffects = nullptr;
+	nbEffects = 0;
+	maxEffects = 3;
+	pos = nullptr;
 }
 
 // Destructeur
@@ -123,7 +108,25 @@ Character::~Character(void)
 
 // FONCTIONS MEMBRE
 
-// Effets
+void Character::loadCapacities(string pathCapaFolder)
+{
+	string path = pathCapaFolder + name + ".csv";
+	cout << "Chargement des capacites de " << name << " depuis " << path << "...\n";
+	// string path= "./data/capacities/Sanji.csv";
+
+	ifstream file(path);
+	if(!file.is_open()) cout << "Impossible d'ouvrir" << path << endl;
+
+	string line;
+
+	getline(file,line); // header
+
+	while(getline(file,line))
+	{
+		Capacity* c = new Capacity(line);
+		addToCapa(c);
+	}
+}
 
 void Character::applyEffect(Effect* e)
 {
@@ -158,8 +161,54 @@ void Character::applyEffect(Effect* e)
 	}
 }
 
+void Character::addToCapa(Capacity* c)
+{
+	if (c == nullptr) return;
+
+	if (nbCapa >= maxCapa)
+	{
+		int newMaxCapa = maxCapa * 2;
+		Capacity** newTabCapa = new Capacity*[newMaxCapa];
+		for (int i = 0; i < nbCapa; i++) newTabCapa[i] = tabCapa[i];
+		delete[] tabCapa;
+		tabCapa = newTabCapa;
+		maxCapa = newMaxCapa;
+	}
+
+	tabCapa[nbCapa++] = c;
+}
+
+void Character::showCapa() const
+{
+	if(nbCapa == 0 || tabCapa == nullptr)
+	{
+		std::cout << name << " n'a aucune capacite.\n";
+		return;
+	}
+
+	std::cout << "Capacites de " << name << " :\n";
+
+	for(int i = 0; i < nbCapa; i++)
+	{
+		Capacity* c = tabCapa[i];
+
+		std::cout << "- " << c->getName();
+
+		if(c->getDamage() > 0)
+			std::cout << " | Damage: " << c->getDamage();
+
+		if(c->getHeal() > 0)
+			std::cout << " | Heal: " << c->getHeal();
+
+		std::cout << " | Chance: " << c->getPercentage() << "%";
+
+		std::cout << std::endl;
+	}
+}
+
 
 // Accesseurs
+
 Type_ Character::typeC(void)
 {
 	return type;

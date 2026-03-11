@@ -27,7 +27,7 @@ class Capacity
 
 	public:
 		Capacity();
-		Capacity(std::ifstream& file);
+		Capacity(std::string line);
 		~Capacity();
 
 		void addTarget(Square* s);
@@ -36,6 +36,7 @@ class Capacity
 		const std::string& getName() const;
 		int getDamage() const;
 		int getHeal() const;
+		int getPercentage() const;
 };
 
 #endif

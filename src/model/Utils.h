@@ -86,6 +86,12 @@ std::string typeCToString(TypeC& t);
 TargetType stringToTargetType(const std::string& s);
 std::string targetTypeToString(TargetType t);
 
+EffectType stringToEffect(const std::string& s);
+std::string EffectTostring(EffectType e);
+
 std::string clean(string s);
+
+int countLines(std::ifstream& file);
+
 
 #endif

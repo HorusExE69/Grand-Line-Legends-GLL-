@@ -27,6 +27,8 @@ class Character
 		int lvl;
 		
 		Capacity** tabCapa;
+		int nbCapa;
+		int maxCapa;
 
 		Effect** tabEffects;
 		int nbEffects;
@@ -34,9 +36,10 @@ class Character
 
 	public:
 		Character(void);
-		Character(std::string n, Type_ tc, Rarity rar, int basePv, int baseSpeed, int hR=0, int hO=0, int hA=0, Capacity** tabC=nullptr, Square* xy=nullptr, Effect** tabE=nullptr, int nbE=0, int maxE=3);
-		Character(std::ifstream& file);
+		Character(std::string line, std::string pathCapaFolder);
 		~Character(void);
+
+		void loadCapacities(std::string path);
 
 		Type_ typeC(void);
 		bool isSup(void);
@@ -59,6 +62,9 @@ class Character
 		int getPV(void);
 
 		void applyEffect(Effect* e);
+
+		void addToCapa(Capacity* c);
+		void showCapa() const;
 };
 
 #endif

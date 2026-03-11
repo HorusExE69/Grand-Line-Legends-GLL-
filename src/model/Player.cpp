@@ -4,8 +4,6 @@
 #include <fstream>
 using namespace std;
 
-const int CAPA_BANK = 67;
-
 // Constructeur
 Player::Player(string p)
 {
@@ -15,33 +13,33 @@ Player::Player(string p)
 	berries = 0;
 
 	// Bank
-	bankCapacity = CAPA_BANK;
+	bankMax = 0;
 	nbBank = 0;
-	bank = new Character*[bankCapacity];
+	bank = new Character*[bankMax];
 
 	// Unlocked
-	ulkCapacity = bankCapacity;
+	ulkMax = bankMax;
 	nbUnlock = 0;
-	unlocked = new Character*[ulkCapacity];
+	unlocked = new Character*[ulkMax];
 
 	// Équipe
-	teamCapacity = 1;
+	teamMax = 1;
 	teamSize = 0;
-	team = new Character*[teamCapacity];
+	team = new Character*[teamMax];
 }
 
 
 
-Player::Player(ifstream& file, string p)
+Player::Player(ifstream& file, string path, string p)
 {
 	pseudo = p;
 	lvl = 1;
 	berries = 0;
 
 	// Bank
-	bankCapacity = CAPA_BANK;
+	bankMax = countLines(file);
 	nbBank = 0;
-	bank = new Character*[bankCapacity];
+	bank = new Character*[bankMax];
 
 	string line;
 	getline(file, line); // ignorer l'en-tête
@@ -51,64 +49,20 @@ Player::Player(ifstream& file, string p)
 	{
 		if (line.empty()) continue;
 
-		size_t pos = 0;
-
-		// Ignorer l'ID
-		pos = line.find(',');
-		line = line.substr(pos + 1);
-
-		// Name
-		pos = line.find(',');
-		string name = clean(line.substr(0, pos));
-		line = line.substr(pos + 1);
-
-		// Type
-		pos = line.find(',');
-		Type_ type = stringToType_(clean(line.substr(0, pos)));
-		line = line.substr(pos + 1);
-
-		// Rarity
-		pos = line.find(',');
-		Rarity rar = stringToRarity(clean(line.substr(0, pos)));
-		line = line.substr(pos + 1);
-
-		// PV
-		pos = line.find(',');
-		int pv = stoi(clean(line.substr(0, pos)));
-		line = line.substr(pos + 1);
-
-		// Speed
-		pos = line.find(',');
-		int speed = stoi(clean(line.substr(0, pos)));
-		line = line.substr(pos + 1);
-
-		// HakiR
-		pos = line.find(',');
-		int hakiR = stoi(clean(line.substr(0, pos)));
-		line = line.substr(pos + 1);
-
-		// HakiA
-		pos = line.find(',');
-		int hakiA = stoi(clean(line.substr(0, pos)));
-		line = line.substr(pos + 1);
-
-		// HakiO (dernier champ)
-		int hakiO = stoi(clean(line));
-
 		// Créer le personnage et l'ajouter à la bank
-		Character* c = new Character(name, type, rar, pv, speed, hakiR, hakiO, hakiA);
+		Character* c = new Character(line, path);
 		addToBank(c);
 	}
 
 	// Unlocked
-	ulkCapacity = bankCapacity;
+	ulkMax = bankMax;
 	nbUnlock = 0;
-	unlocked = new Character*[ulkCapacity];
+	unlocked = new Character*[ulkMax];
 
 	// Équipe
-	teamCapacity = 1;
+	teamMax = 1;
 	teamSize = 0;
-	team = new Character*[teamCapacity];
+	team = new Character*[teamMax];
 }
 
 // Destructeur
@@ -128,14 +82,14 @@ void Player::addToBank(Character* c)
 {
 	if (c == nullptr) return;
 
-	if (nbBank >= bankCapacity)
+	if (nbBank >= bankMax)
 	{
-		int newCap = bankCapacity * 2;
+		int newCap = bankMax * 2;
 		Character** newBank = new Character*[newCap];
 		for (int i = 0; i < nbBank; i++) newBank[i] = bank[i];
 		delete[] bank;
 		bank = newBank;
-		bankCapacity = newCap;
+		bankMax = newCap;
 	}
 
 	bank[nbBank++] = c;
@@ -165,14 +119,14 @@ void Player::addToUnlocked(Character* c)
 {
 	if (c == nullptr) return;
 
-	if (nbUnlock >= ulkCapacity)
+	if (nbUnlock >= ulkMax)
 	{
-		int newCap = ulkCapacity * 2;
+		int newCap = ulkMax * 2;
 		Character** newUlk = new Character*[newCap];
 		for (int i = 0; i < nbUnlock; i++) newUlk[i] = unlocked[i];
 		delete[] unlocked;
 		unlocked = newUlk;
-		ulkCapacity = newCap;
+		ulkMax = newCap;
 	}
 
 	unlocked[nbUnlock++] = c;
@@ -202,7 +156,7 @@ void Player::showUnlocked() const
 bool Player::addToTeam(Character* c)
 {
 	if (c == nullptr) return false;
-	if (teamSize >= teamCapacity) return false;
+	if (teamSize >= teamMax) return false;
 
 	team[teamSize++] = c;
 	return true;
@@ -221,19 +175,21 @@ void Player::removeFromTeam(int index)
 
 void Player::showTeam() const
 {
-	cout << "Equipe active (" << teamSize << "/" << teamCapacity << "):" << endl;
+	cout << "Equipe active (" << teamSize << "/" << teamMax << "):" << endl;
 	for (int i = 0; i < teamSize; i++)
 	{
 		Character* c = team[i];
 		cout << "  " << c->getName() << " - PV: " << c->getPV() << endl;
+		c->showCapa();
+		cout << endl;
 	}
 }
 
 // Augmenter taille équipe
 void Player::addTeamSize(int nb)
 {
-	teamCapacity += nb;
-	Character** newTeam = new Character*[teamCapacity];
+	teamMax += nb;
+	Character** newTeam = new Character*[teamMax];
 	for (int i = 0; i < teamSize; i++) newTeam[i] = team[i];
 	delete[] team;
 	team = newTeam;

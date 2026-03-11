@@ -24,66 +24,77 @@ Capacity::Capacity()
 	nbTargets = 0;
 }
 
-Capacity::Capacity(ifstream& file)
+Capacity::Capacity(string line)
 {
-	string line;
-	if (getline(file, line))
-	{
-		size_t cur = 0;
-		string token;
+	if(line.empty())
+        return;
 
-		cur = line.find(',');
-		line = line.substr(cur + 1);
-		cur = line.find(',');
-		line = line.substr(cur + 1);
+	size_t cur = 0;
+	string token;
 
-		// name
-		cur = line.find(',');
-		nameCapa = line.substr(0, cur);
-		line = line.substr(cur + 1);
+	cur = line.find(',');
+	line = line.substr(cur + 1);
+	cur = line.find(',');
+	line = line.substr(cur + 1);
 
-		// type1
-		cur = line.find(',');
-		typeC.t1 = stringToTypeC(line.substr(0, cur));
-		line = line.substr(cur + 1);
+	// name
+	cur = line.find(',');
+	nameCapa = line.substr(0, cur);
+	line = line.substr(cur + 1);
 
-		// type2
-		cur = line.find(',');
-		typeC.t2 = stringToTypeC(line.substr(0, cur));
-		line = line.substr(cur + 1);
+	// type1
+	cur = line.find(',');
+	typeC.t1 = stringToTypeC(line.substr(0, cur));
+	line = line.substr(cur + 1);
 
-		// damage
-		cur = line.find(',');
-		damage = stoi(line.substr(0, cur));
-		line = line.substr(cur + 1);
+	// type2
+	cur = line.find(',');
+	typeC.t2 = stringToTypeC(line.substr(0, cur));
+	line = line.substr(cur + 1);
 
-		// heal
-		cur = line.find(',');
-		heal = stoi(line.substr(0, cur));
-		line = line.substr(cur + 1);
+	// damage
+	cur = line.find(',');
+	damage = stoi(clean(line.substr(0, cur)));
+	line = line.substr(cur + 1);
 
-		// // targetType
-		cur = line.find(',');
-		//  = stringToTargetType(line.substr(0, cur));
-		line = line.substr(cur + 1);
+	// heal
+	cur = line.find(',');
+	heal = stoi(clean(line.substr(0, cur)));
+	line = line.substr(cur + 1);
+
+	// // targetType
+	cur = line.find(',');
+	TargetType targetType = stringToTargetType(line.substr(0, cur));
+	line = line.substr(cur + 1);
 
 
-		// nbTargets
-		cur = line.find(',');
-		nbTargets = stoi(line.substr(0, cur));
-		line = line.substr(cur + 1);
+	// nbTargets
+	cur = line.find(',');
+	nbTargets = stoi(clean(line.substr(0, cur)));
+	line = line.substr(cur + 1);
 
-		// pourcentage
-		if (!line.empty())
-			percentage = stoi(line);
-		else
-			percentage = 0;
+	cur = line.find(',');
+	line = line.substr(cur + 1);
+	cur = line.find(',');
+	line = line.substr(cur + 1);
 
-		if (percentage >= 100) isPassive = true;
-		else isPassive = false;
+	// effet
+	cur = line.find(',');
+	EffectType effectType = stringToEffect(line.substr(0, cur));
+	line = line.substr(cur + 1);
 
-		launcher = nullptr;
-	}
+	eft = new Effect(effectType, targetType);
+
+	// pourcentage
+	if (!line.empty())
+		percentage = stoi(line);
+	else
+		percentage = 0;
+
+	if (percentage >= 100) isPassive = true;
+	else isPassive = false;
+
+	launcher = nullptr;
 }
 
 Capacity::~Capacity()
@@ -121,13 +132,13 @@ void Capacity::addTarget(Square* s) {
 
 // Appliquer la capacité
 void Capacity::use() {
-	Effect* e = eft;
 	for(int i = 0; i < nbTargets; i++) {
 		Square& sq = tabTargets[i];
 
 		if(sq.inmate != nullptr) {
 			Character* c = sq.inmate;
 
+			Effect* e = new Effect(*eft);
 			c->applyEffect(e);
 		}
 	}
@@ -137,3 +148,4 @@ void Capacity::use() {
 const string& Capacity::getName() const { return nameCapa; }
 int Capacity::getDamage() const { return damage; }
 int Capacity::getHeal() const { return heal; }
+int Capacity::getPercentage() const { return percentage; }

@@ -1,6 +1,6 @@
 id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
 1,Sengoku,Buddha Shockwave,light,sup,2200,0,Enemy,3,3,15,Push,35
 2,Sengoku,Golden Impact,light,punch,2300,0,Enemy,1,3,18,Stun,40
-3,Sengoku,Divine Palm,light,proj,2400,0,Enemy,All,4,22,Push,40
+3,Sengoku,Divine Palm,light,proj,2400,0,AllEnemies,1,4,22,Push,40
 4,Sengoku,Bouddha Protection,self_buff,light,0,0,Self,1,2,10,Resist,100
-5,Sengoku,Commandement de la Marine,sup,other,0,0,Ally,All,1,5,Buff,100
+5,Sengoku,Commandement de la Marine,sup,other,0,0,AllAllies,1,1,5,Buff,100

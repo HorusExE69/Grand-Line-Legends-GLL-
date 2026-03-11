@@ -13,19 +13,19 @@ class Player
 
 		Character** bank;
 		int nbBank;
-		int bankCapacity;
+		int bankMax;
 
 		Character** unlocked;
 		int nbUnlock;
-		int ulkCapacity;
+		int ulkMax;
 
 		Character** team;
 		int teamSize;
-		int teamCapacity;
+		int teamMax;
 
 	public:
 		Player(std::string p="Player");
-		Player(std::ifstream& file, std::string p="Player");
+		Player(std::ifstream& file, std::string path, std::string p="Player");
 		~Player();
 
 		void addToBank(Character* c);

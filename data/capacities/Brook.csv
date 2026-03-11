@@ -1,16 +1,16 @@
 id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
 1,Brook,Gear 1,self_buff,other,0,0,Self,1,1,1,stat_normal,5
 2,Brook,Gear 2,self_buff,other,0,0,Self,1,2,10,stat_boost,7
-3,Brook,Dans trois pas, tu meurs...,slash,blade,300,0,Enemy,1,1,1,damage,6
+3,Brook,Dans trois pas tu meurs...,slash,blade,300,0,Enemy,1,1,1,damage,6
 4,Brook,Song Slash!,slash,blade,350,0,Enemy,1,1,1,damage,6
-5,Brook,Nemuriuta : Flanc,slash,blade,0,0,Enemy,all,1,2,5,sleep,10
+5,Brook,Nemuriuta : Flanc,slash,blade,0,0,AllEnemies,1,2,5,sleep,10
 6,Brook,Aubade Coup Droit,slash,blade,400,0,Enemy,1,1,2,damage,8
 7,Brook,Prelude au fer,slash,blade,450,0,Enemy,1,1,2,damage,9
 8,Brook,Swallow Bond en Avant,slash,blade,500,0,Enemy,2,1,3,damage,10
-9,Brook,Party Music,magic,other,0,0,Enemy,all,1,2,15,hallucination,12
+9,Brook,Party Music,magic,other,0,0,AllEnemies,1,2,15,hallucination,12
 10,Brook,La chanson de l'épée,slash,blade,550,0,Enemy,1,2,20,damage,10
 11,Brook,Lame de Blizzard,magic,ice,600,0,Enemy,2,2,25,damage,10
-12,Brook,Soul Parade,magic,other,0,0,Enemy,all,2,2,30,damage,10
+12,Brook,Soul Parade,magic,other,0,0,AllEnemies,1,2,30,damage,10
 13,Brook,Phrase d'Armes Orchestra,slash,blade,650,0,Enemy,1,2,35,damage,9
 14,Brook,Soul Solide,slash,blade,700,0,Enemy,1,2,40,damage,8
 15,Brook,Passif Brook,passive,other,0,0,Self,1,1,1,revive_once,5
