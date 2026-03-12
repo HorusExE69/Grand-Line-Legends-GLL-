@@ -41,6 +41,7 @@ class Capacity
 		TupleTC getType() const;
 		bool getIsPassive() const;
 		bool getActivated() const;
+		Effect* getEffect() const;
 };
 
 #endif

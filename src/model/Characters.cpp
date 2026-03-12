@@ -1,6 +1,7 @@
 #include "Characters.h"
 #include "Capacity.h"
 #include "Effects.h"
+#include "Utils.h"
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -132,7 +133,11 @@ void Character::applyEffect(Effect* e)
 {
 	if (nbEffects >= maxEffects) return;
 
+	tabEffects = new Effect*[maxEffects];
+
 	tabEffects[nbEffects++] = e;
+
+	cout << EffectTostring(tabEffects[nbEffects-1]->getType()) << endl;
 
 	switch(e->getType())
 	{

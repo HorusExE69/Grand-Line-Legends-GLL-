@@ -130,7 +130,7 @@ EffectType stringToEffect(const std::string& s)
 	if (s == "Bleeding") return EffectType::Bleeding;
 	if (s == "Push") return EffectType::Push;
 	if (s == "Pull") return EffectType::Pull;
-	return EffectType::Other; // valeur par défaut si inconnu
+	return EffectType::Damage; // valeur par défaut si inconnu
 }
 
 std::string EffectTostring(EffectType e)

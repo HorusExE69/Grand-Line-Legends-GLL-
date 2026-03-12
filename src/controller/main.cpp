@@ -39,5 +39,43 @@ int main()
 	cout << "\nEquipe apres deblocage d'un slot :" << endl;
 	player.showTeam();
 
+	cout << "\n";
+
+	string perso;
+
+	cout << "Choisissez un personnage de la bank" << endl;
+	cin >> perso;
+	Character* c = player.getBankCharacter(stoi(perso));
+
+	cout << "\n\n" << "Test capacites :\n" << endl;
+	c->showCapa();
+
+	cout << "\n\n" << "Test chooseCapa :\n" << endl;
+
+
+	for(int i = 0; i < 10; i++)
+	{
+		Capacity* cap = c->chooseCapa();
+
+		if(cap)
+			cout << cap->getName() << endl;
+	}
+
+	Capacity* cap = c->chooseCapa();
+
+	cout << "\n\nCapacite choisie : " << cap->getName() << " de type " << EffectTostring(cap->getEffect()->getType()) << endl;
+
+	Square s1(0,0,c);
+	cout << "PV avant degats : " << c->getPV() << endl;
+
+	// Effect* e = new Effect(EffectType::Damage, TargetType::Self, 500, 1, nullptr, nullptr);
+
+	// c->applyEffect(e);
+
+	cap->addTarget(&s1);
+	cap->use();
+
+	cout << "PV apres degats : " << c->getPV() << endl;
+
 	return(0);
 }

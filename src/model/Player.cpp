@@ -179,8 +179,7 @@ void Player::showTeam() const
 	for (int i = 0; i < teamSize; i++)
 	{
 		Character* c = team[i];
-		cout << "  " << c->getName() << " - PV: " << c->getPV() << endl;
-		c->showCapa();
+		cout << "  " << c->getName() << " - PV: " << c->getPV();
 		cout << endl;
 	}
 }

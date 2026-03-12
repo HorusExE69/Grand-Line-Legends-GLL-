@@ -84,7 +84,8 @@ Capacity::Capacity(string line)
 	EffectType effectType = stringToEffect(line.substr(0, cur));
 	line = line.substr(cur + 1);
 
-	eft = new Effect(effectType, targetType);
+	
+	eft = new Effect(effectType, targetType, damage, 1, nullptr, nullptr);
 
 	// pourcentage
 	if (!line.empty())
@@ -136,7 +137,6 @@ void Capacity::addTarget(Square* s) {
 void Capacity::use() {
 	if(nbTargets <= 0 || tabTargets == nullptr)
 		return;
-
 	for(int i = 0; i < nbTargets; i++) {
 		Square& sq = tabTargets[i];
 		if(sq.inmate == nullptr) continue;
@@ -156,3 +156,4 @@ int Capacity::getPercentage() const { return percentage; }
 TupleTC Capacity::getType() const { return typeC; }
 bool Capacity::getIsPassive() const { return isPassive; }
 bool Capacity::getActivated() const { return activated; }
+Effect* Capacity::getEffect() const { return eft; }
