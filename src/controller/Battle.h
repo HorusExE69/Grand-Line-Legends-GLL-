@@ -14,7 +14,7 @@ class Battle
 		Battle(Player* player=nullptr);
 		~Battle(void);
 		
-		void start(void);
+		void start();
 		void end(void);
 };
 
