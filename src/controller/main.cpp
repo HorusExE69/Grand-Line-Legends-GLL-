@@ -33,5 +33,6 @@ void showMapTxt(BattleMap& map)
 int main()
 {
 	Game game;
+	game.init();
 	return(0);
 }

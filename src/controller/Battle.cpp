@@ -12,12 +12,12 @@ Battle::Battle(Player* p)
 
 Battle::~Battle() 
 {
-	delete player;
 	delete enemy;
 }
 
 void Battle::start() 
 {
+	cout << "Début du combat entre " << player->getPseudo() << " et " << enemy->getPseudo() << " !" << endl;
 	while(!isOver())
 	{
 		playTurn();
