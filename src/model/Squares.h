@@ -15,9 +15,12 @@ class Square
 
 		Square(int posX=0, int posY=0, Character* C=nullptr);
 		~Square(void);
+
 		void hold(Character* C);
 		void unhold(void);
 		void swap(Square* S);
+
+		bool isEmpty(void);
 };
 
 #endif

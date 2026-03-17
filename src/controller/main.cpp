@@ -4,8 +4,29 @@
 #include <cstdlib>
 #include "../model/Player.h"
 #include "../model/Characters.h"
+#include "../model/BattleMap.h"
 
 using namespace std;
+
+
+void showMapTxt(BattleMap& map)
+{
+	for (int i = 0; i < map.getSize(); i++)
+	{
+		for (int j = 0; j < map.getSize(); j++)
+		{
+			if (map.getSquare(i, j).isEmpty())
+			{
+				cout << "0 ";
+			}
+			else
+			{
+				cout << "X ";
+			}
+		}
+		cout << endl;
+	}
+}
 
 int main()
 {
@@ -76,6 +97,12 @@ int main()
 	cap->use();
 
 	cout << "PV apres degats : " << c->getPV() << endl;
+
+	cout << "\n\nTest map :\n" << endl;
+
+	BattleMap map(5);
+	showMapTxt(map);
+
 
 	return(0);
 }

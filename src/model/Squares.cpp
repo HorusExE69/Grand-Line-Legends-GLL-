@@ -18,8 +18,6 @@ Square::~Square(void)
 	x=0;
 	y=0;
 	fill=0;
-	if(inmate != nullptr)
-        delete inmate;
 }
 
 void Square::hold(Character* C)
@@ -40,4 +38,9 @@ void Square::swap(Square* S)
 	temp = S->inmate;
 	S->hold(inmate);
 	inmate = temp;
+}
+
+bool Square::isEmpty(void)
+{
+	return fill == 0;
 }
