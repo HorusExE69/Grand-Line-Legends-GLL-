@@ -3,19 +3,25 @@
 
 #include "../model/BattleMap.h"
 #include "../model/Player.h"
+#include "../model/Characters.h"
 
 class Battle
 {
 	private:
-		BattleMap* map;
 		Player* player;
+		Player* enemy;
 		int turn;
 	public:
-		Battle(Player* player=nullptr);
+		Battle(Player* p=nullptr);
 		~Battle(void);
 		
 		void start();
-		void end(void);
+		void playTurn();
+		void playCharacter(Character* character);
+
+		bool isDead(Player* p);
+		bool isOver();
+		Player* getWinner();
 };
 
 #endif
