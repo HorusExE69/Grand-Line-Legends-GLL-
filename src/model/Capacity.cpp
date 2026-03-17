@@ -96,6 +96,7 @@ Capacity::Capacity(string line)
 	if (percentage >= 100) isPassive = true;
 	else isPassive = false;
 
+	tabTargets = nullptr;
 	activated = false;
 	launcher = nullptr;
 }
