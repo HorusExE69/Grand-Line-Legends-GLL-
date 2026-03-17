@@ -10,7 +10,7 @@ Player::Player(string p)
 
 	pseudo = p;
 	lvl = 1;
-	berries = 0;
+	berries = 50;
 
 	// Bank
 	bankMax = 0;
@@ -34,7 +34,7 @@ Player::Player(ifstream& file, string path, string p)
 {
 	pseudo = p;
 	lvl = 1;
-	berries = 0;
+	berries = 50;
 
 	// Bank
 	bankMax = countLines(file);
@@ -192,6 +192,14 @@ void Player::addTeamSize(int nb)
 	for (int i = 0; i < teamSize; i++) newTeam[i] = team[i];
 	delete[] team;
 	team = newTeam;
+}
+
+int Player::getTeamSize() const { return teamSize; }
+
+Character* Player::getTeamCharacter(int index) const
+{
+	if (index >= 0 && index < teamSize) return team[index];
+	return nullptr;
 }
 
 // Accesseurs / Setters

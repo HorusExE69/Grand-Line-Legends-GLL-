@@ -42,6 +42,8 @@ class Player
 		void removeFromTeam(int index);
 		void showTeam() const;
 		void addTeamSize(int nb);
+		int getTeamSize() const;
+		Character* getTeamCharacter(int index) const;
 
 		std::string getPseudo() const;
 		int getLvl() const;
