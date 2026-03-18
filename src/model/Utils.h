@@ -69,6 +69,15 @@ enum class TypeC
 };
 
 
+enum class EventType
+{
+	PLAY,
+	BATTLE,
+	SHOP,
+	QUIT,
+	NONE
+};
+
 struct TupleTC
 {
 	TypeC t1;

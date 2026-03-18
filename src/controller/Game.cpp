@@ -1,5 +1,7 @@
 #include "Game.h"
 #include "../model/Player.h"
+#include "Event.h"
+#include "../view/ViewText.h"
 #include "Battle.h"
 #include <iostream>
 #include <fstream>
@@ -20,6 +22,7 @@ Game::Game(void)
 	file.close();
 	currentArc = 0;
 	currentChapter = 0;
+	view = ViewText(this);
 }
 
 Game::~Game(void)
@@ -31,10 +34,43 @@ Game::~Game(void)
 	}
 }
 
+void Game::update(Event* ev)
+{
+	switch(ev->type)
+	{
+		case EventType::PLAY:
+		{
+			view.handlePlay();
+			break;
+		}
+		case EventType::BATTLE:
+		{
+			Battle* battle = new Battle(player);
+			battle->start();
+			break;
+		}
+		case EventType::SHOP:
+		{
+			view.handleShop();
+			break;
+		}
+		case EventType::QUIT:
+		{
+			view.handleQuit();
+			break;
+		}
+		case EventType::NONE:
+		{
+			break;
+		}
+		default:
+			break;
+	}
+}
+
 void Game::init(void)
 {
-	Battle b = Battle(player);
-	b.start();
+	view.run();
 }
 
 Player* Game::getPlayer(void)

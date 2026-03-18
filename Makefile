@@ -10,7 +10,7 @@ OBJ_DIR = obj
 BIN_DIR = bin
 
 # Sources
-SRCS = $(wildcard src/model/*.cpp) $(wildcard src/controller/*.cpp)
+SRCS = $(wildcard src/model/*.cpp) $(wildcard src/controller/*.cpp) $(wildcard src/view/*.cpp)
 
 # Objets
 OBJS = $(patsubst src/%.cpp,$(OBJ_DIR)/%.o,$(SRCS))
