@@ -37,6 +37,7 @@ class Player
 		Character* getUnlockCharacter(int index) const;
 		int getNbUnlock() const;
 		int getUlkMax() const;
+		void unlockAll();
 
 		bool addToTeam(Character* c);
 		void removeFromTeam(int index);
@@ -44,6 +45,7 @@ class Player
 		void addTeamSize(int nb);
 		int getTeamSize() const;
 		Character* getTeamCharacter(int index) const;
+		void randomTeam();
 
 		std::string getPseudo() const;
 		int getLvl() const;

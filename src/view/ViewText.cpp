@@ -36,8 +36,44 @@ void ViewText::handlePlay()
 	cout << "Voulez vous lancer ? (y/n)" << endl;
 	char c;
 	cin >> c;
-	if (c == 'y') {handleBattle();}
+	if (c == 'y') {handleBattlePrepa();}
 	else {displayMenu();}
+}
+
+void ViewText::handleBattlePrepa()
+{
+	cout << "Préparation du combat..." << endl;
+	cout << "Lancer le combat (c)" << endl;
+	cout << "Gérer l'équipe (e)" << endl;
+	cout << "Retour au menu (m)" << endl;
+
+	char c;
+	cin >> c;
+	switch (c)
+	{
+		case 'c':
+		{
+			handleBattle();
+			break;
+		}
+		case 'e':
+		{
+			handleTeam();
+			break;
+		}
+		case 'm':
+		{
+			displayMenu();
+			break;
+		}
+	}
+}
+
+void ViewText::handleTeam()
+{
+	Event ev;
+	ev.type = EventType::TEAM;
+	game->update(&ev);
 }
 
 void ViewText::handleBattle()
@@ -180,6 +216,7 @@ void showTeam(Player* p)
 	for (int i = 0; i < p->getTeamSize(); i++)
 	{
 		Character* c = p->getTeamCharacter(i);
+		if(c == nullptr) continue;
 		cout << "  " << c->getName() << " - PV: " << c->getPV();
 		cout << endl;
 	}

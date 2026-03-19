@@ -32,7 +32,9 @@ class ViewText
 
 		char displayMenu();
 		void handlePlay();
+		void handleBattlePrepa();
 		void handleBattle();
+		void handleTeam();
 		void handleShop();
 		void handleQuit();
 };

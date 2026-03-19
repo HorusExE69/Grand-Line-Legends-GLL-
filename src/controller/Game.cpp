@@ -19,7 +19,7 @@ Game::Game(void)
 	player = new Player(file, "./data/capacities/", pseudo);
 	file.close();
 	currentArc = 0;
-	currentChapter = 0;
+	currentChapter = new Battle(player);
 	view = ViewText(this);
 }
 
@@ -41,12 +41,23 @@ void Game::update(Event* ev)
 			view.handlePlay();
 			break;
 		}
+		case EventType::BATTLE_PREPA:
+		{
+			view.handleBattlePrepa();
+			break;
+		}
+		case EventType::TEAM:
+		{
+			currentChapter->getEnemy()->addTeamSize(4);
+			currentChapter->getEnemy()->randomTeam();
+			showTeam(currentChapter->getEnemy());
+			break;
+		}
 		case EventType::BATTLE:
 		{
-			Battle* battle = new Battle(player);
-			displayBattleStart(battle);
-			battle->start();
-			displayBattleWinner(battle);
+			displayBattleStart(currentChapter);
+			currentChapter->start();
+			displayBattleWinner(currentChapter);
 			break;
 		}
 		case EventType::SHOP:
@@ -70,6 +81,7 @@ void Game::update(Event* ev)
 
 void Game::init(void)
 {
+	player->unlockAll();
 	view.run();
 }
 

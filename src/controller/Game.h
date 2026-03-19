@@ -11,7 +11,7 @@ class Game
 	private:
 		Player* player;
 		int currentArc;
-		int currentChapter;
+		Battle* currentChapter;
 		ViewText view;
 
 	public:

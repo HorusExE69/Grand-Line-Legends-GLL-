@@ -72,7 +72,9 @@ enum class TypeC
 enum class EventType
 {
 	PLAY,
+	BATTLE_PREPA,
 	BATTLE,
+	TEAM,
 	SHOP,
 	QUIT,
 	NONE

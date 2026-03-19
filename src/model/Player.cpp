@@ -13,13 +13,13 @@ Player::Player(string p)
 	berries = 50;
 
 	// Bank
-	bankMax = 0;
-	nbBank = 0;
+	bankMax = 1;
+	nbBank = 1;
 	bank = new Character*[bankMax];
 
 	// Unlocked
 	ulkMax = bankMax;
-	nbUnlock = 0;
+	nbUnlock = 1;
 	unlocked = new Character*[ulkMax];
 
 	// Équipe
@@ -56,7 +56,7 @@ Player::Player(ifstream& file, string path, string p)
 
 	// Unlocked
 	ulkMax = bankMax;
-	nbUnlock = 0;
+	nbUnlock = 1;
 	unlocked = new Character*[ulkMax];
 
 	// Équipe
@@ -111,17 +111,24 @@ void Player::addToUnlocked(Character* c)
 
 	if (nbUnlock >= ulkMax)
 	{
-		int newCap = ulkMax * 2;
-		Character** newUlk = new Character*[newCap];
-		for (int i = 0; i < nbUnlock; i++) newUlk[i] = unlocked[i];
-		delete[] unlocked;
-		unlocked = newUlk;
-		ulkMax = newCap;
+		return;
 	}
-
+	int newCap = nbUnlock * 2;
+	Character** newUlk = new Character*[newCap];
+	for (int i = 0; i < nbUnlock; i++) newUlk[i] = unlocked[i];
+	delete[] unlocked;
+	unlocked = newUlk;
+	nbUnlock = newCap;
 	unlocked[nbUnlock++] = c;
 }
 
+void Player::unlockAll()
+{
+	for (int i = 0; i < nbBank; i++)
+	{
+		addToUnlocked(bank[i]);
+	}
+}
 
 Character* Player::getUnlockCharacter(int index) const
 {
@@ -153,7 +160,6 @@ void Player::removeFromTeam(int index)
 	teamSize--;
 }
 
-// Augmenter taille équipe
 void Player::addTeamSize(int nb)
 {
 	teamMax += nb;
@@ -165,10 +171,25 @@ void Player::addTeamSize(int nb)
 
 int Player::getTeamSize() const { return teamSize; }
 
+
 Character* Player::getTeamCharacter(int index) const
 {
-	if (index >= 0 && index < teamSize) return team[index];
+	if (index >= 0 && index < teamSize) 
+	{
+		return team[index];
+	}
 	return nullptr;
+}
+
+void Player::randomTeam()
+{
+	teamSize = 0;
+	
+	for (int i = 0; i < teamMax; i++)
+	{
+		int idx = rand() % nbUnlock;
+		addToTeam(unlocked[idx]);
+	}
 }
 
 // Accesseurs / Setters

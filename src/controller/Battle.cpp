@@ -1,12 +1,19 @@
 #include "Battle.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
 Battle::Battle(Player* p)
 {
+	ifstream file("./data/Characters.csv");
+	// if (!file.is_open())
+	// {
+	// 	displayCSVError("../data/Characters.csv");
+	// }
 	player = p;
-	enemy = new Player("Enemy");
+	enemy = new Player(file, "./data/capacities/","Enemy");
+	enemy->unlockAll();
 	turn = 0;
 }
 
