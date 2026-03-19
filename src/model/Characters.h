@@ -76,7 +76,9 @@ class Character
 
 
 		void addToCapa(Capacity* c);
-		void showCapa() const;
+
+		int getNbCapa() const;
+		Capacity** getTabCapa() const;
 };
 
 #endif

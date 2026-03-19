@@ -103,16 +103,6 @@ Character* Player::getBankCharacter(int index) const
 
 int Player::getNbBank() const { return nbBank; }
 
-void Player::showBank() const
-{
-	cout << "Bank (" << nbBank << " persos):" << endl;
-	for (int i = 0; i < nbBank; i++)
-	{
-		Character* c = bank[i];
-		cout << "  " << RarityTostring(c->rarC()) << " - " << c->getName() << " - PV: " << c->getPV() << endl;
-	}
-}
-
 // Unlocked
 
 void Player::addToUnlocked(Character* c)
@@ -141,16 +131,6 @@ Character* Player::getUnlockCharacter(int index) const
 
 int Player::getNbUnlock() const { return nbUnlock; }
 
-void Player::showUnlocked() const
-{
-	cout << "Unlocked (" << nbUnlock << " persos):" << endl;
-	for (int i = 0; i < nbUnlock; i++)
-	{
-		Character* c = unlocked[i];
-		cout << "  " << Type_Tostring(c->typeC()) << " - " << c->getName() << " - PV: " << c->getPV() << endl;
-	}
-}
-
 
 // Équipe
 bool Player::addToTeam(Character* c)
@@ -171,17 +151,6 @@ void Player::removeFromTeam(int index)
 		team[i] = team[i + 1];
 	}
 	teamSize--;
-}
-
-void Player::showTeam() const
-{
-	cout << "Equipe active (" << teamSize << "/" << teamMax << "):" << endl;
-	for (int i = 0; i < teamSize; i++)
-	{
-		Character* c = team[i];
-		cout << "  " << c->getName() << " - PV: " << c->getPV();
-		cout << endl;
-	}
 }
 
 // Augmenter taille équipe
@@ -206,6 +175,9 @@ Character* Player::getTeamCharacter(int index) const
 string Player::getPseudo() const { return pseudo; }
 int Player::getLvl() const { return lvl; }
 int Player::getBerries() const { return berries; }
+int Player::getBankMax() const { return bankMax; }
+int Player::getUlkMax() const { return ulkMax; }
+int Player::getTeamMax() const { return teamMax; }
 
 void Player::setLvl(int l) { lvl = l; }
 void Player::addLvl(int l) { lvl += l; }

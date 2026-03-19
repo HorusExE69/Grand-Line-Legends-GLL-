@@ -17,18 +17,11 @@ Battle::~Battle()
 
 void Battle::start() 
 {
-	cout << "Début du combat entre " << player->getPseudo() << " et " << enemy->getPseudo() << " !" << endl;
 	while(!isOver())
 	{
 		playTurn();
 		turn ++;
 	}
-
-	Player* winner = getWinner();
-	if(winner)
-		cout << "Le gagnant est : " << winner->getPseudo() << endl;
-	else
-		cout << "Match nul !" << endl;
 }
 
 void Battle::playTurn() 
@@ -77,6 +70,7 @@ bool Battle::isOver()
 	return isDead(player) || isDead(enemy);
 }
 
+// Getters
 
 Player* Battle::getWinner() 
 {
@@ -89,3 +83,6 @@ Player* Battle::getWinner()
 	else
 		return nullptr;
 }
+
+Player* Battle::getPlayer() const { return player; }
+Player* Battle::getEnemy() const { return enemy; }

@@ -1,6 +1,7 @@
 #include "ViewText.h"
 #include "../controller/Game.h"
 #include "../controller/Event.h"
+#include "../model/Player.h"
 
 #include <iostream>
 
@@ -101,4 +102,93 @@ void ViewText::run()
 
 		game->update(&ev);
 	}
+}
+
+// Fonctions d'affichage
+
+void displayBattleStart(Battle* battle) 
+{
+	cout << "Début du combat entre " << battle->getPlayer()->getPseudo() << " et " << battle->getEnemy()->getPseudo() << " !" << endl;
+}
+
+void displayBattleWinner(Battle* battle) 
+{
+	Player* winner = battle->getWinner();
+	if(winner)
+		cout << "Le gagnant est : " << winner->getPseudo() << "\n" << endl;
+	else
+		cout << "Match nul !\n" << endl;
+}
+
+
+void displayCSVError(const std::string& filepath) 
+{
+	cout << "Erreur : impossible d'ouvrir " << filepath << endl;
+}
+
+void showCapa(Character* c)
+{
+	if(c->getNbCapa() == 0 || c->getTabCapa() == nullptr)
+	{
+		cout << c->getName() << " n'a aucune capacite.\n";
+		return;
+	}
+
+	std::cout << "Capacites de " << c->getName() << " :\n";
+
+	for(int i = 0; i < c->getNbCapa(); i++)
+	{
+		Capacity* capa = c->getTabCapa()[i];
+		TypeC type1 = capa->getType().t1;
+		TypeC type2 = capa->getType().t2;
+
+		cout << "- " << c->getName();
+
+		cout << " | Type1: " << typeCToString(type1);
+
+		cout << " | Type2: " << typeCToString(type2);
+
+		cout << " | Chance: " << capa->getPercentage() << "%";
+
+		cout << endl;
+	}
+}
+
+void showBank(Player* p)
+{
+	cout << "Bank (" << p->getNbBank() << "/" << p->getBankMax() << "):" << endl;
+	for (int i = 0; i < p->getNbBank(); i++)
+	{
+		Character* c = p->getBankCharacter(i);
+		cout << "  " << RarityTostring(c->rarC()) << " - " << c->getName() << " - PV: " << c->getPV() << endl;
+	}
+}
+
+void showUnlocked(Player* p)
+{
+	cout << "Unlocked (" << p->getNbUnlock() << "/" << p->getUlkMax() << "):" << endl;
+	for (int i = 0; i < p->getNbUnlock(); i++)
+	{
+		Character* c = p->getUnlockCharacter(i);
+		cout << "  " << Type_Tostring(c->typeC()) << " - " << c->getName() << " - PV: " << c->getPV() << endl;
+	}
+}
+
+void showTeam(Player* p)
+{
+	cout << "Equipe active (" << p->getTeamSize() << "/" << p->getTeamMax() << "):" << endl;
+	for (int i = 0; i < p->getTeamSize(); i++)
+	{
+		Character* c = p->getTeamCharacter(i);
+		cout << "  " << c->getName() << " - PV: " << c->getPV();
+		cout << endl;
+	}
+}
+
+string getPseudoSTDIN() 
+{
+	cout << "Pseudo : ";
+	string pseudo;
+	cin >> pseudo;
+	return pseudo;
 }

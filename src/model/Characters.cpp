@@ -2,6 +2,7 @@
 #include "Capacity.h"
 #include "Effects.h"
 #include "Utils.h"
+#include "../controller/Game.h"
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -112,15 +113,12 @@ Character::~Character(void)
 void Character::loadCapacities(string pathCapaFolder)
 {
 	string path = pathCapaFolder + name + ".csv";
-	// cout << "Chargement des capacites de " << name << " depuis " << path << "...\n";
-	// string path= "./data/capacities/Sanji.csv";
-
 	ifstream file(path);
-	if(!file.is_open()) cout << "Impossible d'ouvrir" << path << endl;
+	// if(!file.is_open()) return;
 
 	string line;
 
-	getline(file,line); // header
+	getline(file,line);
 
 	while(getline(file,line))
 	{
@@ -136,8 +134,6 @@ void Character::applyEffect(Effect* e)
 	tabEffects = new Effect*[maxEffects];
 
 	tabEffects[nbEffects++] = e;
-
-	cout << EffectTostring(tabEffects[nbEffects-1]->getType()) << endl;
 
 	switch(e->getType())
 	{
@@ -229,34 +225,6 @@ void Character::addToCapa(Capacity* c)
 	tabCapa[nbCapa++] = c;
 }
 
-void Character::showCapa() const
-{
-	if(nbCapa == 0 || tabCapa == nullptr)
-	{
-		cout << name << " n'a aucune capacite.\n";
-		return;
-	}
-
-	std::cout << "Capacites de " << name << " :\n";
-
-	for(int i = 0; i < nbCapa; i++)
-	{
-		Capacity* c = tabCapa[i];
-		TypeC type1 = c->getType().t1;
-		TypeC type2 = c->getType().t2;
-
-		cout << "- " << c->getName();
-
-		cout << " | Type1: " << typeCToString(type1);
-
-		cout << " | Type2: " << typeCToString(type2);
-
-		cout << " | Chance: " << c->getPercentage() << "%";
-
-		cout << endl;
-	}
-}
-
 
 Capacity* Character::chooseCapa()
 {
@@ -318,6 +286,8 @@ bool Character::isM(void) { return rarity == Rarity::m; }
 
 string Character::getName(void) { return name; }
 int Character::getPV(void) { return pv; }
+int Character::getNbCapa() const { return nbCapa; }
+Capacity** Character::getTabCapa() const { return tabCapa; }
 
 // Update niveau
 void Character::updateLvl(int nbLvl)

@@ -22,6 +22,9 @@ class Battle
 		bool isDead(Player* p);
 		bool isOver();
 		Player* getWinner();
+
+		Player* getPlayer() const;
+		Player* getEnemy() const;
 };
 
 #endif

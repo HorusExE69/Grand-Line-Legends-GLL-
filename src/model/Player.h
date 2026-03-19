@@ -31,16 +31,16 @@ class Player
 		void addToBank(Character* c);
 		Character* getBankCharacter(int index) const;
 		int getNbBank() const;
-		void showBank() const;
+		int getBankMax() const;
 
 		void addToUnlocked(Character* c);
 		Character* getUnlockCharacter(int index) const;
 		int getNbUnlock() const;
-		void showUnlocked() const;
+		int getUlkMax() const;
 
 		bool addToTeam(Character* c);
 		void removeFromTeam(int index);
-		void showTeam() const;
+		int getTeamMax() const;
 		void addTeamSize(int nb);
 		int getTeamSize() const;
 		Character* getTeamCharacter(int index) const;

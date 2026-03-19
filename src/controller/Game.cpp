@@ -13,11 +13,9 @@ Game::Game(void)
 	ifstream file("./data/Characters.csv");
 	if (!file.is_open())
 	{
-		cout << "Erreur : impossible d'ouvrir ../data/Characters.csv" << endl;
+		displayCSVError("../data/Characters.csv");
 	}
-	cout << "Pseudo : ";
-	string pseudo;
-	cin >> pseudo;
+	string pseudo = getPseudoSTDIN();
 	player = new Player(file, "./data/capacities/", pseudo);
 	file.close();
 	currentArc = 0;
@@ -46,7 +44,9 @@ void Game::update(Event* ev)
 		case EventType::BATTLE:
 		{
 			Battle* battle = new Battle(player);
+			displayBattleStart(battle);
 			battle->start();
+			displayBattleWinner(battle);
 			break;
 		}
 		case EventType::SHOP:
