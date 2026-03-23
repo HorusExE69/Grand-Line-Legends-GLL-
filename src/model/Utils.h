@@ -71,13 +71,20 @@ enum class TypeC
 
 enum class EventType
 {
+	MENU,
 	PLAY,
-	BATTLE_PREPA,
 	BATTLE,
 	TEAM,
 	SHOP,
 	QUIT,
 	NONE
+};
+
+enum class GameState
+{
+	MENU,
+	BATTLE_PREPA,
+	SHOP
 };
 
 struct TupleTC

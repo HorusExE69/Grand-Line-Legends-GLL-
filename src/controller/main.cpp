@@ -10,26 +10,6 @@
 
 using namespace std;
 
-
-void showMapTxt(BattleMap& map)
-{
-	for (int i = 0; i < map.getSize(); i++)
-	{
-		for (int j = 0; j < map.getSize(); j++)
-		{
-			if (map.getSquare(i, j).isEmpty())
-			{
-				cout << "0 ";
-			}
-			else
-			{
-				cout << "X ";
-			}
-		}
-		cout << endl;
-	}
-}
-
 int main()
 {
 	Game game;

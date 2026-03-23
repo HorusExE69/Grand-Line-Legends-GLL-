@@ -13,15 +13,23 @@ class Game
 		int currentArc;
 		Battle* currentChapter;
 		ViewText view;
+		GameState state;
 
 	public:
 		Game(void);
 		~Game(void);
 
 		void update(Event* ev);
+		void display();
 
 		void init(void);
 		Player* getPlayer(void);
+		GameState getState();
+
+		EventType input(char c);
+		EventType inputMenu(char c);
+		EventType inputBattlePrepa(char c);
+		EventType inputShop(char c);
 };
 
 #endif

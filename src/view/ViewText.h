@@ -5,6 +5,7 @@
 #include <string>
 #include "../controller/Battle.h"
 #include "../controller/Shop.h"
+#include "winTxt.h"
 
 
 class Game;
@@ -23,6 +24,7 @@ class ViewText
 	private:
 		Game* game;
 		bool running;
+		WinTXT win;
 
 	public:
 		ViewText(Game* g = nullptr);
@@ -30,10 +32,8 @@ class ViewText
 		bool isRunning() const;
 		void run();
 
-		char displayMenu();
-		void handlePlay();
-		void handleBattlePrepa();
-		void handleBattle();
+		void displayMenu();
+		void displayPlay();
 		void handleTeam();
 		void handleShop();
 		void handleQuit();

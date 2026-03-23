@@ -2,12 +2,13 @@
 #include "../controller/Game.h"
 #include "../controller/Event.h"
 #include "../model/Player.h"
+#include "winTxt.h"
 
 #include <iostream>
 
 using namespace std;
 
-ViewText::ViewText(Game* g)
+ViewText::ViewText(Game* g) : win(80, 24)
 {
 	game = g;
 	running = false;
@@ -17,80 +18,36 @@ ViewText::~ViewText(void)
 {
 }
 
-char ViewText::displayMenu()
+void ViewText::displayMenu()
 {
+	termClear();
+	cout << "=======< Grand Line Legends >=======" << endl;
 	cout << "Bienvenue dans Grand Line Legends" << endl;
 	cout << "Voulez-vous :" << endl;
 	cout << "Jouer (j)" << endl;
 	cout << "Acheter (a)" << endl;
 	cout << "Quitter (q)" << endl;
-
-	char c;
-	cin >> c;
-	return c;
 }
 
-void ViewText::handlePlay()
+void ViewText::displayPlay()
 {
-	cout << "Vous voici dans la partie combat" << endl;
-	cout << "Voulez vous lancer ? (y/n)" << endl;
-	char c;
-	cin >> c;
-	if (c == 'y') {handleBattlePrepa();}
-	else {displayMenu();}
-}
-
-void ViewText::handleBattlePrepa()
-{
+	termClear();
 	cout << "Préparation du combat..." << endl;
 	cout << "Lancer le combat (c)" << endl;
 	cout << "Gérer l'équipe (e)" << endl;
 	cout << "Retour au menu (m)" << endl;
-
-	char c;
-	cin >> c;
-	switch (c)
-	{
-		case 'c':
-		{
-			handleBattle();
-			break;
-		}
-		case 'e':
-		{
-			handleTeam();
-			break;
-		}
-		case 'm':
-		{
-			displayMenu();
-			break;
-		}
-	}
-}
-
-void ViewText::handleTeam()
-{
-	Event ev;
-	ev.type = EventType::TEAM;
-	game->update(&ev);
-}
-
-void ViewText::handleBattle()
-{
-	Event ev;
-	ev.type = EventType::BATTLE;
-	game->update(&ev);
 }
 
 void ViewText::handleShop()
 {
+	termClear();
 	cout << "Vous voici dans le magasin" << endl;
 	cout << "En cours de développement..." << endl;
 }
 
 void ViewText::handleQuit()
 {
+	termClear();
 	cout << "Merci d'avoir joué." << endl;
 	cout <<  "Fin du programme." << endl;
 	running = false;
@@ -103,38 +60,17 @@ bool ViewText::isRunning() const
 
 void ViewText::run()
 {
+	cout.flush();
 	running = true;
 	while (running)
 	{
+		char c = win.getCh();
+		if (c == '\0') continue;
+		
+		cout.flush();
+		
 		Event ev;
-
-		char c = displayMenu();
-
-		switch (c) 
-		{
-			case 'j':
-			{
-				ev.type = EventType::PLAY;
-				break;
-			}
-			case 'a':
-			{
-				ev.type = EventType::SHOP;
-				break;
-			}
-			case 'q':
-			{
-				ev.type = EventType::QUIT;
-				running = false;
-				break;
-			}
-			default:
-			{
-				cout << "Choix invalide" << endl;
-				ev.type = EventType::NONE;
-				break;
-			}
-		}
+		ev.type = game->input(c);
 
 		game->update(&ev);
 	}
@@ -224,8 +160,16 @@ void showTeam(Player* p)
 
 string getPseudoSTDIN() 
 {
-	cout << "Pseudo : ";
 	string pseudo;
+	cout << "Entrez votre pseudo : ";
 	cin >> pseudo;
+	cout << "\nBienvenue, " << pseudo << " !" << endl;
+	cout << "Appuyez sur Entrée pour continuer..." << endl;
+	cin.ignore();
+	cin.get();
+	termClear();
 	return pseudo;
 }
+
+
+

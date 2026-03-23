@@ -28,6 +28,8 @@ class Player
 		Player(std::ifstream& file, std::string path, std::string p="Player");
 		~Player();
 
+		void changePseudo(std::string p);
+
 		void addToBank(Character* c);
 		Character* getBankCharacter(int index) const;
 		int getNbBank() const;

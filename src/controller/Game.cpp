@@ -15,12 +15,11 @@ Game::Game(void)
 	{
 		displayCSVError("../data/Characters.csv");
 	}
-	string pseudo = getPseudoSTDIN();
+	string pseudo = "User";
 	player = new Player(file, "./data/capacities/", pseudo);
 	file.close();
 	currentArc = 0;
 	currentChapter = new Battle(player);
-	view = ViewText(this);
 }
 
 Game::~Game(void)
@@ -34,16 +33,17 @@ Game::~Game(void)
 
 void Game::update(Event* ev)
 {
+	display();
 	switch(ev->type)
 	{
-		case EventType::PLAY:
+		case EventType::MENU:
 		{
-			view.handlePlay();
+			state = GameState::MENU;
 			break;
 		}
-		case EventType::BATTLE_PREPA:
+		case EventType::PLAY:
 		{
-			view.handleBattlePrepa();
+			state = GameState::BATTLE_PREPA;
 			break;
 		}
 		case EventType::TEAM:
@@ -79,13 +79,85 @@ void Game::update(Event* ev)
 	}
 }
 
+void Game::display()
+{
+	switch(state)
+	{
+		case GameState::MENU:
+			view.displayMenu();
+			break;
+		case GameState::BATTLE_PREPA:
+			view.displayPlay();
+			break;
+		default:
+			break;
+	}
+}
+
 void Game::init(void)
 {
+	string pseudo = getPseudoSTDIN();
+	player->changePseudo(pseudo);
 	player->unlockAll();
+	state = GameState::MENU;
+	view = ViewText(this);
+	display();
 	view.run();
 }
 
 Player* Game::getPlayer(void)
 {
 	return player;
+}
+
+GameState Game::getState()
+{
+	return state;
+}
+
+EventType Game::input(char c)
+{
+	switch(state)
+	{
+		case GameState::MENU:
+			return inputMenu(c);
+
+		case GameState::BATTLE_PREPA:
+			return inputBattlePrepa(c);
+
+		case GameState::SHOP:
+			return inputShop(c);
+		default:
+			break;
+	}
+	return EventType::NONE;
+}
+
+EventType Game::inputMenu(char c)
+{
+	switch (c)
+	{
+		case 'j': return EventType::PLAY;
+		case 'a': return EventType::SHOP;
+		case 'q': return EventType::QUIT;
+		default: return EventType::NONE;
+	}
+}
+
+EventType Game::inputBattlePrepa(char c)
+{
+	switch (c)
+	{
+		case 'c': return EventType::BATTLE;
+		case 'e': return EventType::TEAM;
+		case 'm': return EventType::MENU;
+		default: return EventType::NONE;
+	}
+}
+
+
+EventType Game::inputShop(char c)
+{
+	// En cours de développement
+	return EventType::NONE;
 }

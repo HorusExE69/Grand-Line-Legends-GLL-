@@ -19,7 +19,7 @@ Player::Player(string p)
 
 	// Unlocked
 	ulkMax = bankMax;
-	nbUnlock = 1;
+	nbUnlock = 0;
 	unlocked = new Character*[ulkMax];
 
 	// Équipe
@@ -77,6 +77,11 @@ Player::~Player()
 	delete[] team;
 }
 
+void Player::changePseudo(string p)
+{
+	pseudo = p;
+}
+
 // Bank
 void Player::addToBank(Character* c)
 {
@@ -109,16 +114,8 @@ void Player::addToUnlocked(Character* c)
 {
 	if (c == nullptr) return;
 
-	if (nbUnlock >= ulkMax)
-	{
-		return;
-	}
-	int newCap = nbUnlock * 2;
-	Character** newUlk = new Character*[newCap];
-	for (int i = 0; i < nbUnlock; i++) newUlk[i] = unlocked[i];
-	delete[] unlocked;
-	unlocked = newUlk;
-	nbUnlock = newCap;
+	if (nbUnlock >= ulkMax) return;
+
 	unlocked[nbUnlock++] = c;
 }
 
@@ -184,7 +181,7 @@ Character* Player::getTeamCharacter(int index) const
 void Player::randomTeam()
 {
 	teamSize = 0;
-	
+
 	for (int i = 0; i < teamMax; i++)
 	{
 		int idx = rand() % nbUnlock;
