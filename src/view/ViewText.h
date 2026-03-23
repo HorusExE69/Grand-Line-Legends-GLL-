@@ -10,6 +10,7 @@
 
 class Game;
 
+string readInput(WinTXT& win);
 void displayBattleStart(Battle* battle);
 void displayBattleWinner(Battle* battle);
 void displayCSVError(const std::string& filepath);
@@ -32,9 +33,11 @@ class ViewText
 		bool isRunning() const;
 		void run();
 
+		int handleATT();
 		void displayMenu();
 		void displayPlay();
-		void handleTeam();
+		void displayTeam(Player* enemy);
+		void displayTeamChange();
 		void handleShop();
 		void handleQuit();
 };

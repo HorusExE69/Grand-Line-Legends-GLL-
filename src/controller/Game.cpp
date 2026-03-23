@@ -33,7 +33,6 @@ Game::~Game(void)
 
 void Game::update(Event* ev)
 {
-	display();
 	switch(ev->type)
 	{
 		case EventType::MENU:
@@ -48,9 +47,17 @@ void Game::update(Event* ev)
 		}
 		case EventType::TEAM:
 		{
-			currentChapter->getEnemy()->addTeamSize(4);
-			currentChapter->getEnemy()->randomTeam();
-			showTeam(currentChapter->getEnemy());
+			state = GameState::TEAM;
+			break;
+		}
+		case EventType::TEAM_CHANGE:
+		{
+			state = GameState::TEAM_CHANGE;
+			break;
+		}
+		case EventType::ADD_TO_TEAM:
+		{
+			player->addToTeam(player->getUnlockCharacter(view.handleATT()));
 			break;
 		}
 		case EventType::BATTLE:
@@ -77,6 +84,7 @@ void Game::update(Event* ev)
 		default:
 			break;
 	}
+	display();
 }
 
 void Game::display()
@@ -89,6 +97,12 @@ void Game::display()
 		case GameState::BATTLE_PREPA:
 			view.displayPlay();
 			break;
+		case GameState::TEAM:
+			view.displayTeam(currentChapter->getEnemy());
+			break;
+		case GameState::TEAM_CHANGE:
+			view.displayTeamChange();
+			break;
 		default:
 			break;
 	}
@@ -96,9 +110,12 @@ void Game::display()
 
 void Game::init(void)
 {
+	currentChapter->getEnemy()->addTeamSize(4);
+	currentChapter->getEnemy()->randomTeam();
 	string pseudo = getPseudoSTDIN();
 	player->changePseudo(pseudo);
 	player->unlockAll();
+	player->addTeamSize(4);
 	state = GameState::MENU;
 	view = ViewText(this);
 	display();
@@ -127,6 +144,12 @@ EventType Game::input(char c)
 
 		case GameState::SHOP:
 			return inputShop(c);
+
+		case GameState::TEAM:
+			 return inputTeam(c);
+
+		case GameState::TEAM_CHANGE:
+			 return inputTeamChange(c);
 		default:
 			break;
 	}
@@ -155,6 +178,26 @@ EventType Game::inputBattlePrepa(char c)
 	}
 }
 
+EventType Game::inputTeam(char c)
+{
+	switch (c)
+	{
+		case 'm': return EventType::PLAY;
+		case 'e': return EventType::PLAY;
+		case 'g': return EventType::TEAM_CHANGE;
+		default: return EventType::NONE;
+	}
+}
+
+EventType Game::inputTeamChange(char c)
+{
+	switch (c)
+	{
+		case 'r': return EventType::TEAM;
+		case 'a': return EventType::ADD_TO_TEAM;
+		default: return EventType::NONE;
+	}
+}
 
 EventType Game::inputShop(char c)
 {

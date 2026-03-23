@@ -75,6 +75,8 @@ enum class EventType
 	PLAY,
 	BATTLE,
 	TEAM,
+	TEAM_CHANGE,
+	ADD_TO_TEAM,
 	SHOP,
 	QUIT,
 	NONE
@@ -84,7 +86,9 @@ enum class GameState
 {
 	MENU,
 	BATTLE_PREPA,
-	SHOP
+	TEAM_CHANGE,
+	SHOP,
+	TEAM
 };
 
 struct TupleTC

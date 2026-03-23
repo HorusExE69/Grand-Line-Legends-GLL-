@@ -30,6 +30,8 @@ class Game
 		EventType inputMenu(char c);
 		EventType inputBattlePrepa(char c);
 		EventType inputShop(char c);
+		EventType inputTeam(char c);
+		EventType inputTeamChange(char c);
 };
 
 #endif

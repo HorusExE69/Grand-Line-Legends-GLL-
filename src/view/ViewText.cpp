@@ -38,6 +38,36 @@ void ViewText::displayPlay()
 	cout << "Retour au menu (m)" << endl;
 }
 
+void ViewText::displayTeam(Player* enemy)
+{
+	termClear();
+	cout << "Gérer l'équipe..." << endl;
+	cout << "Retour au menu (m)" << endl;
+	cout << "Gérer votre équipe (g)" << endl;
+	cout << "\n <<< EQUIPE ENNEMIE (" << enemy->getTeamSize() << "/" << enemy->getTeamMax() << ") >>> \n" << endl;
+	showTeam(enemy);
+	cout << "\n\n <<< VOTRE EQUIPE (" << game->getPlayer()->getTeamSize() << "/" << game->getPlayer()->getTeamMax() << ") >>> \n" << endl;
+	showTeam(game->getPlayer());
+}
+
+void ViewText::displayTeamChange()
+{
+	termClear();
+	cout << "Gérer votre équipe..." << endl;
+	cout << "Retour (r)" << endl;
+	cout << "Ajouter un personnage à l'équipe (a) puis entrez l'id du personnage et validez (=)" << endl;
+	cout << "\n <<< VOTRE EQUIPE (" << game->getPlayer()->getTeamSize() << "/" << game->getPlayer()->getTeamMax() << ") >>> \n" << endl;
+	showTeam(game->getPlayer());
+}
+
+int ViewText::handleATT()
+{
+	string input = readInput(win);
+	int id = stoi(input);
+	return id;
+
+}
+
 void ViewText::handleShop()
 {
 	termClear();
@@ -148,7 +178,6 @@ void showUnlocked(Player* p)
 
 void showTeam(Player* p)
 {
-	cout << "Equipe active (" << p->getTeamSize() << "/" << p->getTeamMax() << "):" << endl;
 	for (int i = 0; i < p->getTeamSize(); i++)
 	{
 		Character* c = p->getTeamCharacter(i);
@@ -171,5 +200,31 @@ string getPseudoSTDIN()
 	return pseudo;
 }
 
+string readInput(WinTXT& win)
+{
+    string input = "";
+    char c;
 
+    while (true)
+    {
+        c = win.getCh();
 
+        if (c == '=')
+            break;
+
+        if (c == 127)
+        {
+            if (!input.empty())
+                input.pop_back();
+        }
+        else if (c != '\0')
+        {
+            input += c;
+        }
+
+        cout << "\rEntrez : " << input << " " << flush;
+    }
+
+    cout << endl;
+    return input;
+}
