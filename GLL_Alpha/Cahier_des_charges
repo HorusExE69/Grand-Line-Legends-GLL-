@@ -1,0 +1,51 @@
+Nom : Grand Line Legends (GLL)
+
+Description : Jeu de RPG sur le théme de la licence de One piece. Créer votre propre équipage afin d'avancer d'île en île et atteindre (Grand Line ou le one piece on ne sait pas encore où sr'arrêter).
+
+A faire :
+    - classe personnage
+    - classe boss (mini et final)
+    - classe niveau
+    - classe île 
+    - cinématique ?
+    - classe berry
+    - classe trésors (récuper des cartes personnages plus rare : Shanks, mihawk,...)
+    - classe XP
+    - classe merry 
+    - classe poneyglyph
+
+Arc : Romance Down / Boss : Morgan / Perso : Zoro (100%)
+Arc : Orange Town / Boss : Baggy / Perso : Nami (50%)
+Arc : Village Sirop / Boss : Kuro / Perso : Usopp (100%) (Merry)
+Arc : Baratie / Boss : Don Zrieg / Perso : Sanji (100%)
+Arc : Arlong Parc / Boss : Arlong / Perso : Nami (50%)
+Arc : Logue Town / Boss : Smoker / Perso : Baggy (100%)
+Arc : Whiskey Peak / Boss : Mr5 + Miss Valentine  / Perso : Vivi (100%)
+Arc : Little Garden / Boss : Mr3 + Miss Golden Week / Perso : Doggy-Brogy (50%)
+Arc : Drum Island / Boss : Wapol / Perso : Chopper (100%) (! nami)
+Arc : Alabasta / Boss : Crocodile / Perso : Robin (100%) + Poneglyph n2
+Arc : Skypea / Boss : Ener / Poneglyph n1
+Arc : Water Seven / Boss : Franky / Perso : Franky (50%) (! usopp+robin)
+Arc : Enies Lobby / Boss : Rob Lucci / Perso : Franky (50%) + skin usopp (! robin)
+Arc : Thriller Bark / Boss : Gecko Moria / Perso : Brook (100%)
+Arc : Amazon Lily / Boss : Boa Hancok / Perso : Boa Hancock (100%) 
+Arc : Impel Down / Boss : Magellan / Perso : Bon Clay (100%)+Crocodile(25%)+Jinbe(25%)+Ivankov(25%)
+Arc : Marine Ford 1/ Boss : Garp Sengoku Akainu / Perso : ½ Ace+Crocodile(25%)+Ivankov(25%)+Jinbe(25%)+Barbe Blanche (25%)+(25%) Marco(25%)+1 Mythic Drop
+
+
+Rareté : commun (gris), rare (vert), super rare (bleu),épique (violet), légendaire (jaune), mythique (rouge).
+
+Classe personnage :
+    -support : Vivi, Chopper, BonClay, Ivankov, Marco, Crocus, Baggy, Bepo, Law, BigMom, Smoker (11)
+    -défence : Doggy-Broggy, Sengoku, Bege, Berouge, Kaido, Zunesha, Emeth, Momonosuke, Burgess, Kuma (10)
+    -inteligence : Jinbe, Robin, Kobby, XDrake, Rayleigh, Veggapunk, Crocodile, Shanks, Franky, Nami(10)
+    -attaque : Luffy, Zoro, Sanji, Brook, Lucci, Garp, Barbe blanche, Kid, Killer, Fujitora, Doflamingo, King, Katakuri, Carrot, Yamato, Shiliew, Mihawk (17)
+    -snipper : Usopp, Yasopp, Benbeckman, Van Augur, Izo, Ener (6)
+    -Magicien : GeckoMoria, Boa Hancok, Akainu, Barbe noire, Bonney, Hawkins, Kizaru, Aokiji, Ryokugyu, Sabo, Dragon, Appo, Ace (12)
+
+Commun : Luffy, Kobby, nami, BonClay, Baggy, Beppo, Zoro, Sanjin, Brook, Lucci, Killer, Usopp, Franky, Vivi, Shopper (15)
+Rare : Bege, Berouge, Momonosuke, Burgess, Carrot, Van Augur, Bonney, Appo, Ivankov, XDrake, GeckoMoria, Izo, Smoker (13)
+Super rare : Jinbe, Robin, crocodile, Kuma, Kid, Yamato, Boa Hancok, Hawkins, Ace, Shiliew, Yasopp, Doflamingo (12)
+Epique : Veggapunk, Doggy-Broggy, Zunesha, Emeth, Fujitora, King, Katakuri, Benbeckman, Ener, Ryokugyu, Marco (11)
+Légendaire : Rayleigh, Law, Sengoku, Akainu, Kizaru, Aokiji, Akainu, Sabo, Crocus (9)
+Mythique : Shanks, Garp, Dragon, Mihawk, Kaido, BigMom, Barbe noire, barbe blanche (8)

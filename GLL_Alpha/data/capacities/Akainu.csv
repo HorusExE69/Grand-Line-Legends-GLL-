@@ -1,0 +1,5 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,Akainu,Dai Funka,fire,proj,2000,0,Enemy,3,3,15,Bleeding,35
+2,Akainu,Meigo,fire,punch,2300,0,Enemy,1,4,20,Damage,40
+3,Akainu,Ryusei Kazan,fire,proj,2500,0,AllEnemies,1,5,25,Push,45
+4,Akainu,Magma Armor,self_buff,fire,0,0,Self,1,2,10,Buff,100

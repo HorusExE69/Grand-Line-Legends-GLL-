@@ -1,0 +1,5 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,BonClay,Okama Kenpo,punch,other,200,0,Enemy,1,1,1,None,33%
+2,BonClay,Okama Kick,kick,other,250,0,Enemy,1,1,1,None,33%
+3,BonClay,Butterfly Dance,blade,other,300,0,Enemy,2,1,5,None,33%
+4,BonClay,Passif BonClay,resist,other,0,0,Self,1,1,1,Peut prendre les dégâts d'un allié aléatoirement,20%

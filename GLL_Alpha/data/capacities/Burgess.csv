@@ -1,0 +1,6 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,Burgess,Punch du Titan,punch,other,300,0,Enemy,1,1,1,none,12
+2,Burgess,Coup de Bouclier,kick,other,250,0,Enemy,1,1,3,stun,10
+3,Burgess,Charge Écrasante,blade,other,400,0,Enemy,2,1,5,none,15
+4,Burgess,Rotation de Masse,blade,other,350,0,Enemy,3,1,7,none,18
+5,Burgess,Défense Impénétrable,buff,other,0,0,Self,1,1,10,buffDef,20
