@@ -5,6 +5,7 @@
 #include "Battle.h"
 #include <iostream>
 #include <fstream>
+#include <ctime>
 
 using namespace std;
 
@@ -20,6 +21,7 @@ Game::Game(void)
 	file.close();
 	currentArc = 0;
 	currentChapter = new Battle(player);
+	selectedIndex = 0;
 }
 
 Game::~Game(void)
@@ -55,16 +57,10 @@ void Game::update(Event* ev)
 			state = GameState::TEAM_CHANGE;
 			break;
 		}
-		case EventType::ADD_TO_TEAM:
-		{
-			player->addToTeam(player->getUnlockCharacter(view.handleATT()));
-			break;
-		}
 		case EventType::BATTLE:
 		{
-			displayBattleStart(currentChapter);
-			currentChapter->start();
-			displayBattleWinner(currentChapter);
+			state = GameState::BATTLE;
+			currentChapter->playNextTurn();
 			break;
 		}
 		case EventType::SHOP:
@@ -103,6 +99,9 @@ void Game::display()
 		case GameState::TEAM_CHANGE:
 			view.displayTeamChange();
 			break;
+		case GameState::BATTLE:
+			view.displayBattle();
+			break;
 		default:
 			break;
 	}
@@ -110,6 +109,11 @@ void Game::display()
 
 void Game::init(void)
 {
+	static bool seeded = false;
+    if(!seeded) {
+        srand(time(nullptr));
+        seeded = true;
+    }
 	currentChapter->getEnemy()->addTeamSize(4);
 	currentChapter->getEnemy()->randomTeam();
 	string pseudo = getPseudoSTDIN();
@@ -132,6 +136,8 @@ GameState Game::getState()
 	return state;
 }
 
+// INPUT
+
 EventType Game::input(char c)
 {
 	switch(state)
@@ -146,10 +152,13 @@ EventType Game::input(char c)
 			return inputShop(c);
 
 		case GameState::TEAM:
-			 return inputTeam(c);
+			return inputTeam(c);
 
 		case GameState::TEAM_CHANGE:
-			 return inputTeamChange(c);
+			return inputTeamChange(c);
+		
+		case GameState::BATTLE:
+			return inputBattle(c);
 		default:
 			break;
 	}
@@ -182,7 +191,7 @@ EventType Game::inputTeam(char c)
 {
 	switch (c)
 	{
-		case 'm': return EventType::PLAY;
+		case 'r': return EventType::PLAY;
 		case 'e': return EventType::PLAY;
 		case 'g': return EventType::TEAM_CHANGE;
 		default: return EventType::NONE;
@@ -194,7 +203,6 @@ EventType Game::inputTeamChange(char c)
 	switch (c)
 	{
 		case 'r': return EventType::TEAM;
-		case 'a': return EventType::ADD_TO_TEAM;
 		default: return EventType::NONE;
 	}
 }
@@ -203,4 +211,51 @@ EventType Game::inputShop(char c)
 {
 	// En cours de développement
 	return EventType::NONE;
+}
+
+EventType Game::inputBattle(char c)
+{
+	switch (c)
+	{
+		case 'r': return EventType::PLAY;
+		default: return EventType::NONE;
+	}
+}
+
+// SELECTION
+
+void Game::moveSelectionUp()
+{
+	if(selectedIndex > 0)
+			selectedIndex--;
+}
+
+void Game::moveSelectionDown()
+{
+	if(selectedIndex < player->getNbUnlock() - 1)
+			selectedIndex++;
+}
+
+void Game::confirmSelection()
+{
+	Character* c = player->getUnlockCharacter(selectedIndex);
+	if(c == nullptr) return;
+	for(int i = 0; i < player->getTeamSize(); i++)
+	{
+		if(player->getTeamCharacter(i) == c)
+		{
+			return;
+		}
+	}
+	player->addToTeam(c);
+}
+
+int Game::getSelectedIndex() const
+{
+	return selectedIndex;
+}
+
+Battle* Game::getCurrentChapter() const
+{
+	return currentChapter;
 }

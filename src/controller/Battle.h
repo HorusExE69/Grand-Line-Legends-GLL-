@@ -15,8 +15,9 @@ class Battle
 		Battle(Player* p=nullptr);
 		~Battle(void);
 		
-		void start();
+		void playAllTurns();
 		void playTurn();
+		bool playNextTurn();
 		void playCharacter(Character* character);
 
 		bool isDead(Player* p);
@@ -25,6 +26,8 @@ class Battle
 
 		Player* getPlayer() const;
 		Player* getEnemy() const;
+
+		int getTurn() const;
 };
 
 #endif

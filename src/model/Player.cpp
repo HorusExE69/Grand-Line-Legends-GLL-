@@ -56,7 +56,7 @@ Player::Player(ifstream& file, string path, string p)
 
 	// Unlocked
 	ulkMax = bankMax;
-	nbUnlock = 1;
+	nbUnlock = 0;
 	unlocked = new Character*[ulkMax];
 
 	// Équipe

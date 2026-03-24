@@ -22,13 +22,22 @@ Battle::~Battle()
 	delete enemy;
 }
 
-void Battle::start() 
+void Battle::playAllTurns() 
 {
 	while(!isOver())
 	{
 		playTurn();
-		turn ++;
+		turn++;
 	}
+}
+
+bool Battle::playNextTurn() 
+{
+	if(isOver())
+		return false;
+	playTurn();
+	turn++;
+	return true;
 }
 
 void Battle::playTurn() 
@@ -93,3 +102,5 @@ Player* Battle::getWinner()
 
 Player* Battle::getPlayer() const { return player; }
 Player* Battle::getEnemy() const { return enemy; }
+
+int Battle::getTurn() const { return turn; }

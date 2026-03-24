@@ -42,7 +42,7 @@ void ViewText::displayTeam(Player* enemy)
 {
 	termClear();
 	cout << "Gérer l'équipe..." << endl;
-	cout << "Retour au menu (m)" << endl;
+	cout << "Retour (r)" << endl;
 	cout << "Gérer votre équipe (g)" << endl;
 	cout << "\n <<< EQUIPE ENNEMIE (" << enemy->getTeamSize() << "/" << enemy->getTeamMax() << ") >>> \n" << endl;
 	showTeam(enemy);
@@ -53,19 +53,57 @@ void ViewText::displayTeam(Player* enemy)
 void ViewText::displayTeamChange()
 {
 	termClear();
+	
+	Player* p = game->getPlayer();
+
 	cout << "Gérer votre équipe..." << endl;
 	cout << "Retour (r)" << endl;
-	cout << "Ajouter un personnage à l'équipe (a) puis entrez l'id du personnage et validez (=)" << endl;
-	cout << "\n <<< VOTRE EQUIPE (" << game->getPlayer()->getTeamSize() << "/" << game->getPlayer()->getTeamMax() << ") >>> \n" << endl;
-	showTeam(game->getPlayer());
+	cout << "Utilisez ↑ ↓ pour naviguer et Entrée pour sélectionner" << endl;
+
+	cout << "\n <<< VOTRE EQUIPE ("
+		<< p->getTeamSize() << "/"
+		<< p->getTeamMax() << ") >>> \n" << endl;
+
+	for(int i = 0; i < p->getTeamSize(); i++)
+	{
+		Character* c = p->getTeamCharacter(i);
+		if(c==nullptr) continue;
+		cout << "  " << c->getName()
+			<< " - PV: " << c->getPV() << endl;
+	}
+
+	cout << "\n <<< PERSONNAGES DISPONIBLES >>> \n" << endl;
+
+	for(int i = 0; i < p->getNbUnlock(); i++)
+	{
+		Character* c = p->getUnlockCharacter(i);
+
+		if(i == game->getSelectedIndex())
+			cout << " > ";
+		else
+			cout << "   ";
+		
+		cout << i << " - "
+			<< c->getName()
+			<< " (PV: " << c->getPV() << ")"
+			<< endl;
+	}
 }
 
-int ViewText::handleATT()
+void ViewText::displayBattle() 
 {
-	string input = readInput(win);
-	int id = stoi(input);
-	return id;
-
+	termClear();
+	cout << "Combat entre " << game->getCurrentChapter()->getPlayer()->getPseudo() << " et " << game->getCurrentChapter()->getEnemy()->getPseudo() << " !" << endl;
+	if(game->getCurrentChapter()->isOver())
+	{
+		cout << "\n   <<< GAGNANT >>>\n   " << game->getCurrentChapter()->getWinner()->getPseudo() << endl;
+	}
+	else
+	{
+		cout << "Tour " << game->getCurrentChapter()->getTurn() << endl;
+		showTeam(game->getCurrentChapter()->getPlayer());
+		showTeam(game->getCurrentChapter()->getEnemy());
+	}	
 }
 
 void ViewText::handleShop()
@@ -96,31 +134,50 @@ void ViewText::run()
 	{
 		char c = win.getCh();
 		if (c == '\0') continue;
-		
+
+		if(game->getState() == GameState::TEAM_CHANGE)
+		{
+			if(c==65)
+			{
+				game->moveSelectionUp();
+				game->display();
+				continue;
+			}
+			else if(c==66)
+			{
+				game->moveSelectionDown();
+				game->display();
+				continue;
+			}
+			else if(c==68)
+			{
+				game->confirmSelection();
+				game->display();
+				continue;
+			}
+			else if(c==67)
+				continue;
+		}
+		if(game->getState() == GameState::BATTLE)
+		{
+			if(!game->getCurrentChapter()->isOver())
+			{
+				game->getCurrentChapter()->playNextTurn();
+				game->display();
+			}
+		}
+
 		cout.flush();
 		
 		Event ev;
 		ev.type = game->input(c);
 
 		game->update(&ev);
+
 	}
 }
 
 // Fonctions d'affichage
-
-void displayBattleStart(Battle* battle) 
-{
-	cout << "Début du combat entre " << battle->getPlayer()->getPseudo() << " et " << battle->getEnemy()->getPseudo() << " !" << endl;
-}
-
-void displayBattleWinner(Battle* battle) 
-{
-	Player* winner = battle->getWinner();
-	if(winner)
-		cout << "Le gagnant est : " << winner->getPseudo() << "\n" << endl;
-	else
-		cout << "Match nul !\n" << endl;
-}
 
 
 void displayCSVError(const std::string& filepath) 
@@ -198,33 +255,4 @@ string getPseudoSTDIN()
 	cin.get();
 	termClear();
 	return pseudo;
-}
-
-string readInput(WinTXT& win)
-{
-    string input = "";
-    char c;
-
-    while (true)
-    {
-        c = win.getCh();
-
-        if (c == '=')
-            break;
-
-        if (c == 127)
-        {
-            if (!input.empty())
-                input.pop_back();
-        }
-        else if (c != '\0')
-        {
-            input += c;
-        }
-
-        cout << "\rEntrez : " << input << " " << flush;
-    }
-
-    cout << endl;
-    return input;
 }

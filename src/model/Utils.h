@@ -76,7 +76,6 @@ enum class EventType
 	BATTLE,
 	TEAM,
 	TEAM_CHANGE,
-	ADD_TO_TEAM,
 	SHOP,
 	QUIT,
 	NONE
@@ -85,6 +84,7 @@ enum class EventType
 enum class GameState
 {
 	MENU,
+	BATTLE,
 	BATTLE_PREPA,
 	TEAM_CHANGE,
 	SHOP,

@@ -14,6 +14,7 @@ class Game
 		Battle* currentChapter;
 		ViewText view;
 		GameState state;
+		int selectedIndex;
 
 	public:
 		Game(void);
@@ -26,12 +27,20 @@ class Game
 		Player* getPlayer(void);
 		GameState getState();
 
+		Battle* getCurrentChapter() const;
+		
 		EventType input(char c);
 		EventType inputMenu(char c);
 		EventType inputBattlePrepa(char c);
 		EventType inputShop(char c);
 		EventType inputTeam(char c);
 		EventType inputTeamChange(char c);
+		EventType inputBattle(char c);
+
+		void moveSelectionUp();
+		void moveSelectionDown();
+		void confirmSelection();
+		int getSelectedIndex() const;
 };
 
 #endif
