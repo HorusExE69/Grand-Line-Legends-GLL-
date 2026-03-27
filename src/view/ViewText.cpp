@@ -58,7 +58,7 @@ void ViewText::displayTeamChange()
 
 	cout << "Gérer votre équipe..." << endl;
 	cout << "Retour (r)" << endl;
-	cout << "Utilisez ↑ ↓ pour naviguer et Entrée pour sélectionner" << endl;
+	cout << "Utilisez ↑ ↓ pour naviguer et <- pour sélectionner" << endl;
 
 	cout << "\n <<< VOTRE EQUIPE ("
 		<< p->getTeamSize() << "/"
