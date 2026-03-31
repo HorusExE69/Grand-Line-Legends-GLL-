@@ -102,10 +102,9 @@ Character::~Character(void)
 {
 	if (tabCapa != nullptr)
 		delete[] tabCapa;
-	if(pos != nullptr)
-		delete pos;
 	if(tabEffects != nullptr)
 		delete[] tabEffects;
+	pos = nullptr;
 }
 
 // FONCTIONS MEMBRE
@@ -122,6 +121,8 @@ void Character::loadCapacities(string pathCapaFolder)
 
 	while(getline(file,line))
 	{
+		if(line.empty())
+			continue;
 		Capacity* c = new Capacity(line);
 		addToCapa(c);
 	}
@@ -131,7 +132,8 @@ void Character::applyEffect(Effect* e)
 {
 	if (nbEffects >= maxEffects) return;
 
-	tabEffects = new Effect*[maxEffects];
+	if (tabEffects == nullptr)
+		tabEffects = new Effect*[maxEffects];
 
 	tabEffects[nbEffects++] = e;
 
@@ -201,7 +203,7 @@ void Character::applyPassives()
 	{
 		Capacity* c = tabCapa[i];
 
-		if(!c->getIsPassive() && c->getActivated())
+		if(!c || (!c->getIsPassive() && c->getActivated()))
 			continue;
 
 		c->use();
@@ -234,11 +236,14 @@ Capacity* Character::chooseCapa()
 	int total = 0;
 	for(int i = 0; i < nbCapa; i++)
 	{
-		if(tabCapa[i]->getIsPassive())
+		if(!tabCapa[i] || tabCapa[i]->getIsPassive())
 			continue;
 
 		total += tabCapa[i]->getPercentage();
 	}
+
+	if(total == 0)
+		return nullptr;
 
 	int roll = rand()%total;
 
@@ -246,7 +251,7 @@ Capacity* Character::chooseCapa()
 
 	for(int i = 0; i < nbCapa; i++)
 	{
-		if(tabCapa[i]->getIsPassive())
+		if(!tabCapa[i] || tabCapa[i]->getIsPassive())
 			continue;
 		
 		sum += tabCapa[i]->getPercentage();

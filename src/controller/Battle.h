@@ -8,17 +8,20 @@
 class Battle
 {
 	private:
+		BattleMap* map;
 		Player* player;
 		Player* enemy;
 		int turn;
 	public:
 		Battle(Player* p=nullptr);
 		~Battle(void);
+
+		void init();
 		
 		void playAllTurns();
 		void playTurn();
 		bool playNextTurn();
-		void playCharacter(Character* character);
+		void playCharacter(Square* character, bool side);
 
 		bool isDead(Player* p);
 		bool isOver();
@@ -26,6 +29,8 @@ class Battle
 
 		Player* getPlayer() const;
 		Player* getEnemy() const;
+
+		Square** getOrder(int &outSize);
 
 		int getTurn() const;
 };

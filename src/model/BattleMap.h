@@ -2,6 +2,7 @@
 #define BATTLEMAP_H
 
 #include "Squares.h"
+#include "Player.h"
 
 class BattleMap
 {
@@ -9,12 +10,13 @@ class BattleMap
 		int sizeMap;
 		int nbFree;
 
-		Square** tabBox;
+		Square tabBox[2][10];
 
 	public:
 		BattleMap(void);
-		BattleMap(int size);
 		~BattleMap(void);
+
+		void init(Player* p, Player* e);
 
 		int getSize(void);
 		int getNbFree(void);

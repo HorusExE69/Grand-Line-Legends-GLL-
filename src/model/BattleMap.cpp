@@ -1,5 +1,6 @@
 #include "Squares.h"
 #include "BattleMap.h"
+#include "Player.h"
 #include <iostream>
 
 using namespace std;
@@ -8,26 +9,32 @@ BattleMap::BattleMap(void)
 {
 	sizeMap = 0;
 	nbFree = 0;
-	tabBox = nullptr;
-}
-
-BattleMap::BattleMap(int size)
-{
-	sizeMap = size;
-	nbFree = size * size;
-	tabBox = new Square*[sizeMap];
-	for (int i = 0; i < sizeMap; i++)
+	for(int i = 0; i<2; i++)
 	{
-		tabBox[i] = new Square[sizeMap];
+		for(int j = 0; j < 10; j++)
+		{
+			tabBox[i][j] = Square(i,j);
+		}
 	}
 }
 
 BattleMap::~BattleMap(void)
 {
-	if(tabBox != nullptr)
+}
+
+void BattleMap::init(Player* p, Player* e)
+{
+	sizeMap = p->getTeamMax() + e->getTeamMax();
+	nbFree = sizeMap - p->getTeamSize() - e->getTeamSize();
+	for (int i = 0; i < 10; i++)
 	{
-		delete[] tabBox;
-		tabBox = nullptr;
+		if(i < p->getTeamSize())
+			tabBox[0][i].hold(p->getTeamCharacter(i));
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		if(i < e->getTeamSize())
+			tabBox[1][i].hold(e->getTeamCharacter(i));
 	}
 }
 

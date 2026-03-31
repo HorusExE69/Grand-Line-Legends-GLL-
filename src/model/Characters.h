@@ -20,7 +20,6 @@ class Character
 		Square* pos;
 
 		int pv;
-		int speed;
 		int hakiR;
 		int hakiO;
 		int hakiA;
@@ -35,6 +34,7 @@ class Character
 		int maxEffects;
 
 	public:
+		int speed;
 		int resistValue;
 		int bleedingValue;
 		bool isBleeding;

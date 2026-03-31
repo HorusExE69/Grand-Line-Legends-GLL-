@@ -27,8 +27,25 @@ Capacity::Capacity()
 
 Capacity::Capacity(string line)
 {
+	nameCapa = "";
+	damage = 0;
+	heal = 0;
+	percentage = 0;
+	isPassive = false;
+	activated = false;
+
+	typeC.t1 = TypeC::other;
+	typeC.t2 = TypeC::other;
+
+	launcher = nullptr;
+	eft = nullptr;
+
+	tabTargets = nullptr;
+
+	nbTargets = 0;
+
 	if(line.empty())
-        return;
+		return;
 
 	size_t cur = 0;
 	string token;
@@ -95,10 +112,6 @@ Capacity::Capacity(string line)
 
 	if (percentage >= 100) isPassive = true;
 	else isPassive = false;
-
-	tabTargets = nullptr;
-	activated = false;
-	launcher = nullptr;
 }
 
 Capacity::~Capacity()
@@ -117,36 +130,48 @@ Capacity::~Capacity()
 }
 
 // Ajouter une cible
-void Capacity::addTarget(Square* s) {
-	if(tabTargets == nullptr) {
-		tabTargets = new Square[1];
-		tabTargets[0] = *s;
+void Capacity::addTarget(Square* s)
+{
+	if(tabTargets == nullptr)
+	{
+		tabTargets = new Square*[1];
+		tabTargets[0] = s;
 		nbTargets = 1;
-	} else {
-		Square* old = tabTargets;
-		Square* tmp = new Square[nbTargets + 1];
+	}
+	else
+	{
+		Square** old = tabTargets;
+		Square** tmp = new Square*[nbTargets + 1];
+
 		for(int i = 0; i < nbTargets; i++)
 			tmp[i] = old[i];
-		tmp[nbTargets] = *s;
+
+		tmp[nbTargets] = s;
 		nbTargets++;
+
 		delete[] old;
 		tabTargets = tmp;
 	}
 }
 
+
 // Appliquer la capacité
-void Capacity::use() {
+void Capacity::use()
+{
 	if(nbTargets <= 0 || tabTargets == nullptr)
 		return;
-	for(int i = 0; i < nbTargets; i++) {
-		Square& sq = tabTargets[i];
-		if(sq.inmate == nullptr) continue;
 
-		Character* c = sq.inmate;
+	for(int i = 0; i < nbTargets; i++)
+	{
+		Square* sq = tabTargets[i];
+		if(sq == nullptr || sq->inmate == nullptr)
+			continue;
 
+		Character* c = sq->inmate;
 		c->applyEffect(eft);
 	}
 }
+
 
 
 // Getters

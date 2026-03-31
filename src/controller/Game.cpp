@@ -60,6 +60,7 @@ void Game::update(Event* ev)
 		case EventType::BATTLE:
 		{
 			state = GameState::BATTLE;
+			currentChapter->init();
 			currentChapter->playNextTurn();
 			break;
 		}
@@ -110,10 +111,11 @@ void Game::display()
 void Game::init(void)
 {
 	static bool seeded = false;
-    if(!seeded) {
-        srand(time(nullptr));
-        seeded = true;
-    }
+	if(!seeded)
+	{
+		srand(time(nullptr));
+		seeded = true;
+	}
 	currentChapter->getEnemy()->addTeamSize(4);
 	currentChapter->getEnemy()->randomTeam();
 	string pseudo = getPseudoSTDIN();

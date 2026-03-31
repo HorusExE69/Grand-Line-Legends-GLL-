@@ -23,7 +23,7 @@ class Capacity
 
 	public:
 		Square* launcher;
-		Square* tabTargets;
+		Square** tabTargets;
 		int nbTargets;
 
 	public:

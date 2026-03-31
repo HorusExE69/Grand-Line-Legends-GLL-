@@ -115,5 +115,4 @@ std::string clean(string s);
 
 int countLines(std::ifstream& file);
 
-
 #endif
