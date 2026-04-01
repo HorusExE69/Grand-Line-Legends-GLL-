@@ -130,12 +130,14 @@ void Character::loadCapacities(string pathCapaFolder)
 
 void Character::applyEffect(Effect* e)
 {
-	if (nbEffects >= maxEffects) return;
+	bool canStore = nbEffects < maxEffects;
+	if (canStore)
+	{
+		if (tabEffects == nullptr)
+			tabEffects = new Effect*[maxEffects];
 
-	if (tabEffects == nullptr)
-		tabEffects = new Effect*[maxEffects];
-
-	tabEffects[nbEffects++] = e;
+		tabEffects[nbEffects++] = e;
+	}
 
 	switch(e->getType())
 	{

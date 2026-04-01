@@ -84,7 +84,7 @@ void Battle::playCharacter(Square* character, bool side)
 		return;
 
 	Capacity* capa = character->inmate->chooseCapa();
-
+	
 	if(capa)
 	{
 		capa->launcher = character;
