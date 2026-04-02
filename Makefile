@@ -1,44 +1,33 @@
-# ----------------------------
-# Makefile pour Grand Line Legends
-# ----------------------------
-
-NAME = GLL
+CXX = g++
+CXXFLAGS = -Wall -g -fPIE
+LDFLAGS = -pie -lSDL2 -lSDL2_ttf
 
 # Dossiers
-SRC_DIRS = src/model src/controller
+SRC_DIRS = src/model src/controller src/view
 OBJ_DIR = obj
 BIN_DIR = bin
 
-# Sources
-SRCS = $(wildcard src/model/*.cpp) $(wildcard src/controller/*.cpp) $(wildcard src/view/*.cpp)
+# Tous les fichiers sources
+SRCS := $(shell find $(SRC_DIRS) -name "*.cpp")
 
-# Objets
-OBJS = $(patsubst src/%.cpp,$(OBJ_DIR)/%.o,$(SRCS))
+# Fichiers objets correspondants
+OBJS := $(patsubst src/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
-# Compilateur
-CXX = g++
-CXXFLAGS = -Wall -g
+# Cible par défaut
+all: $(BIN_DIR)/GLL
 
-all: $(BIN_DIR)/$(NAME)
-
-$(BIN_DIR)/$(NAME): $(OBJS) | $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) $^ -o $@
-
-# Compilation des objets
+# Compilation des fichiers objets
 $(OBJ_DIR)/%.o: src/%.cpp
-	mkdir -p $(dir $@)
+	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Création des dossiers
-$(BIN_DIR):
-	mkdir -p $(BIN_DIR)
+# Linkage de l'exécutable
+$(BIN_DIR)/GLL: $(OBJS)
+	@mkdir -p $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $@ $(LDFLAGS)
 
+# Nettoyage
 clean:
-	rm -rf $(OBJ_DIR)
+	rm -rf $(OBJ_DIR) $(BIN_DIR)/GLL
 
-fclean: clean
-	rm -f $(BIN_DIR)/$(NAME)
-
-re: fclean all
-
-.PHONY: all clean fclean re
+.PHONY: all clean
