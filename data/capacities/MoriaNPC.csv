@@ -1,0 +1,4 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,MoriaNPC,Shadow Asgard,magic,other,1000,0,Enemy,1,1,1,Damage,50
+2,MoriaNPC,Nuit Finale,magic,other,1350,0,AllEnemies,3,1,1,Damage,35
+3,MoriaNPC,Ombre Zombie,magic,other,820,0,Enemy,1,1,1,Debuff,15

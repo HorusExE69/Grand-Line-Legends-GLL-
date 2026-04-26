@@ -1,93 +1,219 @@
 # Grand Line Legends
 
+Jeu RPG tour par tour thème One Piece, inspiré de Souls et Raid Shadow Legends.
 
+**Cours** : LIFAPCD — Université Claude Bernard Lyon 1  
+**GitLab** : https://forge.univ-lyon1.fr/p2405025/grand-line-legends
 
-## Getting started
+## Auteurs
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+| Nom | Prénom | Numéro étudiant |
+|-----|--------|-----------------|
+| BRETAGNE | Hans | p2405025 |
+| IRIS | Lisa | p2308359 |
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+---
 
-## Add your files
+## Compilation
 
-* [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+### Prérequis
+
+| Outil | Linux | macOS |
+|-------|-------|-------|
+| g++ | `sudo apt install g++` | Xcode Command Line Tools |
+| SDL2 | `sudo apt install libsdl2-dev` | `brew install sdl2` |
+| SDL2_ttf | `sudo apt install libsdl2-ttf-dev` | `brew install sdl2_ttf` |
+| doxygen | `sudo apt install doxygen` | `brew install doxygen` |
+
+### Commandes make
 
 ```
-cd existing_repo
-git remote add origin https://forge.univ-lyon1.fr/p2405025/grand-line-legends.git
-git branch -M main
-git push -uf origin main
+make              Version graphique SDL2    --> bin/GLL
+make text         Version textuelle         --> bin/GLL_text
+make tests        Tests de régression       --> bin/test*
+make docu         Documentation Doxygen     --> doc/html/index.html
+make clean        Supprime obj/ bin/ doc/html/
 ```
 
-## Integrate with your tools
+### Exécution
 
-* [Set up project integrations](https://forge.univ-lyon1.fr/p2405025/grand-line-legends/-/settings/integrations)
+```bash
+./bin/GLL           # Version graphique
+./bin/GLL_text      # Version textuelle
+```
 
-## Collaborate with your team
+### Tests individuels
 
-* [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+```bash
+./bin/testCharacter
+./bin/testPlayer
+./bin/testBattle
+./bin/testCampaign
+```
 
-## Test and Deploy
+---
 
-Use the built-in continuous integration in GitLab.
+## Fonctionnalités
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+### Menu principal
+- **[J] Jouer** : sélection/chargement de sauvegarde (3 emplacements), puis menu de jeu
+- **[P] Paramètres** : fps (30/60), volume, luminosité
+- **[Q] Quitter** : sauvegarde automatique
 
-***
+### Bank
+- Liste des 67 personnages avec type, rareté, PV, niveau, statut débloqué
+- Vue détaillée : stats complètes, Haki, capacités avec types et chances
+- Déblocage : 100 fragments du personnage requis
+- Amélioration : coût en berries + 100 fragments (croît avec le niveau et la rareté)
 
-# Editing this README
+### Campagne (18 arcs)
+Structure de chaque arc : sbires → mini-boss → boss final  
+Récompenses : berries + fragments de personnage (avec probabilités de drop)
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+| Arc | Boss | Déblocage |
+|-----|------|-----------|
+| Romance Dawn | Morgan | Zoro 100% |
+| Orange Town | Baggy | Nami 50% |
+| Village Sirop | Kuro | Usopp 100% |
+| Baratie | Don Krieg | Sanji 100% |
+| Arlong Park | Arlong | Nami 50% |
+| Logue Town | Smoker | Baggy 100% |
+| Whiskey Peak | Mr5 & Miss Valentine | Vivi 100% |
+| Little Garden | Mr3 & Miss GW | DoggyBroggy 50% |
+| Drum Island | Wapol | Chopper 100% (Nami bannie) |
+| Alabasta | Crocodile | Robin 100% |
+| Skypea | Ener | — |
+| Water Seven | Franky | Franky 50% |
+| Enies Lobby | Rob Lucci | Franky 50% |
+| Thriller Bark | Gecko Moria | Brook 100% |
+| Amazon Lily | Boa Hancock | Boa Hancock 100% |
+| Impel Down | Magellan | Bon Clay + multi 25% |
+| Marine Ford | Akainu | Ace 50% + multi |
+| Pantheon | Tous les Boss | arc final sans fin |
 
-## Suggestions for a good README
+### Combat
+- Grille 2×10 (joueur ligne 0, ennemi ligne 1)
+- Ordre d'attaque par vitesse décroissante
+- Capacités choisies aléatoirement selon leurs pourcentages
+- Effets : Damage, Heal, Stun, Bleeding, Resist, Push, Pull, Swap
+- Log des actions affiché à chaque tour
+- Haki des Rois : bonus/malus selon la différence de niveau
+- Haki de l'Armement : bonus de dégâts
+- Haki de l'Observation : chance d'esquiver les attaques
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+### Familles (bonus d'équipe)
 
-## Name
-Choose a self-explaining name for your project.
+| Famille | Membres | Bonus |
+|---------|---------|-------|
+| Les Monkey D. | Garp, Luffy, Dragon | +25% PV |
+| Trio de Frères | Sabo, Ace, Luffy | +25% Attaque |
+| Révolutionnaires | Sabo, Dragon, Ivankov | +15% Défense |
+| Empereurs | BarbeBlanche, BarbeNoire, Shanks, Kaido, BigMom | +20% PV |
+| Amiraux | Akainu, Aokiji, Kizaru, Fujitora | +20% Défense |
+| Mugiwara | Les 9 Chapeaux de Paille | +20% Attaque |
+| Marines | Garp, Akainu, Aokiji, Kizaru, Smoker, Sengoku | +15% Défense |
+| Équipage BB | BarbeBlanche, Marco, Ace | +30% Attaque |
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+### Shop
+- Offre journalière, hebdomadaire, mensuelle (changent automatiquement)
+- 5 offres permanentes : Coffres Rare / Super Rare / Épique / Légendaire / Mythique
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+### Système de progression
+- **Berries** : monnaie gagnée en combat et au shop
+- **XP** : gagnée en complétant des épisodes → niveau de compte 1 à 10  
+  Seuil : niveau² × 600 (ex : niv.1→2 : 600 XP, niv.9→10 : 48 600 XP)
+- **Slots d'équipe** : 1 au départ, +1 par niveau de compte (max 10)
+- **Fragments** : 100 fragments par personnage pour le débloquer, puis améliorer son niveau
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+### Sauvegarde
+Au lancement : choix nouvelle partie ou chargement (slots 1-3).  
+Sauvegarde automatique après chaque victoire et à la fermeture.  
+Fichiers : `data/save1.txt`, `data/save2.txt`, `data/save3.txt`
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+---
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+## Organisation de l'archive
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+```
+grand-line-legends/
+├── Makefile                  Compile les deux versions + tests + doc
+├── README.md                 Ce fichier
+├── doc/
+│   ├── doxyfile              Configuration Doxygen
+│   ├── html/                 Documentation générée (make docu)
+│   └── uml/
+│       ├── classes.pdf       Diagramme de classes UML
+│       ├── mvc.pdf           Architecture MVC
+│       ├── battle_sequence.pdf  Séquence combat
+│       ├── gantt.pdf         Planning Gantt (avec répartition des tâches)
+│       └── presentation.pdf  Présentation orale de soutenance
+├── src/
+│   ├── model/                Modèle : données du jeu (16 modules)
+│   ├── controller/           Contrôleurs : logique de jeu
+│   └── view/                 Vues : affichage (texte et graphique SDL2)
+├── data/
+│   ├── Characters.csv        67 personnages (id, nom, type, rareté, stats)
+│   ├── capacities/           Un CSV par personnage (attaques et effets)
+│   └── settings.txt          Paramètres (généré à l'exécution)
+└── tests/
+    ├── testCharacter.cpp     7 tests Character
+    ├── testPlayer.cpp        11 tests Player
+    ├── testBattle.cpp        5 tests Battle
+    └── testCampaign.cpp      10 tests Campaign + SaveData
+```
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+---
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+## Architecture MVC
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+```
+main.cpp / mainText.cpp
+        |
+        v
+    Game (contrôleur central — états, entrées, dispatch)
+   +-------+------------+-------------+----------+
+   |       |            |             |          |
+Player  Campaign     Settings       Shop     Battle
+   |       |                                    |
+Bank    Arcs --> Episodes --> Rewards      BattleMap
+   |
+Characters --> Capacities --> Effects
+```
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+La vue (`ViewText` / `ViewGraph`) ne modifie **jamais** le modèle directement.  
+Elle émet des `Event` que `Game::update()` traite, puis relit l'état en lecture seule.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+---
 
-## License
-For open source projects, say how it is licensed.
+## Format des données
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+### `data/Characters.csv`
+```
+id,name,type,rarity,pv,speed,hakiR,hakiA,hakiO
+1,Luffy,atk,c,4000,105,80,90,90
+```
+- **type** : `atk` / `def` / `sup` / `int` / `snp` / `mag`
+- **rarity** : `c` / `r` / `sr` / `e` / `l` / `m`
+
+### `data/capacities/<Nom>.csv`
+```
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,Ace,Fire Fist,fire,punch,2300,0,Enemy,1,3,15,Damage,40
+```
+- **targetType** : `Self` / `Ally` / `Enemy` / `AllAllies` / `AllEnemies` / `All`
+- **effect** : `Damage` / `Heal` / `Buff` / `Debuff` / `Resist` / `Stun` / `Swap` / `Bleeding` / `Push` / `Pull`
+- **percentage** : probabilité d'utilisation (100 = capacité passive)
+
+---
+
+## Règles de programmation
+
+- Pas de variable globale
+- Passage par `const Type&` en entrée, `Type&` en entrée/sortie
+- `const` sur tous les accesseurs
+- `assert()` pour valider les préconditions
+- Gestion mémoire : chaque `new` a son `delete` correspondant
+- Doxygen : tous les headers documentés (`/** @brief ... */`)
+- Modularité : une classe = un module `.h`/`.cpp`
+- Aucun `cout`/`cin` dans `ViewText` : `WinTXT` utilisé exclusivement
+- `using namespace std;` dans les `.cpp` uniquement

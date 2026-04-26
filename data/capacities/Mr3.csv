@@ -1,0 +1,4 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,Mr3NPC,Prison de Cire,magic,other,560,0,Enemy,1,1,1,Stun,50
+2,Mr3NPC,Galette Candle,magic,other,720,0,Enemy,1,1,1,Damage,35
+3,Mr3NPC,Cire Fondante,magic,fire,480,0,AllEnemies,3,1,1,Damage,15

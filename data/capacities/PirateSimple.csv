@@ -1,0 +1,3 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,PirateSimple,Coup de Sabre,blade,other,500,0,Enemy,1,1,1,Damage,60
+2,PirateSimple,Attaque Pirate,punch,other,650,0,Enemy,1,1,1,Damage,40

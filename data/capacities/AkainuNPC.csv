@@ -1,0 +1,4 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,AkainuNPC,Ryusei Kazan,fire,other,1400,0,AllEnemies,3,1,1,Damage,50
+2,AkainuNPC,Meigo,fire,other,1800,0,Enemy,1,1,1,Damage,35
+3,AkainuNPC,Inugami Guren,fire,other,1200,0,Enemy,1,1,1,Bleeding,15

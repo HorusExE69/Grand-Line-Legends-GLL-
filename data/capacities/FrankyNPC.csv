@@ -1,0 +1,4 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,FrankyNPC,Coup de Poing Cyborg,punch,other,800,0,Enemy,1,1,1,Damage,50
+2,FrankyNPC,Coup Franky,punch,other,1020,0,Enemy,1,1,1,Damage,35
+3,FrankyNPC,Weapons Left,proj,other,680,0,AllEnemies,3,1,1,Debuff,15

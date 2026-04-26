@@ -1,0 +1,4 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,HancockNPC,Mero Mero Mellow,magic,other,1100,0,Enemy,1,1,1,Stun,50
+2,HancockNPC,Perfume Femur,kick,magic,1400,0,Enemy,1,1,1,Damage,35
+3,HancockNPC,Slave Arrow,magic,other,900,0,AllEnemies,3,1,1,Stun,15

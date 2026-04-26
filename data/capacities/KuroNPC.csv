@@ -1,0 +1,4 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,KuroNPC,Mille Mains,blade,other,380,0,Enemy,1,1,1,Damage,50
+2,KuroNPC,Griffe Noire,blade,other,520,0,Enemy,1,1,1,Damage,35
+3,KuroNPC,Tempete Felide,blade,other,300,0,AllEnemies,3,1,1,Stun,15

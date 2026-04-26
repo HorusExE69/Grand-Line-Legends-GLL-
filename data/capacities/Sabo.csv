@@ -1,0 +1,4 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,Sabo,Hiken,fire,punch,700,0,Enemy,1,1,1,Damage,50
+2,Sabo,Ryusoken,punch,fire,900,0,Enemy,1,1,1,Damage,35
+3,Sabo,Dragon's Breath,fire,air,600,0,AllEnemies,3,1,1,Damage,15

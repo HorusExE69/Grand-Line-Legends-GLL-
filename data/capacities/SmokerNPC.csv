@@ -1,0 +1,4 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,SmokerNPC,Fumee Blanche,air,other,500,0,Enemy,1,1,1,Damage,50
+2,SmokerNPC,Jitte Justice,blade,other,660,0,Enemy,1,1,1,Damage,35
+3,SmokerNPC,Nuage de Tabac,air,other,380,0,AllEnemies,3,1,1,Stun,15

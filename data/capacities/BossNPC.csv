@@ -1,0 +1,4 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,BossNPC,Attaque Puissante,punch,other,500,0,Enemy,1,1,1,Damage,50
+2,BossNPC,Frappe Devastatrice,blade,other,700,0,Enemy,1,1,1,Damage,35
+3,BossNPC,Coup d'Elite,kick,other,400,0,Enemy,1,1,1,Stun,15

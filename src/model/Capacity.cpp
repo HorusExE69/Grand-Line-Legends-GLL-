@@ -102,7 +102,9 @@ Capacity::Capacity(string line)
 	line = line.substr(cur + 1);
 
 	
-	eft = new Effect(effectType, targetType, damage, 1, nullptr, nullptr);
+	// Pour les soins, utiliser la valeur heal et non damage (damage=0 pour les soins)
+	int effVal = (effectType == EffectType::Heal) ? heal : damage;
+	eft = new Effect(effectType, targetType, effVal, 1, nullptr, nullptr);
 
 	// pourcentage
 	if (!line.empty())
@@ -170,6 +172,10 @@ void Capacity::use()
 		Character* c = sq->inmate;
 		c->applyEffect(eft);
 	}
+
+	delete[] tabTargets;
+	tabTargets = nullptr;
+	nbTargets = 0;
 }
 
 

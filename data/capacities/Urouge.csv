@@ -1,0 +1,5 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,Urouge,Lame du Poing,blade,other,250,0,Enemy,1,1,5,none,50
+2,Urouge,Poing Défensif,blade,other,200,0,Enemy,1,1,5,none,25
+3,Urouge,Frappe de Contre,blade,other,300,0,Enemy,1,1,7,stun,10
+4,Urouge,Poing Multicoup,blade,other,350,0,Enemy,2,1,10,none,15

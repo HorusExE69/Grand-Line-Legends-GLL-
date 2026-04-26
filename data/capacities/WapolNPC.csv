@@ -1,0 +1,4 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,WapolNPC,Munch Munch,punch,other,580,0,Enemy,1,1,1,Damage,50
+2,WapolNPC,Wapol House,punch,other,740,0,Enemy,1,1,1,Damage,35
+3,WapolNPC,Wapo Metalo,punch,other,500,0,AllEnemies,3,1,1,Debuff,15

@@ -1,0 +1,3 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,OfficierMarine,Frappe d'Officier,punch,other,500,0,Enemy,1,1,1,Damage,60
+2,OfficierMarine,Coup d'Epee,blade,other,700,0,Enemy,1,1,1,Damage,40

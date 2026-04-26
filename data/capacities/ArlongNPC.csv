@@ -1,0 +1,4 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,ArlongNPC,Dents de Requin,blade,other,480,0,Enemy,1,1,1,Damage,50
+2,ArlongNPC,Arlong Park Crush,punch,other,620,0,Enemy,1,1,1,Damage,35
+3,ArlongNPC,Requinnade,blade,other,350,0,AllEnemies,3,1,1,Bleeding,15

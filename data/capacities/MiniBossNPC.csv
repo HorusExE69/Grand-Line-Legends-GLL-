@@ -1,0 +1,3 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,MiniBossNPC,Coup de Force,punch,other,600,0,Enemy,1,1,1,Damage,55
+2,MiniBossNPC,Attaque Speciale,blade,other,850,0,Enemy,1,1,1,Damage,45

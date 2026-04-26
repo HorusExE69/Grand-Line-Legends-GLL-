@@ -1,0 +1,3 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,SaldeathNPC,Fouet Empoisonne,magic,other,1080,0,AllEnemies,3,1,1,Bleeding,55
+2,SaldeathNPC,Salve des Gardes,proj,other,1360,0,Enemy,1,1,1,Damage,45

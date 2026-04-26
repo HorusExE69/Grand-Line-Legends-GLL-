@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="2800" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="2800" pageHeight="1200" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- ════════════════════════════════════════════════════
+         LAYOUT :
+         Colonnes modèle  A=20  B=330  C=640  D=950  E=1260
+         Contrôleur       F=1640
+         Vue              G=2010
+         Lignes           Row0=20  Row1=510  Row2=790
+         Largeur boîte=300   Gap col=30   Gap row=80
+    ════════════════════════════════════════════════════ -->
+
+    <!-- ── LABELS PACKAGES ─────────────────────────────── -->
+    <mxCell id="pkg_model" value="« package  model »"
+      style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;rounded=1;"
+      vertex="1" parent="1">
+      <mxGeometry x="20" y="-50" width="1530" height="28" as="geometry"/>
+    </mxCell>
+    <mxCell id="pkg_ctrl" value="« package  controller »"
+      style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;rounded=1;"
+      vertex="1" parent="1">
+      <mxGeometry x="1640" y="-50" width="300" height="28" as="geometry"/>
+    </mxCell>
+    <mxCell id="pkg_view" value="« package  view »"
+      style="text;html=1;strokeColor=#d6b656;fillColor=#ffe6cc;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;rounded=1;"
+      vertex="1" parent="1">
+      <mxGeometry x="2010" y="-50" width="300" height="28" as="geometry"/>
+    </mxCell>
+
+    <!-- ════════════════════════════════════════════════════
+         ROW 0   y=20
+         A=20   B=330   C=640   D=950   E=1260
+    ════════════════════════════════════════════════════ -->
+
+    <!-- ── Effect  (A, Row0) ───────────────────────────── -->
+    <mxCell id="eff" value="Effect"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;spacingLeft=4;"
+      vertex="1" parent="1">
+      <mxGeometry x="20" y="20" width="300" height="148" as="geometry"/>
+    </mxCell>
+    <mxCell id="eff_a" value="- type : EffectType&#xa;- value : int&#xa;- duration : int"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="eff">
+      <mxGeometry x="0" y="26" width="300" height="54" as="geometry"/>
+    </mxCell>
+    <mxCell id="eff_s" value="" style="line;strokeColor=#6c8ebf;fillColor=none;" vertex="1" parent="eff">
+      <mxGeometry y="80" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="eff_m" value="+ getType() : EffectType&#xa;+ getValue() : int&#xa;+ getDuration() : int"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="eff">
+      <mxGeometry x="0" y="88" width="300" height="56" as="geometry"/>
+    </mxCell>
+
+    <!-- ── Capacity  (B, Row0) ─────────────────────────── -->
+    <mxCell id="cap" value="Capacity"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="330" y="20" width="300" height="340" as="geometry"/>
+    </mxCell>
+    <mxCell id="cap_a" value="- id : int&#xa;- name : string&#xa;- type1, type2 : string&#xa;- damage : int&#xa;- heal : int&#xa;- targetType : TargetType&#xa;- targetCount : int&#xa;- gearLevel : int&#xa;- unlockLvl : int&#xa;- percentage : int&#xa;- effect : Effect*"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="cap">
+      <mxGeometry x="0" y="26" width="300" height="188" as="geometry"/>
+    </mxCell>
+    <mxCell id="cap_s" value="" style="line;strokeColor=#6c8ebf;fillColor=none;" vertex="1" parent="cap">
+      <mxGeometry y="214" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="cap_m" value="+ getName() : string&#xa;+ getDamage() : int&#xa;+ getHeal() : int&#xa;+ getPercentage() : int&#xa;+ getEffect() : Effect*&#xa;+ getTargetType() : TargetType&#xa;+ getTargetCount() : int"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="cap">
+      <mxGeometry x="0" y="222" width="300" height="114" as="geometry"/>
+    </mxCell>
+
+    <!-- ── Character  (C, Row0) ───────────────────────── -->
+    <mxCell id="chr" value="Character"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="640" y="20" width="300" height="380" as="geometry"/>
+    </mxCell>
+    <mxCell id="chr_a" value="- id : int&#xa;- name : string&#xa;- type : CharType&#xa;- rarity : Rarity&#xa;- pv : int&#xa;- pvBase : int&#xa;- speed, atk, def : int&#xa;- hakiR, hakiA, hakiO : int&#xa;- lvl : int&#xa;- nbCapa : int&#xa;- capacities : Capacity*[]"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="chr">
+      <mxGeometry x="0" y="26" width="300" height="188" as="geometry"/>
+    </mxCell>
+    <mxCell id="chr_s" value="" style="line;strokeColor=#6c8ebf;fillColor=none;" vertex="1" parent="chr">
+      <mxGeometry y="214" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="chr_m" value="+ getName() : string&#xa;+ getType() : CharType&#xa;+ getRarity() : Rarity&#xa;+ getPV() : int&#xa;+ getSpeed() : int&#xa;+ getLvl() : int&#xa;+ updateLvl(delta : int)&#xa;+ upgradeCost() : int&#xa;+ resetPV()&#xa;+ addToCapa(c : Capacity*)"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="chr">
+      <mxGeometry x="0" y="222" width="300" height="152" as="geometry"/>
+    </mxCell>
+
+    <!-- ── Player  (D, Row0) ──────────────────────────── -->
+    <mxCell id="pl" value="Player"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="950" y="20" width="300" height="420" as="geometry"/>
+    </mxCell>
+    <mxCell id="pl_a" value="- pseudo : string&#xa;- accountLvl : int&#xa;- xp : int&#xa;- berries : int&#xa;- teamMax : int&#xa;- bank : Character*[]&#xa;- nbBank : int&#xa;- team : Character*[]&#xa;- nbTeam : int&#xa;- unlocked : string[]&#xa;- fragments : FragEntry[]"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="pl">
+      <mxGeometry x="0" y="26" width="300" height="188" as="geometry"/>
+    </mxCell>
+    <mxCell id="pl_s" value="" style="line;strokeColor=#6c8ebf;fillColor=none;" vertex="1" parent="pl">
+      <mxGeometry y="214" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="pl_m" value="+ getBerries() : int&#xa;+ addBerries(n : int)&#xa;+ addXP(n : int)&#xa;+ getAccountLvl() : int&#xa;+ addToBank(c : Character*)&#xa;+ addToTeam(c : Character*)&#xa;+ removeFromTeam(idx : int)&#xa;+ unlockCharacter(c : Character*)&#xa;+ isUnlocked(name) : bool&#xa;+ addFragments(name, n)&#xa;+ getFragments(name) : int&#xa;+ clearTeam() / resetTeamPV()"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="pl">
+      <mxGeometry x="0" y="222" width="300" height="194" as="geometry"/>
+    </mxCell>
+
+    <!-- ── Campaign  (E, Row0) ────────────────────────── -->
+    <mxCell id="camp" value="Campaign"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="1260" y="20" width="300" height="260" as="geometry"/>
+    </mxCell>
+    <mxCell id="camp_a" value="- arcs : Arc*[17]&#xa;- currentArcIdx : int&#xa;- currentEpIdx : int"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="camp">
+      <mxGeometry x="0" y="26" width="300" height="54" as="geometry"/>
+    </mxCell>
+    <mxCell id="camp_s" value="" style="line;strokeColor=#6c8ebf;fillColor=none;" vertex="1" parent="camp">
+      <mxGeometry y="80" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="camp_m" value="+ getNbArcs() : int&#xa;+ getCurrentArc() : Arc*&#xa;+ getCurrentEpisode() : Episode*&#xa;+ getCurrentArcIdx() : int&#xa;+ getCurrentEpIdx() : int&#xa;+ selectArc(idx) / selectEpisode(idx)&#xa;+ arcUp() / arcDown()&#xa;+ episodeUp() / episodeDown()&#xa;+ completeCurrentEpisode()"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="camp">
+      <mxGeometry x="0" y="88" width="300" height="166" as="geometry"/>
+    </mxCell>
+
+    <!-- ════════════════════════════════════════════════════
+         ROW 1   y=510
+    ════════════════════════════════════════════════════ -->
+
+    <!-- ── Squares  (A, Row1) ─────────────────────────── -->
+    <mxCell id="sq" value="Squares"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="20" y="510" width="300" height="168" as="geometry"/>
+    </mxCell>
+    <mxCell id="sq_a" value="- charId : int&#xa;- occupied : bool&#xa;- row : int&#xa;- col : int"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="sq">
+      <mxGeometry x="0" y="26" width="300" height="72" as="geometry"/>
+    </mxCell>
+    <mxCell id="sq_s" value="" style="line;strokeColor=#6c8ebf;fillColor=none;" vertex="1" parent="sq">
+      <mxGeometry y="98" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="sq_m" value="+ getCharId() : int&#xa;+ isOccupied() : bool&#xa;+ setChar(id : int)"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="sq">
+      <mxGeometry x="0" y="106" width="300" height="58" as="geometry"/>
+    </mxCell>
+
+    <!-- ── BattleMap  (B, Row1) ───────────────────────── -->
+    <mxCell id="bm" value="BattleMap"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="330" y="510" width="300" height="188" as="geometry"/>
+    </mxCell>
+    <mxCell id="bm_a" value="- grid : Squares[2][10]&#xa;- nbRows : int&#xa;- nbCols : int"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="bm">
+      <mxGeometry x="0" y="26" width="300" height="54" as="geometry"/>
+    </mxCell>
+    <mxCell id="bm_s" value="" style="line;strokeColor=#6c8ebf;fillColor=none;" vertex="1" parent="bm">
+      <mxGeometry y="80" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="bm_m" value="+ getSquare(r, c) : Squares&amp;&#xa;+ placeChar(charId, r, c)&#xa;+ removeChar(r, c)&#xa;+ findChar(charId) : int[2]"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="bm">
+      <mxGeometry x="0" y="88" width="300" height="96" as="geometry"/>
+    </mxCell>
+
+    <!-- ── Reward  (C, Row1) ──────────────────────────── -->
+    <mxCell id="rew" value="Reward"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="640" y="510" width="300" height="188" as="geometry"/>
+    </mxCell>
+    <mxCell id="rew_a" value="- berries : int&#xa;- fragmentCharName : string&#xa;- nbFragments : int&#xa;- dropChance : float"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="rew">
+      <mxGeometry x="0" y="26" width="300" height="72" as="geometry"/>
+    </mxCell>
+    <mxCell id="rew_s" value="" style="line;strokeColor=#6c8ebf;fillColor=none;" vertex="1" parent="rew">
+      <mxGeometry y="98" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="rew_m" value="+ getBerries() : int&#xa;+ getFragmentCharName() : string&#xa;+ getNbFragments() : int&#xa;+ getDropChance() : float"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="rew">
+      <mxGeometry x="0" y="106" width="300" height="78" as="geometry"/>
+    </mxCell>
+
+    <!-- ── Episode  (D, Row1) ─────────────────────────── -->
+    <mxCell id="ep" value="Episode"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="950" y="510" width="300" height="176" as="geometry"/>
+    </mxCell>
+    <mxCell id="ep_a" value="+ name : string&#xa;+ difficulty : int&#xa;+ isBoss : bool&#xa;+ isMiniBoss : bool&#xa;+ completed : bool&#xa;+ nbRewards : int&#xa;+ rewards : Reward*[]"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="ep">
+      <mxGeometry x="0" y="26" width="300" height="146" as="geometry"/>
+    </mxCell>
+
+    <!-- ── Arc  (E, Row1) ────────────────────────────── -->
+    <mxCell id="arc" value="Arc"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="1260" y="510" width="300" height="218" as="geometry"/>
+    </mxCell>
+    <mxCell id="arc_a" value="+ name : string&#xa;+ bossName : string&#xa;+ unlockCharName : string&#xa;+ unlockChance : float&#xa;+ nbBanned : int&#xa;+ banned : string[]&#xa;+ nbEpisodes : int&#xa;+ episodes : Episode*[]"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="arc">
+      <mxGeometry x="0" y="26" width="300" height="146" as="geometry"/>
+    </mxCell>
+    <mxCell id="arc_s" value="" style="line;strokeColor=#6c8ebf;fillColor=none;" vertex="1" parent="arc">
+      <mxGeometry y="172" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="arc_m" value="+ isBanned(name : string) : bool"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="arc">
+      <mxGeometry x="0" y="180" width="300" height="34" as="geometry"/>
+    </mxCell>
+
+    <!-- ════════════════════════════════════════════════════
+         ROW 2   y=790
+    ════════════════════════════════════════════════════ -->
+
+    <!-- ── Coffre  (A, Row2) ──────────────────────────── -->
+    <mxCell id="cof" value="Coffre"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="20" y="790" width="300" height="108" as="geometry"/>
+    </mxCell>
+    <mxCell id="cof_a" value="- rarity : Rarity"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="cof">
+      <mxGeometry x="0" y="26" width="300" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="cof_s" value="" style="line;strokeColor=#6c8ebf;fillColor=none;" vertex="1" parent="cof">
+      <mxGeometry y="52" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="cof_m" value="+ open() : Reward*"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="cof">
+      <mxGeometry x="0" y="60" width="300" height="44" as="geometry"/>
+    </mxCell>
+
+    <!-- ── Shop  (B, Row2) ────────────────────────────── -->
+    <mxCell id="sh" value="Shop"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="330" y="790" width="300" height="196" as="geometry"/>
+    </mxCell>
+    <mxCell id="sh_a" value="- daily : ShopOffer&#xa;- weekly : ShopOffer&#xa;- monthly : ShopOffer&#xa;- permanent : ShopOffer[3]"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="sh">
+      <mxGeometry x="0" y="26" width="300" height="72" as="geometry"/>
+    </mxCell>
+    <mxCell id="sh_s" value="" style="line;strokeColor=#6c8ebf;fillColor=none;" vertex="1" parent="sh">
+      <mxGeometry y="98" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="sh_m" value="+ getDaily() : ShopOffer&#xa;+ getWeekly() : ShopOffer&#xa;+ getMonthly() : ShopOffer&#xa;+ getPermanent(i) : ShopOffer"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="sh">
+      <mxGeometry x="0" y="106" width="300" height="86" as="geometry"/>
+    </mxCell>
+
+    <!-- ── Family  (C, Row2) ──────────────────────────── -->
+    <mxCell id="fam" value="Family"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="640" y="790" width="300" height="216" as="geometry"/>
+    </mxCell>
+    <mxCell id="fam_a" value="- name : string&#xa;- members : string[]&#xa;- nbMembers : int&#xa;- bonusAtk : float&#xa;- bonusPV : float&#xa;- bonusDef : float"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="fam">
+      <mxGeometry x="0" y="26" width="300" height="108" as="geometry"/>
+    </mxCell>
+    <mxCell id="fam_s" value="" style="line;strokeColor=#6c8ebf;fillColor=none;" vertex="1" parent="fam">
+      <mxGeometry y="134" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="fam_m" value="+ getName() : string&#xa;+ isActive(team, n) : bool&#xa;+ getBonusAtk() : float&#xa;+ getBonusPV() : float&#xa;+ getBonusDef() : float"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="fam">
+      <mxGeometry x="0" y="142" width="300" height="70" as="geometry"/>
+    </mxCell>
+
+    <!-- ── Settings  (D, Row2) ────────────────────────── -->
+    <mxCell id="set" value="Settings"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="950" y="790" width="300" height="188" as="geometry"/>
+    </mxCell>
+    <mxCell id="set_a" value="- fps : int  {30 | 60}&#xa;- volume : int  [0..100]&#xa;- brightness : int  [0..100]"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="set">
+      <mxGeometry x="0" y="26" width="300" height="54" as="geometry"/>
+    </mxCell>
+    <mxCell id="set_s" value="" style="line;strokeColor=#6c8ebf;fillColor=none;" vertex="1" parent="set">
+      <mxGeometry y="80" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="set_m" value="+ toggleFps()&#xa;+ volumeUp() / volumeDown()&#xa;+ brightnessUp() / brightnessDown()&#xa;+ save(path : string)&#xa;+ load(path : string)"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="set">
+      <mxGeometry x="0" y="88" width="300" height="96" as="geometry"/>
+    </mxCell>
+
+    <!-- ── SaveData  (E, Row2) ────────────────────────── -->
+    <mxCell id="sv" value="SaveData  «static»"
+      style="swimlane;fontStyle=3;startSize=26;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="1260" y="790" width="300" height="108" as="geometry"/>
+    </mxCell>
+    <mxCell id="sv_s" value="" style="line;strokeColor=#6c8ebf;fillColor=none;" vertex="1" parent="sv">
+      <mxGeometry y="26" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="sv_m" value="+ {static} save(path, player, campaign)&#xa;+ {static} load(path, player, campaign) : bool"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="sv">
+      <mxGeometry x="0" y="34" width="300" height="70" as="geometry"/>
+    </mxCell>
+
+    <!-- ════════════════════════════════════════════════════
+         CONTROLLER   x=1640
+    ════════════════════════════════════════════════════ -->
+
+    <!-- ── Game ───────────────────────────────────────── -->
+    <mxCell id="gm" value="Game"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="1640" y="20" width="300" height="320" as="geometry"/>
+    </mxCell>
+    <mxCell id="gm_a" value="- player : Player*&#xa;- campaign : Campaign*&#xa;- settings : Settings*&#xa;- shop : Shop*&#xa;- currentBattle : Battle*&#xa;- state : GameState&#xa;- selectedIndex : int"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="gm">
+      <mxGeometry x="0" y="26" width="300" height="124" as="geometry"/>
+    </mxCell>
+    <mxCell id="gm_s" value="" style="line;strokeColor=#82b366;fillColor=none;" vertex="1" parent="gm">
+      <mxGeometry y="150" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="gm_m" value="+ update(ev : Event*)&#xa;+ input(c : char) : EventType&#xa;+ startBattle()&#xa;+ buildEnemyTeam(enemy, diff)&#xa;+ applyRewards()&#xa;+ save() / load() : bool&#xa;+ getPlayer() : Player*&#xa;+ getState() : GameState"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="gm">
+      <mxGeometry x="0" y="158" width="300" height="158" as="geometry"/>
+    </mxCell>
+
+    <!-- ── Battle ─────────────────────────────────────── -->
+    <mxCell id="bt" value="Battle"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="1640" y="420" width="300" height="268" as="geometry"/>
+    </mxCell>
+    <mxCell id="bt_a" value="- player : Player*&#xa;- enemy : Player*&#xa;- map : BattleMap*&#xa;- log : BattleLog[64]&#xa;- nbLog : int"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="bt">
+      <mxGeometry x="0" y="26" width="300" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="bt_s" value="" style="line;strokeColor=#82b366;fillColor=none;" vertex="1" parent="bt">
+      <mxGeometry y="116" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="bt_m" value="+ init()&#xa;+ playTurn()&#xa;+ getOrder() : Character*[]&#xa;+ getWinner() : int&#xa;+ isDead(p : Player*) : bool&#xa;+ addLog(attaquant, capa, cible, val)&#xa;+ getEnemy() : Player*"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="bt">
+      <mxGeometry x="0" y="124" width="300" height="140" as="geometry"/>
+    </mxCell>
+
+    <!-- ── Event ──────────────────────────────────────── -->
+    <mxCell id="ev" value="Event"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="1640" y="770" width="300" height="124" as="geometry"/>
+    </mxCell>
+    <mxCell id="ev_a" value="+ type : EventType"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="ev">
+      <mxGeometry x="0" y="26" width="300" height="24" as="geometry"/>
+    </mxCell>
+    <mxCell id="ev_s" value="" style="line;strokeColor=#82b366;fillColor=none;" vertex="1" parent="ev">
+      <mxGeometry y="50" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="ev_note" value="MAIN_MENU | SETTINGS | PLAY_MENU | BANK&#xa;CAMPAIGN | BATTLE | TEAM | SHOP&#xa;SAVE | LOAD | QUIT | NONE …"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=10;fontStyle=2;"
+      vertex="1" parent="ev">
+      <mxGeometry x="0" y="58" width="300" height="62" as="geometry"/>
+    </mxCell>
+
+    <!-- ════════════════════════════════════════════════════
+         VIEW   x=2010
+    ════════════════════════════════════════════════════ -->
+
+    <!-- ── ViewText ───────────────────────────────────── -->
+    <mxCell id="vt" value="ViewText"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#ffe6cc;strokeColor=#d6b656;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="2010" y="20" width="300" height="258" as="geometry"/>
+    </mxCell>
+    <mxCell id="vt_a" value="- game : Game*&#xa;- win : WinTXT"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="vt">
+      <mxGeometry x="0" y="26" width="300" height="36" as="geometry"/>
+    </mxCell>
+    <mxCell id="vt_s" value="" style="line;strokeColor=#d6b656;fillColor=none;" vertex="1" parent="vt">
+      <mxGeometry y="62" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="vt_m" value="+ run()&#xa;- render()&#xa;- renderMainMenu()&#xa;- renderSettings()&#xa;- renderBank() / renderBankDetail()&#xa;- renderCampaign() / renderCampaignArc()&#xa;- renderBattlePrepa() / renderBattle()&#xa;- renderShop()&#xa;- readString(x,y,maxLen) : string"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="vt">
+      <mxGeometry x="0" y="70" width="300" height="184" as="geometry"/>
+    </mxCell>
+
+    <!-- ── ViewGraph ──────────────────────────────────── -->
+    <mxCell id="vg" value="ViewGraph"
+      style="swimlane;fontStyle=1;startSize=26;fillColor=#ffe6cc;strokeColor=#d6b656;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="2010" y="360" width="300" height="232" as="geometry"/>
+    </mxCell>
+    <mxCell id="vg_a" value="- game : Game*&#xa;- window : SDL_Window*&#xa;- renderer : SDL_Renderer*&#xa;- font : TTF_Font*"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="vg">
+      <mxGeometry x="0" y="26" width="300" height="72" as="geometry"/>
+    </mxCell>
+    <mxCell id="vg_s" value="" style="line;strokeColor=#d6b656;fillColor=none;" vertex="1" parent="vg">
+      <mxGeometry y="98" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="vg_m" value="+ run()&#xa;- render()&#xa;- handleSDLEvent(e : SDL_Event*)&#xa;- renderMainMenu() / renderBank()&#xa;- renderCampaign() / renderBattle()&#xa;- renderShop()"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="vg">
+      <mxGeometry x="0" y="106" width="300" height="122" as="geometry"/>
+    </mxCell>
+
+    <!-- ── WinTXT ─────────────────────────────────────── -->
+    <mxCell id="wt" value="WinTXT  «fourni»"
+      style="swimlane;fontStyle=3;startSize=26;fillColor=#ffe6cc;strokeColor=#d6b656;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="2010" y="676" width="300" height="148" as="geometry"/>
+    </mxCell>
+    <mxCell id="wt_warn" value="⛔ Ne pas modifier"
+      style="text;strokeColor=#e74c3c;fillColor=#fdedec;align=center;verticalAlign=middle;fontSize=10;fontStyle=1;rounded=1;"
+      vertex="1" parent="wt">
+      <mxGeometry x="10" y="28" width="280" height="22" as="geometry"/>
+    </mxCell>
+    <mxCell id="wt_s" value="" style="line;strokeColor=#d6b656;fillColor=none;" vertex="1" parent="wt">
+      <mxGeometry y="52" width="300" height="8" as="geometry"/>
+    </mxCell>
+    <mxCell id="wt_m" value="+ print(s : char*)&#xa;+ move(x : int, y : int)&#xa;+ clear() / refresh()&#xa;+ getKey() : int"
+      style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;"
+      vertex="1" parent="wt">
+      <mxGeometry x="0" y="60" width="300" height="84" as="geometry"/>
+    </mxCell>
+
+    <!-- ════════════════════════════════════════════════════
+         LEGENDE
+    ════════════════════════════════════════════════════ -->
+    <mxCell id="leg_bg" value=""
+      style="rounded=1;whiteSpace=wrap;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;"
+      vertex="1" parent="1">
+      <mxGeometry x="20" y="1050" width="680" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="leg_title" value="Légende"
+      style="text;html=1;strokeColor=none;fillColor=none;align=left;fontStyle=1;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="30" y="1054" width="100" height="20" as="geometry"/>
+    </mxCell>
+
+    <!-- legende composition -->
+    <mxCell id="leg_comp_line" value=""
+      style="endArrow=block;endFill=1;startArrow=diamond;startFill=1;strokeColor=#000000;strokeWidth=3;endSize=10;startSize=10;"
+      edge="1" parent="1">
+      <mxGeometry x="30" y="1096" width="80" height="10" as="geometry">
+        <Array as="points"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="leg_comp_lbl" value="Composition"
+      style="text;strokeColor=none;fillColor=none;align=left;fontSize=11;"
+      vertex="1" parent="1">
+      <mxGeometry x="120" y="1086" width="110" height="20" as="geometry"/>
+    </mxCell>
+
+    <!-- legende agrégation -->
+    <mxCell id="leg_agg_line" value=""
+      style="endArrow=block;endFill=0;startArrow=diamond;startFill=0;strokeColor=#000000;strokeWidth=3;endSize=10;startSize=10;"
+      edge="1" parent="1">
+      <mxGeometry x="240" y="1096" width="80" height="10" as="geometry">
+        <Array as="points"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="leg_agg_lbl" value="Agrégation"
+      style="text;strokeColor=none;fillColor=none;align=left;fontSize=11;"
+      vertex="1" parent="1">
+      <mxGeometry x="330" y="1086" width="100" height="20" as="geometry"/>
+    </mxCell>
+
+    <!-- legende association -->
+    <mxCell id="leg_assoc_line" value=""
+      style="endArrow=block;endFill=1;strokeColor=#000000;strokeWidth=3;endSize=10;"
+      edge="1" parent="1">
+      <mxGeometry x="440" y="1096" width="80" height="10" as="geometry">
+        <Array as="points"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="leg_assoc_lbl" value="Association"
+      style="text;strokeColor=none;fillColor=none;align=left;fontSize=11;"
+      vertex="1" parent="1">
+      <mxGeometry x="530" y="1086" width="100" height="20" as="geometry"/>
+    </mxCell>
+
+    <!-- legende dépendance -->
+    <mxCell id="leg_dep_line" value=""
+      style="endArrow=block;endFill=1;dashed=1;dashPattern=8 4;strokeColor=#000000;strokeWidth=3;endSize=10;"
+      edge="1" parent="1">
+      <mxGeometry x="30" y="1126" width="80" height="10" as="geometry">
+        <Array as="points"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="leg_dep_lbl" value="Dépendance / utilise"
+      style="text;strokeColor=none;fillColor=none;align=left;fontSize=11;"
+      vertex="1" parent="1">
+      <mxGeometry x="120" y="1116" width="180" height="20" as="geometry"/>
+    </mxCell>
+
+    <!-- ════════════════════════════════════════════════════
+         RELATIONS  — routage explicite sans croisement de boîtes
+         Corridors libres utilisés :
+           y = -60      (au-dessus de tous les blocs)
+           y = 758      (entre Row1 max y=728 et Row2 min y=790)
+           x = 1600     (entre col E max x=1560 et ctrl min x=1640)
+           x = 1960     (entre ctrl max x=1940 et vue min x=2010)
+           x = 1255     (gap 10 px entre col D max x=1250 et col E min x=1260)
+         Styles :
+           Composition  : startArrow=diamond;startFill=1 + endArrow=block;endFill=1
+           Agrégation   : startArrow=diamond;startFill=0 + endArrow=block;endFill=0
+           Association  : endArrow=block;endFill=1
+           Dépendance   : dashed=1 + endArrow=block;endFill=1
+    ════════════════════════════════════════════════════ -->
+
+    <!-- ── MODELE  (connexions adjacentes, pas de croisement) ── -->
+
+    <!-- Character ◆──* Capacity  (composition, horizontal direct) -->
+    <mxCell id="e_chr_cap" value="1..*"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=diamond;startFill=1;endArrow=block;endFill=1;strokeColor=#1a1a1a;strokeWidth=3;endSize=12;startSize=12;fontStyle=1;fontSize=11;"
+      edge="1" source="chr" target="cap" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Capacity ◇── Effect  (agrégation, horizontal direct) -->
+    <mxCell id="e_cap_eff" value="0..1"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=diamond;startFill=0;endArrow=block;endFill=0;strokeColor=#1a1a1a;strokeWidth=3;endSize=12;startSize=12;fontStyle=1;fontSize=11;"
+      edge="1" source="cap" target="eff" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Player ◆── Character bank  (composition, horizontal direct) -->
+    <mxCell id="e_pl_chr_bank" value="bank 0..*"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.3;exitDx=0;exitDy=0;entryX=1;entryY=0.3;entryDx=0;entryDy=0;startArrow=diamond;startFill=1;endArrow=block;endFill=1;strokeColor=#1a1a1a;strokeWidth=3;endSize=12;startSize=12;fontStyle=1;fontSize=11;"
+      edge="1" source="pl" target="chr" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Player ··▶ Character team  (pointillé, horizontal direct) -->
+    <mxCell id="e_pl_chr_team" value="team[ ]"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.7;entryDx=0;entryDy=0;endArrow=block;endFill=1;dashed=1;dashPattern=8 4;strokeColor=#1a1a1a;strokeWidth=3;endSize=12;fontStyle=2;fontSize=11;"
+      edge="1" source="pl" target="chr" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Campaign ◆──17 Arc  (vertical direct, même colonne, gap 230 px) -->
+    <mxCell id="e_camp_arc" value="17"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=diamond;startFill=1;endArrow=block;endFill=1;strokeColor=#1a1a1a;strokeWidth=3;endSize=12;startSize=12;fontStyle=1;fontSize=11;"
+      edge="1" source="camp" target="arc" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Arc ◆──* Episode  (horizontal direct, même rangée) -->
+    <mxCell id="e_arc_ep" value="1..*"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=diamond;startFill=1;endArrow=block;endFill=1;strokeColor=#1a1a1a;strokeWidth=3;endSize=12;startSize=12;fontStyle=1;fontSize=11;"
+      edge="1" source="arc" target="ep" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Episode ◆──* Reward  (horizontal direct, même rangée) -->
+    <mxCell id="e_ep_rew" value="0..*"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=diamond;startFill=1;endArrow=block;endFill=1;strokeColor=#1a1a1a;strokeWidth=3;endSize=12;startSize=12;fontStyle=1;fontSize=11;"
+      edge="1" source="ep" target="rew" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- BattleMap ◆──2×10 Squares  (horizontal direct, même rangée) -->
+    <mxCell id="e_bm_sq" value="2×10"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=diamond;startFill=1;endArrow=block;endFill=1;strokeColor=#1a1a1a;strokeWidth=3;endSize=12;startSize=12;fontStyle=1;fontSize=11;"
+      edge="1" source="bm" target="sq" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Shop ··▶ Coffre  (dépendance, horizontal direct, même rangée) -->
+    <mxCell id="e_sh_cof" value="utilise"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;endFill=1;dashed=1;dashPattern=8 4;strokeColor=#1a1a1a;strokeWidth=3;endSize=12;fontStyle=2;fontSize=11;"
+      edge="1" source="sh" target="cof" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- SaveData ··▶ Player  (droite → corridor x=1600 → y=-60 → sommet Player) -->
+    <mxCell id="e_sv_pl" value="sérialise"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;dashed=1;dashPattern=8 4;strokeColor=#1a1a1a;strokeWidth=3;endSize=12;fontStyle=2;fontSize=11;"
+      edge="1" source="sv" target="pl" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1600" y="844"/>
+          <mxPoint x="1600" y="-60"/>
+          <mxPoint x="1100" y="-60"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- SaveData ··▶ Campaign  (droite → corridor x=1600 → y=-60 → sommet Campaign) -->
+    <mxCell id="e_sv_camp" value="sérialise"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.7;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;dashed=1;dashPattern=8 4;strokeColor=#1a1a1a;strokeWidth=3;endSize=12;fontStyle=2;fontSize=11;"
+      edge="1" source="sv" target="camp" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1600" y="844"/>
+          <mxPoint x="1600" y="-60"/>
+          <mxPoint x="1470" y="-60"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ── CONTROLEUR ────────────────────────────────── -->
+
+    <!-- Game ──▶ Player  (sommet Game → y=-60 → sommet Player, évite Campaign) -->
+    <mxCell id="e_gm_pl" value="player"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0.2;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;strokeColor=#2d6a2d;strokeWidth=3;endSize=12;fontStyle=1;fontSize=11;fontColor=#2d6a2d;"
+      edge="1" source="gm" target="pl" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1700" y="-60"/>
+          <mxPoint x="1100" y="-60"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- Game ──▶ Campaign  (horizontal direct, gap 80 px) -->
+    <mxCell id="e_gm_camp" value="campaign"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.36;exitDx=0;exitDy=0;entryX=1;entryY=0.36;entryDx=0;entryDy=0;endArrow=block;endFill=1;strokeColor=#2d6a2d;strokeWidth=3;endSize=12;fontStyle=1;fontSize=11;fontColor=#2d6a2d;"
+      edge="1" source="gm" target="camp" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Game ──▶ Settings  (fond Game → x=1600 → y=758 → sommet Settings) -->
+    <mxCell id="e_gm_set" value="settings"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;strokeColor=#2d6a2d;strokeWidth=3;endSize=12;fontStyle=1;fontSize=11;fontColor=#2d6a2d;"
+      edge="1" source="gm" target="set" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1600" y="380"/>
+          <mxPoint x="1600" y="758"/>
+          <mxPoint x="1100" y="758"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- Game ──▶ Shop  (fond Game → x=1600 → y=758 → sommet Shop) -->
+    <mxCell id="e_gm_sh" value="shop"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;strokeColor=#2d6a2d;strokeWidth=3;endSize=12;fontStyle=1;fontSize=11;fontColor=#2d6a2d;"
+      edge="1" source="gm" target="sh" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1600" y="380"/>
+          <mxPoint x="1600" y="758"/>
+          <mxPoint x="480" y="758"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- Game ──▶ Battle  (vertical direct, même colonne, gap 80 px) -->
+    <mxCell id="e_gm_bt" value="battle"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;strokeColor=#2d6a2d;strokeWidth=3;endSize=12;fontStyle=1;fontSize=11;fontColor=#2d6a2d;"
+      edge="1" source="gm" target="bt" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Battle ··▶ Event  (vertical direct, même colonne, gap 82 px) -->
+    <mxCell id="e_gm_ev" value="update(ev)"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;dashed=1;dashPattern=8 4;strokeColor=#2d6a2d;strokeWidth=3;endSize=12;fontStyle=3;fontSize=11;fontColor=#2d6a2d;"
+      edge="1" source="bt" target="ev" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Battle ──▶ Player joueur  (gauche Battle → x=1255 (gap D-E) → Player droite) -->
+    <!-- y=500 est libre : Row0 finit à y=440, Row1 commence à y=510              -->
+    <mxCell id="e_bt_pl_j" value="joueur"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.3;exitDx=0;exitDy=0;entryX=1;entryY=0.82;entryDx=0;entryDy=0;endArrow=block;endFill=1;strokeColor=#2d6a2d;strokeWidth=3;endSize=12;fontStyle=1;fontSize=11;fontColor=#2d6a2d;"
+      edge="1" source="bt" target="pl" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1255" y="500"/>
+          <mxPoint x="1255" y="364"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- Battle ◆── Player enemy  (droite Battle → x=1960 → y=758 → x=1255 → Player droite) -->
+    <mxCell id="e_bt_pl_e" value="enemy (owned)"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.6;exitDx=0;exitDy=0;entryX=1;entryY=0.95;entryDx=0;entryDy=0;startArrow=diamond;startFill=1;endArrow=block;endFill=1;strokeColor=#2d6a2d;strokeWidth=3;endSize=12;startSize=12;fontStyle=1;fontSize=11;fontColor=#2d6a2d;"
+      edge="1" source="bt" target="pl" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1960" y="581"/>
+          <mxPoint x="1960" y="758"/>
+          <mxPoint x="1255" y="758"/>
+          <mxPoint x="1255" y="419"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- Battle ──▶ BattleMap  (droite Battle → x=1960 → y=758 → fond BattleMap) -->
+    <mxCell id="e_bt_bm" value="map"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=1;strokeColor=#2d6a2d;strokeWidth=3;endSize=12;fontStyle=1;fontSize=11;fontColor=#2d6a2d;"
+      edge="1" source="bt" target="bm" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1960" y="621"/>
+          <mxPoint x="1960" y="758"/>
+          <mxPoint x="480" y="758"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ── VUE ────────────────────────────────────────── -->
+
+    <!-- ViewText ──▶ Game  (horizontal direct, gap 70 px) -->
+    <mxCell id="e_vt_gm" value="lit état"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.35;exitDx=0;exitDy=0;entryX=1;entryY=0.35;entryDx=0;entryDy=0;endArrow=block;endFill=1;strokeColor=#b35900;strokeWidth=3;endSize=12;fontStyle=1;fontSize=11;fontColor=#b35900;"
+      edge="1" source="vt" target="gm" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- ViewText ··▶ Event  (gauche → x=1960 → descend → droite Event) -->
+    <mxCell id="e_vt_ev" value="crée"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.65;exitDx=0;exitDy=0;entryX=1;entryY=0.3;entryDx=0;entryDy=0;endArrow=block;endFill=1;dashed=1;dashPattern=8 4;strokeColor=#b35900;strokeWidth=3;endSize=12;fontStyle=3;fontSize=11;fontColor=#b35900;"
+      edge="1" source="vt" target="ev" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1960" y="183"/>
+          <mxPoint x="1960" y="807"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ViewText ◆── WinTXT  (vertical direct, même colonne) -->
+    <mxCell id="e_vt_wt" value="utilise"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=diamond;startFill=1;endArrow=block;endFill=1;strokeColor=#b35900;strokeWidth=3;endSize=12;startSize=12;fontStyle=1;fontSize=11;fontColor=#b35900;"
+      edge="1" source="vt" target="wt" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- ViewGraph ──▶ Game  (gauche → x=1960 → monte → droite Game) -->
+    <mxCell id="e_vg_gm" value="lit état"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.3;exitDx=0;exitDy=0;entryX=1;entryY=0.65;entryDx=0;entryDy=0;endArrow=block;endFill=1;strokeColor=#b35900;strokeWidth=3;endSize=12;fontStyle=1;fontSize=11;fontColor=#b35900;"
+      edge="1" source="vg" target="gm" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1960" y="430"/>
+          <mxPoint x="1960" y="228"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ViewGraph ··▶ Event  (gauche → x=1960 → descend → droite Event) -->
+    <mxCell id="e_vg_ev" value="crée"
+      style="edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.65;exitDx=0;exitDy=0;entryX=1;entryY=0.65;entryDx=0;entryDy=0;endArrow=block;endFill=1;dashed=1;dashPattern=8 4;strokeColor=#b35900;strokeWidth=3;endSize=12;fontStyle=3;fontSize=11;fontColor=#b35900;"
+      edge="1" source="vg" target="ev" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1960" y="511"/>
+          <mxPoint x="1960" y="851"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+  </root>
+</mxGraphModel>

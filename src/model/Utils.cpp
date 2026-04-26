@@ -47,6 +47,17 @@ string Type_Tostring(const Type_& typ)
 	return "atk"; // valeur par défaut
 }
 
+string Type_DisplayString(const Type_& typ)
+{
+	if (typ == Type_::atk_) return "Attaquant";
+	if (typ == Type_::def_) return "Defenseur";
+	if (typ == Type_::sup_) return "Support";
+	if (typ == Type_::int_) return "Intelligent";
+	if (typ == Type_::snp_) return "Sniper";
+	if (typ == Type_::mag_) return "Magicien";
+	return "Attaquant";
+}
+
 string RarityTostring(const Rarity& rar)
 {
 	if (rar == Rarity::c) return "c";
@@ -56,6 +67,17 @@ string RarityTostring(const Rarity& rar)
 	if (rar == Rarity::l) return "l";
 	if (rar == Rarity::m) return "m";
 	return "c"; // valeur par défaut
+}
+
+string Rarity_DisplayString(const Rarity& rar)
+{
+	if (rar == Rarity::c)  return "Commun";
+	if (rar == Rarity::r)  return "Rare";
+	if (rar == Rarity::sr) return "Super Rare";
+	if (rar == Rarity::e)  return "Epique";
+	if (rar == Rarity::l)  return "Legendaire";
+	if (rar == Rarity::m)  return "Mythique";
+	return "Commun";
 }
 
 TypeC stringToTypeC(const string& s)
@@ -118,7 +140,7 @@ string targetTypeToString(TargetType t)
 	return "Enemy"; // valeur par défaut si inconnu
 }
 
-EffectType stringToEffect(const std::string& s)
+EffectType stringToEffect(const string& s)
 {
 	if (s == "Damage") return EffectType::Damage;
 	if (s == "Heal") return EffectType::Heal;
@@ -133,7 +155,7 @@ EffectType stringToEffect(const std::string& s)
 	return EffectType::Damage; // valeur par défaut si inconnu
 }
 
-std::string EffectTostring(EffectType e)
+string EffectTostring(EffectType e)
 {
 	if (e == EffectType::Damage) return "Damage";
 	if (e == EffectType::Heal) return "Heal";
@@ -148,10 +170,10 @@ std::string EffectTostring(EffectType e)
 	return "Other"; // valeur par défaut si inconnu
 }
 
-int countLines(std::ifstream& file)
+int countLines(ifstream& file)
 {
     int count = 0;
-    std::string line;
+    string line;
 
     while (getline(file, line))
         count++;

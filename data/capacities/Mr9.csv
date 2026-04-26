@@ -1,0 +1,3 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,Mr9NPC,Batte Explosive,punch,other,560,0,Enemy,1,1,1,Damage,55
+2,Mr9NPC,Coup Special,punch,other,720,0,Enemy,1,1,1,Damage,45

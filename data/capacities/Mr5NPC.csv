@@ -1,0 +1,4 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,Mr5NPC,Detonation Nasale,proj,fire,540,0,Enemy,1,1,1,Damage,50
+2,Mr5NPC,Explosion Totale,fire,other,700,0,AllEnemies,3,1,1,Damage,35
+3,Mr5NPC,Bombe Humaine,fire,other,460,0,Enemy,1,1,1,Stun,15

@@ -1,20 +1,18 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <cstdlib>
-#include "../model/Player.h"
-#include "../model/Characters.h"
-#include "../model/BattleMap.h"
-#include "../view/ViewGraph.h"
+/**
+ * @file main.cpp
+ * @brief Point d'entrée de la version graphique SDL2 de Grand Line Legends.
+ *
+ * Compile avec : make
+ * Exécute avec : ./bin/GLL
+ */
+
 #include "Game.h"
+#include "../view/ViewGraph.h"
 
 int main()
 {
-    Game game;
-
+    Game      game;
     ViewGraph view(&game);
-
-    view.displayBattle();
-
+    view.run();
     return 0;
 }

@@ -1,0 +1,3 @@
+id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
+1,OhmNPC,Fil Blamanc,blade,other,760,0,AllEnemies,3,1,1,Bleeding,55
+2,OhmNPC,Mantra Divin,magic,other,960,0,Enemy,1,1,1,Damage,45
