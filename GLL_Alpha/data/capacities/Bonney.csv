@@ -1,7 +1,0 @@
-id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
-1,Bonney,Temporal Cage,magic,other,0,0,Enemy,2,1,12,debuff_stun,15
-2,Bonney,Age Shift Punch,magic,other,300,0,Enemy,1,1,1,none,17
-3,Bonney,Rapid Age Blast,magic,other,350,0,Enemy,2,1,3,none,15
-4,Bonney,Time Distortion,magic,other,0,0,Enemy,2,1,5,debuff_slow,20
-5,Bonney,Ageless Strike,magic,other,400,0,Enemy,1,1,7,none,18
-6,Bonney,Chrono Blast,magic,other,450,0,Enemy,3,1,10,none,15

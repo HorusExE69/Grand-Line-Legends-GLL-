@@ -1,7 +1,0 @@
-id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
-1,Garp,Genkotsu Meteor,proj,punch,2100,0,Enemy,3,3,15,Push,30
-2,Garp,Genkotsu Ryuseigun,proj,punch,2200,0,AllEnemies,1,4,20,Push,40
-3,Garp,Galaxy Impact,punch,air,2400,0,AllEnemies,1,5,25,Stun,35
-4,Garp,Blue Hole,punch,other,2300,0,Enemy,1,4,22,Pull,40
-5,Garp,Galaxy Divide,punch,air,2500,0,Enemy,1,5,30,Damage,45
-6,Garp,Infinitum Explosion,punch,fire,2700,0,AllEnemies,1,5,35,Bleeding,50

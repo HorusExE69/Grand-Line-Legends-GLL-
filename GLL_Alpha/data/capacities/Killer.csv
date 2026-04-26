@@ -1,9 +1,0 @@
-id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
-1,Killer,Gear 1,self_buff,other,0,0,Self,1,1,1,None,5
-2,Killer,Zanshu,blade,blade,300,0,Enemy,1,1,1,None,8
-3,Killer,Claw Sonic,blade,blade,350,0,Enemy,1,1,3,None,9
-4,Killer,Kama-a,blade,blade,400,0,Enemy,1,1,5,None,10
-5,Killer,Jin Sonic,blade,blade,450,0,Enemy,1,1,7,None,11
-6,Killer,Shadow Slash,blade,blade,500,0,Enemy,1,1,10,None,12
-7,Killer,Thunder Claw,blade,blade,550,0,Enemy,2,1,15,None,15
-8,Killer,Passif Killer,resist,other,0,0,Self,1,1,1,Augmente sa vitesse et ses dégâts quand faible,20

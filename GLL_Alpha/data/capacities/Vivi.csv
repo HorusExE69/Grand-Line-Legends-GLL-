@@ -1,8 +1,0 @@
-id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
-1,Vivi,Gear,self_buff,other,0,0,Self,1,1,1,None,10
-2,Vivi,Kujakki Slash 1,magic,damage,150,0,Enemy,1,1,5,None,8
-3,Vivi,Kujakki Slash 2,magic,damage,200,0,Enemy,1,1,10,None,10
-4,Vivi,Kujakki Slash 3,magic,damage,250,0,Enemy,1,1,15,None,12
-5,Vivi,Soutien de Karoo,heal,other,0,200,AllAllies,3,1,20,None,20
-6,Vivi,Protection Royale,buff,other,0,0,AllAllies,3,1,25,None,15
-7,Vivi,Rafraîchissement du Royaume,heal,other,0,150,AllAllies,3,1,30,None,15

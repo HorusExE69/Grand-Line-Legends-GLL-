@@ -1,6 +1,0 @@
-id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
-1,BenBeckman,Precision Shot,proj,other,2000,0,Enemy,1,3,15,Damage,35
-2,BenBeckman,Long Range Barrage,proj,other,2100,0,Enemy,3,4,18,Push,40
-3,BenBeckman,Strategic Aim,self_buff,sup,0,0,Self,1,2,10,Buff,100
-4,BenBeckman,Deadly Mark,proj,other,2200,0,Enemy,1,4,20,Stun,30
-5,BenBeckman,Passif Beckman,sup,other,0,0,Self,1,1,1,Resist,100

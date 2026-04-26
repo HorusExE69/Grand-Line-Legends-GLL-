@@ -1,6 +1,0 @@
-id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
-1,Bepo,Attack Paw,punch,other,200,0,Enemy,1,1,1,None,10
-2,Bepo,Charge Attack,punch,other,250,0,Enemy,1,1,5,None,12
-3,Bepo,Fluffy Slam,blade,other,300,0,Enemy,1,1,7,None,13
-4,Bepo,Furious Bite,blade,other,350,0,Enemy,1,1,10,None,15
-5,Bepo,Monster,self_buff,other,0,0,Self,1,2,20,Buff,5

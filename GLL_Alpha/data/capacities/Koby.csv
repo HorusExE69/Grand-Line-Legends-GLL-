@@ -1,4 +1,0 @@
-id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
-1,Koby,Honesty Impact,punch,other,250,0,Enemy,1,1,1,None,7
-2,Koby,Pied Ouragan,kick,other,300,0,Enemy,1,1,5,None,8
-3,Koby,Incision,blade,other,200,0,Enemy,1,1,10,esquive,5

@@ -1,6 +1,0 @@
-id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
-2,Momonosuke,Lame d’Effroi,blade,other,200,0,Enemy,1,1,1,none,40
-3,Momonosuke,Esquive éclair,kick,other,0,0,Self,1,1,3,evade_next_attack,20
-4,Momonosuke,Invocation du Dragon,fire,other,150,0,Enemy,2,1,5,none,10
-5,Momonosuke,Protection Royale,buff,other,0,0,AllAllies,1,1,7,buffDef,15
-6,Momonosuke,Dragon Sprint,blade,other,250,0,Enemy,1,1,10,none,15

@@ -1,5 +1,0 @@
-id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
-1,Mihawk,Dague Noire,blade,other,1700,0,Enemy,1,1,5,Damage,20
-2,Mihawk,Yoru Grande Lame,blade,other,2200,0,Enemy,1,3,15,Damage,25
-3,Mihawk,Air Slash,blade,air,2100,0,Enemy,3,3,18,Push,30
-4,Mihawk,Dragon Slash,blade,air,2400,0,AllEnemies,1,4,25,Bleeding,35

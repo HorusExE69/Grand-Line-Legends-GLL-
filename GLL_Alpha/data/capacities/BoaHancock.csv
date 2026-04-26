@@ -1,5 +1,0 @@
-id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
-1,BoaHancock,Petrifying Kiss,magic,proj,2200,0,Enemy,1,3,15,Stun,40
-2,BoaHancock,Slave Arrow,proj,magic,2100,0,Enemy,3,3,18,Push,35
-3,BoaHancock,Snake Strike,blade,magic,2300,0,AllEnemies,1,4,20,Damage,40
-4,BoaHancock,Beauty's Charm,self_buff,sup,0,0,Self,1,2,10,Buff,100

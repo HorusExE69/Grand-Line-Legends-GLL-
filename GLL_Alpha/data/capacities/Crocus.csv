@@ -1,7 +1,0 @@
-id,character,name,type1,type2,damage,heal,targetType,targetCount,gearLevel,unlockLvl,effect,percentage
-1,Crocus,Harpon Marin,proj,other,900,0,Enemy,1,1,5,Damage,20
-2,Crocus,Lancer de Harpon,proj,water,1100,0,Enemy,3,2,10,Bleeding,25
-3,Crocus,Soin du Médecin,heal,other,0,1200,Ally,1,2,8,Heal,100
-4,Crocus,Protection de Laboon,self_buff,other,0,0,Self,1,1,1,Buff,100
-5,Crocus,Observation Haki,self_buff,light,0,0,Self,1,3,12,Buff,100
-6,Crocus,Passif Crocus,sup,other,0,0,Self,1,1,1,Resist,100
