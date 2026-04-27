@@ -5,6 +5,7 @@
 
 #include "ViewText.h"
 #include "../controller/Game.h"
+#include "../model/SaveData.h"
 #include "../controller/Event.h"
 #include "../controller/Battle.h"
 #include "../model/Campaign.h"
@@ -125,6 +126,7 @@ void ViewText::display()
         case GameState::TEAM:         renderTeam();        break;
         case GameState::TEAM_CHANGE:  renderTeamChange();  break;
         case GameState::SHOP:         renderShop();        break;
+        case GameState::SAVE_SELECT:  renderSaveSelect();  break;
         case GameState::QUIT:         renderQuit();        break;
         default: break;
     }
@@ -672,6 +674,34 @@ void ViewText::renderShop()
 
     hline(22);
     printAt(2, 23, "[1][2][3] Acheter un coffre  [m] Menu principal");
+}
+
+// SELECTION DE SAUVEGARDE
+
+void ViewText::renderSaveSelect()
+{
+    printAt(13, 0, "=== CHOISIR UNE SAUVEGARDE ===");
+    hline(1);
+    printAt(2, 3, "[n] Nouvelle partie");
+    hline(4);
+    printAt(2, 5, "Charger une sauvegarde existante :");
+    hline(6);
+
+    char buf[WIN_W + 1];
+    for (int i = 0; i < 3; i++)
+    {
+        string summary = SaveData::getSummary(SAVE_PATHS[i]);
+        if (summary.empty())
+            snprintf(buf, sizeof(buf), "[%d] Emplacement %d : Vide", i + 1, i + 1);
+        else
+            snprintf(buf, sizeof(buf), "[%d] Emplacement %d : %s", i + 1, i + 1,
+                     summary.c_str());
+        printAt(2, 8 + i * 2, buf);
+    }
+
+    hline(15);
+    printAt(2, 16, "[r] Retour au menu principal");
+    hline(22);
 }
 
 // QUITTER

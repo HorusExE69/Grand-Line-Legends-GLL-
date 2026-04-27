@@ -241,7 +241,7 @@ void Character::addToCapa(Capacity* c)
 
     if (nbCapa >= maxCapa)
     {
-        int       newMax    = maxCapa * 2;
+        int       newMax    = (maxCapa == 0) ? 4 : maxCapa * 2;
         Capacity** newTab   = new Capacity*[newMax];
         for (int i = 0; i < nbCapa; i++) newTab[i] = tabCapa[i];
         delete[] tabCapa;

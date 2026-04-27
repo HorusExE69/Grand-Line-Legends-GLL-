@@ -62,6 +62,7 @@ class ViewText
         void renderTeam();
         void renderTeamChange();
         void renderShop();
+        void renderSaveSelect();
         void renderQuit();
 
     public:
