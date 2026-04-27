@@ -74,6 +74,7 @@ Family** createFamilies()
     fams[2]->addMember("Sabo");
     fams[2]->addMember("Dragon");
     fams[2]->addMember("Ivankov");
+    fams[2]->addMember("Kuma");
 
     // Les Empereurs (+20% PV si 2+ membres)
     fams[3] = new Family("Les Empereurs", 0.0f, 0.20f, 0.0f);
@@ -82,6 +83,8 @@ Family** createFamilies()
     fams[3]->addMember("Shanks");
     fams[3]->addMember("Kaido");
     fams[3]->addMember("BigMom");
+    fams[3]->addMember("Luffy");
+    fams[3]->addMember("Baggy");
 
     // Les Amiraux (+20% Def si 2+ membres)
     fams[4] = new Family("Les Amiraux", 0.0f, 0.0f, 0.20f);
@@ -89,6 +92,8 @@ Family** createFamilies()
     fams[4]->addMember("Aokiji");
     fams[4]->addMember("Kizaru");
     fams[4]->addMember("Fujitora");
+    fams[4]->addMember("Sengoku");
+    fams[4]->addMember("Ryokugyu");
 
     // Les Mugiwara (+20% Atk si 4+ membres)
     fams[5] = new Family("Les Mugiwara", 0.20f, 0.0f, 0.0f);
@@ -101,6 +106,7 @@ Family** createFamilies()
     fams[5]->addMember("Robin");
     fams[5]->addMember("Franky");
     fams[5]->addMember("Brook");
+    fams[5]->addMember("Jinbe");
 
     // La Marine (+15% Def si 3+ membres)
     fams[6] = new Family("La Marine", 0.0f, 0.0f, 0.15f);
@@ -110,6 +116,9 @@ Family** createFamilies()
     fams[6]->addMember("Kizaru");
     fams[6]->addMember("Smoker");
     fams[6]->addMember("Sengoku");
+    fams[6]->addMember("Koby");
+    fams[6]->addMember("XDrake");
+    fams[6]->addMember("Ryokugyu");
 
     // L'Équipage de Barbe Blanche (+30% Atk si 3+ membres)
     fams[7] = new Family("Equipage Barbe Blanche", 0.30f, 0.0f, 0.0f);

@@ -1,0 +1,95 @@
+Joueur
+2 200 5340 2
+67
+Luffy 1
+Zoro 1
+Sanji 1
+Brook 1
+Lucci 1
+Killer 1
+Usopp 1
+Franky 1
+Vivi 1
+Nami 1
+Koby 1
+BonClay 1
+Baggy 1
+Bepo 1
+Chopper 1
+Bege 1
+Urouge 1
+Momonosuke 1
+Burgess 1
+Carrot 1
+VanAugur 1
+Bonney 1
+Appo 1
+Ivankov 1
+XDrake 1
+GeckoMoria 1
+Izo 1
+Smoker 1
+Jinbe 1
+Robin 1
+Crocodile 1
+Kuma 1
+Kid 1
+Yamato 1
+BoaHancock 1
+Hawkins 1
+Ace 1
+Shiliew 1
+Yasopp 1
+Doflamingo 1
+Vegapunk 1
+DoggyBroggy 1
+Zunesha 1
+Emeth 1
+Fujitora 1
+King 1
+Katakuri 1
+BenBeckman 1
+Ener 1
+Ryokugyu 1
+Marco 1
+Rayleigh 1
+Law 1
+Sengoku 1
+Akainu 1
+Kizaru 1
+Aokiji 1
+Sabo 1
+Crocus 1
+Shanks 1
+Garp 1
+Dragon 1
+Mihawk 1
+Kaido 1
+BigMom 1
+BarbeNoire 1
+BarbeBlanche 1
+2
+Luffy
+Zoro
+1
+Zoro 200
+0 4
+18
+1 1 1 1 1 1
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0
