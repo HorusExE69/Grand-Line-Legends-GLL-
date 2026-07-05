@@ -1,8 +1,8 @@
 Joueur
-2 200 5340 2
+2 200 3840 2
 67
 Luffy 1
-Zoro 1
+Zoro 3
 Sanji 1
 Brook 1
 Lucci 1
@@ -72,8 +72,8 @@ BarbeBlanche 1
 Luffy
 Zoro
 1
-Zoro 200
-0 4
+Zoro 0
+0 0
 18
 1 1 1 1 1 1
 0 0 0 0 0 0

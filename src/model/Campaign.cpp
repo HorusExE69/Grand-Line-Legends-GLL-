@@ -49,8 +49,8 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Officiers Marines", 3));
     arcs[i]->addEpisode(makeMiniBoss("Helmeppo", 4));
     arcs[i]->addEpisode(makeBoss("Capitaine Morgan", 5));
-    addBerryReward(arcs[i]->episodes[4], 1000);
-    addFragReward (arcs[i]->episodes[4], "Zoro", 100, 1.0f);
+    addBerryReward(arcs[i]->getEpisode(4), 1000);
+    addFragReward (arcs[i]->getEpisode(4), "Zoro", 100, 1.0f);
     i++;
 
     // Arc 1 : Orange Town — Boss : Baggy — Unlock : Nami 50%
@@ -61,8 +61,8 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Lieutenants de Baggy", 4));
     arcs[i]->addEpisode(makeMiniBoss("Mohji", 4));
     arcs[i]->addEpisode(makeBoss("Baggy le Clown", 6));
-    addBerryReward(arcs[i]->episodes[4], 1500);
-    addFragReward (arcs[i]->episodes[4], "Nami", 50, 1.0f);
+    addBerryReward(arcs[i]->getEpisode(4), 1500);
+    addFragReward (arcs[i]->getEpisode(4), "Nami", 50, 1.0f);
     i++;
 
     // Arc 2 : Village Sirop — Boss : Kuro — Unlock : Usopp 100%
@@ -72,8 +72,8 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Gardes de Kuro", 4));
     arcs[i]->addEpisode(makeMiniBoss("Jango", 5));
     arcs[i]->addEpisode(makeBoss("Kuro", 7));
-    addBerryReward(arcs[i]->episodes[4], 2000);
-    addFragReward (arcs[i]->episodes[4], "Usopp", 100, 1.0f);
+    addBerryReward(arcs[i]->getEpisode(4), 2000);
+    addFragReward (arcs[i]->getEpisode(4), "Usopp", 100, 1.0f);
     i++;
 
     // Arc 3 : Baratie — Boss : Don Zrieg — Unlock : Sanji 100%
@@ -83,8 +83,8 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Flotte de Zrieg", 5));
     arcs[i]->addEpisode(makeMiniBoss("Gin", 6));
     arcs[i]->addEpisode(makeBoss("Don Zrieg", 8));
-    addBerryReward(arcs[i]->episodes[4], 2500);
-    addFragReward (arcs[i]->episodes[4], "Sanji", 100, 1.0f);
+    addBerryReward(arcs[i]->getEpisode(4), 2500);
+    addFragReward (arcs[i]->getEpisode(4), "Sanji", 100, 1.0f);
     i++;
 
     // Arc 4 : Arlong Park — Boss : Arlong — Unlock : Nami 50%
@@ -95,8 +95,8 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Élite d'Arlong Park", 6));
     arcs[i]->addEpisode(makeMiniBoss("Hachi", 7));
     arcs[i]->addEpisode(makeBoss("Arlong", 9));
-    addBerryReward(arcs[i]->episodes[4], 3000);
-    addFragReward (arcs[i]->episodes[4], "Nami", 50, 1.0f);
+    addBerryReward(arcs[i]->getEpisode(4), 3000);
+    addFragReward (arcs[i]->getEpisode(4), "Nami", 50, 1.0f);
     i++;
 
     // Arc 5 : Logue Town — Boss : Smoker — Unlock : Baggy 100%
@@ -107,8 +107,8 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Élite Marine", 7));
     arcs[i]->addEpisode(makeMiniBoss("Tashigi", 8));
     arcs[i]->addEpisode(makeBoss("Smoker", 10));
-    addBerryReward(arcs[i]->episodes[4], 4000);
-    addFragReward (arcs[i]->episodes[4], "Baggy", 100, 1.0f);
+    addBerryReward(arcs[i]->getEpisode(4), 4000);
+    addFragReward (arcs[i]->getEpisode(4), "Baggy", 100, 1.0f);
     i++;
 
     // Arc 6 : Whiskey Peak — Boss : Mr5 + Miss Valentine — Unlock : Vivi 100%
@@ -118,8 +118,8 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Agents de rang S", 7));
     arcs[i]->addEpisode(makeMiniBoss("Mr9", 8));
     arcs[i]->addEpisode(makeBoss("Mr5 & Miss Valentine", 11));
-    addBerryReward(arcs[i]->episodes[4], 5000);
-    addFragReward (arcs[i]->episodes[4], "Vivi", 100, 1.0f);
+    addBerryReward(arcs[i]->getEpisode(4), 5000);
+    addFragReward (arcs[i]->getEpisode(4), "Vivi", 100, 1.0f);
     i++;
 
     // Arc 7 : Little Garden — Boss : Mr3 + Miss GW — Unlock : DoggyBroggy 50%
@@ -129,8 +129,8 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Pièges de cire", 7));
     arcs[i]->addEpisode(makeMiniBoss("Miss Goldenweek", 8));
     arcs[i]->addEpisode(makeBoss("Mr3", 12));
-    addBerryReward(arcs[i]->episodes[4], 5500);
-    addFragReward (arcs[i]->episodes[4], "DoggyBroggy", 50, 1.0f);
+    addBerryReward(arcs[i]->getEpisode(4), 5500);
+    addFragReward (arcs[i]->getEpisode(4), "DoggyBroggy", 50, 1.0f);
     i++;
 
     // Arc 8 : Drum Island — Boss : Wapol — Unlock : Chopper 100% (Nami bannie)
@@ -141,8 +141,8 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Garde royale", 8));
     arcs[i]->addEpisode(makeMiniBoss("Chess", 9));
     arcs[i]->addEpisode(makeBoss("Wapol", 13));
-    addBerryReward(arcs[i]->episodes[4], 6000);
-    addFragReward (arcs[i]->episodes[4], "Chopper", 100, 1.0f);
+    addBerryReward(arcs[i]->getEpisode(4), 6000);
+    addFragReward (arcs[i]->getEpisode(4), "Chopper", 100, 1.0f);
     i++;
 
     // Arc 9 : Alabasta — Boss : Crocodile — Unlock : Robin 100% + Ponéglyph 2
@@ -152,8 +152,8 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Mr1 Daz Bones", 9));
     arcs[i]->addEpisode(makeMiniBoss("Mr1", 11));
     arcs[i]->addEpisode(makeBoss("Crocodile", 15));
-    addBerryReward(arcs[i]->episodes[4], 8000);
-    addFragReward (arcs[i]->episodes[4], "Robin", 100, 1.0f);
+    addBerryReward(arcs[i]->getEpisode(4), 8000);
+    addFragReward (arcs[i]->getEpisode(4), "Robin", 100, 1.0f);
     i++;
 
     // Arc 10 : Skypea — Boss : Ener — Ponéglyph 1
@@ -163,7 +163,7 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Shandians", 9));
     arcs[i]->addEpisode(makeMiniBoss("Ohm", 11));
     arcs[i]->addEpisode(makeBoss("Ener", 16));
-    addBerryReward(arcs[i]->episodes[4], 9000);
+    addBerryReward(arcs[i]->getEpisode(4), 9000);
     i++;
 
     // Arc 11 : Water Seven — Boss : Franky — Unlock : Franky 50% (Usopp, Robin, Franky bannis)
@@ -176,8 +176,8 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Élite CP9", 10));
     arcs[i]->addEpisode(makeMiniBoss("Blueno", 11));
     arcs[i]->addEpisode(makeBoss("Franky", 17));
-    addBerryReward(arcs[i]->episodes[4], 10000);
-    addFragReward (arcs[i]->episodes[4], "Franky", 50, 1.0f);
+    addBerryReward(arcs[i]->getEpisode(4), 10000);
+    addFragReward (arcs[i]->getEpisode(4), "Franky", 50, 1.0f);
     i++;
 
     // Arc 12 : Enies Lobby — Boss : Rob Lucci — Unlock : Franky 50% + skin Usopp (Robin bannie)
@@ -188,8 +188,8 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Kaku & Jabra", 11));
     arcs[i]->addEpisode(makeMiniBoss("Kaku", 13));
     arcs[i]->addEpisode(makeBoss("Rob Lucci", 18));
-    addBerryReward(arcs[i]->episodes[4], 12000);
-    addFragReward (arcs[i]->episodes[4], "Franky", 60, 1.0f);
+    addBerryReward(arcs[i]->getEpisode(4), 12000);
+    addFragReward (arcs[i]->getEpisode(4), "Franky", 60, 1.0f);
     i++;
 
     // Arc 13 : Thriller Bark — Boss : Gecko Moria — Unlock : Brook 100%
@@ -199,8 +199,8 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Absalom & Perona", 11));
     arcs[i]->addEpisode(makeMiniBoss("Perona", 13));
     arcs[i]->addEpisode(makeBoss("Gecko Moria", 19));
-    addBerryReward(arcs[i]->episodes[4], 14000);
-    addFragReward (arcs[i]->episodes[4], "Brook", 100, 1.0f);
+    addBerryReward(arcs[i]->getEpisode(4), 14000);
+    addFragReward (arcs[i]->getEpisode(4), "Brook", 100, 1.0f);
     i++;
 
     // Arc 14 : Amazon Lily — Boss : Boa Hancock — Unlock : Boa Hancock 100%
@@ -210,8 +210,8 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Gardes Kuja", 12));
     arcs[i]->addEpisode(makeMiniBoss("Sandersonia", 13));
     arcs[i]->addEpisode(makeBoss("Boa Hancock", 20));
-    addBerryReward(arcs[i]->episodes[4], 16000);
-    addFragReward (arcs[i]->episodes[4], "Boa Hancock", 100, 1.0f);
+    addBerryReward(arcs[i]->getEpisode(4), 16000);
+    addFragReward (arcs[i]->getEpisode(4), "Boa Hancock", 100, 1.0f);
     i++;
 
     // Arc 15 : Impel Down — Boss : Magellan — Unlocks multiples
@@ -221,11 +221,11 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeEp("Gardes Niveau 4-5", 13));
     arcs[i]->addEpisode(makeMiniBoss("Saldeath", 14));
     arcs[i]->addEpisode(makeBoss("Magellan", 21));
-    addBerryReward(arcs[i]->episodes[4], 18000);
-    addFragReward (arcs[i]->episodes[4], "Bon Clay",  100, 1.0f);
-    addFragReward (arcs[i]->episodes[4], "Crocodile",  25, 0.25f);
-    addFragReward (arcs[i]->episodes[4], "Jinbe",      25, 0.25f);
-    addFragReward (arcs[i]->episodes[4], "Ivankov",    25, 0.25f);
+    addBerryReward(arcs[i]->getEpisode(4), 18000);
+    addFragReward (arcs[i]->getEpisode(4), "Bon Clay",  100, 1.0f);
+    addFragReward (arcs[i]->getEpisode(4), "Crocodile",  25, 0.25f);
+    addFragReward (arcs[i]->getEpisode(4), "Jinbe",      25, 0.25f);
+    addFragReward (arcs[i]->getEpisode(4), "Ivankov",    25, 0.25f);
     i++;
 
     // Arc 16 : Marine Ford — Boss : Akainu — Amiraux, Sengoku — Unlocks multiples + Mythic
@@ -235,15 +235,15 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeMiniBoss("Aokiji - Le Pouvoir de la Glace", 26));
     arcs[i]->addEpisode(makeMiniBoss("Sengoku - Le Grand Bouddha", 31));
     arcs[i]->addEpisode(makeBoss("Akainu - Le Poing de la Justice", 37));
-    addBerryReward(arcs[i]->episodes[4], 50000);
-    addFragReward (arcs[i]->episodes[4], "Ace",          50, 1.0f);
-    addFragReward (arcs[i]->episodes[4], "Crocodile",    25, 0.25f);
-    addFragReward (arcs[i]->episodes[4], "Ivankov",      25, 0.25f);
-    addFragReward (arcs[i]->episodes[4], "Jinbe",        25, 0.25f);
-    addFragReward (arcs[i]->episodes[4], "BarbeBlanche", 25, 0.25f);
-    addFragReward (arcs[i]->episodes[4], "Marco",        25, 0.25f);
-    addFragReward (arcs[i]->episodes[2], "Aokiji",  30, 0.5f);
-    addFragReward (arcs[i]->episodes[3], "Sengoku", 30, 0.5f);
+    addBerryReward(arcs[i]->getEpisode(4), 50000);
+    addFragReward (arcs[i]->getEpisode(4), "Ace",          50, 1.0f);
+    addFragReward (arcs[i]->getEpisode(4), "Crocodile",    25, 0.25f);
+    addFragReward (arcs[i]->getEpisode(4), "Ivankov",      25, 0.25f);
+    addFragReward (arcs[i]->getEpisode(4), "Jinbe",        25, 0.25f);
+    addFragReward (arcs[i]->getEpisode(4), "BarbeBlanche", 25, 0.25f);
+    addFragReward (arcs[i]->getEpisode(4), "Marco",        25, 0.25f);
+    addFragReward (arcs[i]->getEpisode(2), "Aokiji",  30, 0.5f);
+    addFragReward (arcs[i]->getEpisode(3), "Sengoku", 30, 0.5f);
     i++;
 
     // Arc 17 : Pantheon — Boss infiniment difficiles, débloqué après Marine Ford
@@ -260,10 +260,10 @@ void Campaign::buildArcs()
     arcs[i]->addEpisode(makeBoss("Etage 10 - AKAINU FINAL", 88));
     // Récompenses massives pour chaque étage
     for (int floor = 0; floor < 10; floor++) {
-        addBerryReward(arcs[i]->episodes[floor], 10000 * (floor + 1));
-        addFragReward(arcs[i]->episodes[floor], "Shanks",       30, 0.5f);
-        addFragReward(arcs[i]->episodes[floor], "BarbeBlanche", 30, 0.3f);
-        addFragReward(arcs[i]->episodes[floor], "Kaido",        20, 0.25f);
+        addBerryReward(arcs[i]->getEpisode(floor), 10000 * (floor + 1));
+        addFragReward(arcs[i]->getEpisode(floor), "Shanks",       30, 0.5f);
+        addFragReward(arcs[i]->getEpisode(floor), "BarbeBlanche", 30, 0.3f);
+        addFragReward(arcs[i]->getEpisode(floor), "Kaido",        20, 0.25f);
     }
     i++;
 }
@@ -296,7 +296,7 @@ void Campaign::selectArc(int idx)
 
 void Campaign::selectEpisode(int idx)
 {
-    assert(idx >= 0 && idx < arcs[currentArc]->nbEpisodes);
+    assert(idx >= 0 && idx < arcs[currentArc]->getNbEpisodes());
     currentEp = idx;
 }
 
@@ -317,7 +317,7 @@ void Campaign::episodeUp()
 
 void Campaign::episodeDown()
 {
-    if (currentEp < arcs[currentArc]->nbEpisodes - 1) currentEp++;
+    if (currentEp < arcs[currentArc]->getNbEpisodes() - 1) currentEp++;
 }
 
 // Accesseurs
@@ -335,21 +335,21 @@ int  Campaign::getNbArcs()        const { return NB_ARCS;       }
 
 Episode* Campaign::getCurrentEpisode() const
 {
-    return arcs[currentArc]->episodes[currentEp];
+    return arcs[currentArc]->getEpisode(currentEp);
 }
 
 void Campaign::completeCurrentEpisode()
 {
-    arcs[currentArc]->episodes[currentEp]->completed = true;
+    arcs[currentArc]->getEpisode(currentEp)->setCompleted(true);
     checkArcCompletion();
 }
 
 void Campaign::checkArcCompletion()
 {
     Arc* arc = arcs[currentArc];
-    for (int i = 0; i < arc->nbEpisodes; i++)
+    for (int i = 0; i < arc->getNbEpisodes(); i++)
     {
-        if (!arc->episodes[i]->completed) return;
+        if (!arc->getEpisode(i)->isCompleted()) return;
     }
-    arc->completed = true;
+    arc->setCompleted(true);
 }

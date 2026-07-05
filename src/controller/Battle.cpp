@@ -71,7 +71,7 @@ void Battle::playTurn()
 
     for (int i = 0; i < orderSize; i++)
     {
-        bool side = (order[i]->x == 0); // true = joueur, false = ennemi
+        bool side = (order[i]->getX() == 0); // true = joueur, false = ennemi
         playCharacter(order[i], side);
     }
 
@@ -80,14 +80,14 @@ void Battle::playTurn()
 
 void Battle::playCharacter(Square* sq, bool playerSide)
 {
-    if (!sq || !sq->inmate || sq->inmate->getPV() <= 0) return;
-    if (sq->inmate->stunned) { sq->inmate->stunned = false; return; }
+    if (!sq || !sq->getInmate() || sq->getInmate()->getPV() <= 0) return;
+    if (sq->getInmate()->isStunned()) { sq->getInmate()->setStunned(false); return; }
 
-    Character* attacker = sq->inmate;
+    Character* attacker = sq->getInmate();
     Capacity*  capa     = attacker->chooseCapa();
     if (!capa) return;
 
-    capa->launcher = sq;
+    capa->setLauncher(sq);
 
     bool isDmgCapa = (capa->getEffect() &&
                       capa->getEffect()->getType() == EffectType::Damage);
@@ -261,8 +261,8 @@ Square** Battle::getOrder(int& outSize) const
         for (int j = 0; j < k - i - 1; j++)
         {
             if (order[j] && order[j + 1] &&
-                order[j]->inmate && order[j + 1]->inmate &&
-                order[j]->inmate->speed < order[j + 1]->inmate->speed)
+                order[j]->getInmate() && order[j + 1]->getInmate() &&
+                order[j]->getInmate()->getSpeed() < order[j + 1]->getInmate()->getSpeed())
             {
                 Square* tmp  = order[j];
                 order[j]     = order[j + 1];

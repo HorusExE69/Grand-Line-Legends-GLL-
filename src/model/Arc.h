@@ -21,7 +21,7 @@ static const int MAX_BANNED = 10;
  */
 class Arc
 {
-    public:
+    private:
         std::string name;           ///< Nom de l'arc
         std::string bossName;       ///< Nom du boss final
 
@@ -37,6 +37,7 @@ class Arc
 
         bool        completed;   ///< Vrai si le boss a été vaincu
 
+    public:
         /// @brief Constructeur
         Arc(const std::string& arcName, const std::string& boss,
             const std::string& unlock, float chance);
@@ -49,6 +50,20 @@ class Arc
         void addBanned(const std::string& charName);
         /// @brief Vérifie si un personnage est banni dans cet arc
         bool isBanned(const std::string& charName) const;
+
+        /// @brief Accesseurs
+        const std::string& getName()            const;
+        const std::string& getBossName()        const;
+        const std::string& getUnlockCharName()  const;
+        float              getUnlockChance()    const;
+        int                getNbBanned()        const;
+        const std::string& getBannedChar(int i) const;
+        int                getNbEpisodes()      const;
+        Episode*           getEpisode(int i)    const;
+        bool               isCompleted()        const;
+
+        /// @brief Mutateur
+        void setCompleted(bool val);
 };
 
 #endif

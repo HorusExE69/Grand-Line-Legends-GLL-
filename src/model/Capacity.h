@@ -33,7 +33,6 @@ class Capacity
         Effect*  eft;     ///< Effet associé à la capacité (peut être nullptr)
         TupleTC  typeC;   ///< Types de la capacité (principal + secondaire)
 
-    public:
         Square*  launcher;    ///< Case de l'attaquant (initialisée avant use())
         Square** tabTargets;  ///< Tableau des cases ciblées
         int      nbTargets;   ///< Nombre de cibles actuelles
@@ -70,6 +69,9 @@ class Capacity
         bool               getActivated()  const;
         /// @brief Retourne l'effet associé (peut être nullptr)
         Effect*            getEffect()     const;
+
+        /// @brief Mutateur : définit la case de l'attaquant
+        void setLauncher(Square* s);
 };
 
 #endif

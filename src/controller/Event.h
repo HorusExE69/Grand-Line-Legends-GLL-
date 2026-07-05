@@ -14,11 +14,15 @@
  */
 class Event
 {
-    public:
+    private:
         EventType type;   ///< Type de l'événement
 
+    public:
         Event() : type(EventType::NONE) {}
         explicit Event(EventType t) : type(t) {}
+
+        /// @brief Retourne le type de l'événement
+        EventType getType() const { return type; }
 };
 
 #endif

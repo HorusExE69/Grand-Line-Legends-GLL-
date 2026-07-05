@@ -17,13 +17,14 @@ class Character;
  */
 class Square
 {
-    public:
+    private:
         int  x;      ///< Ligne (0 = joueur, 1 = ennemi)
         int  y;      ///< Colonne (0-9)
         bool fill;   ///< Vrai si la case est occupée par un personnage
 
         Character* inmate; ///< Personnage occupant la case (nullptr si vide)
 
+    public:
         /**
          * @brief Constructeur
          * @param posX  Ligne de la case
@@ -33,6 +34,11 @@ class Square
         Square(int posX = 0, int posY = 0, Character* C = nullptr);
         /// @brief Destructeur
         ~Square(void);
+
+        /// @brief Retourne la ligne de la case (0 = joueur, 1 = ennemi)
+        int        getX()      const;
+        /// @brief Retourne le personnage occupant la case (nullptr si vide)
+        Character* getInmate() const;
 
         /// @brief Place un personnage sur la case
         /// @param C Personnage à placer

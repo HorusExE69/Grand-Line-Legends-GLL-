@@ -664,7 +664,7 @@ void ViewGraph::handleMouseClick(int x, int y)
             if (y < 130 || y >= 700) break;
             Arc* arc = game->getCampaign()->getCurrentArc();
             int  row = (y - 130) / 48;
-            if (row >= 0 && row < arc->nbEpisodes)
+            if (row >= 0 && row < arc->getNbEpisodes())
             {
                 game->setSelectedIndex(row);
                 Event ev(EventType::CAMPAIGN_EPISODE);
@@ -1112,7 +1112,7 @@ void ViewGraph::renderCampaign()
     {
         Arc*      arc    = camp->getArc(i);
         int       y      = 80 + (i - start) * 44;
-        bool      locked = (i > 0 && !camp->getArc(i - 1)->completed);
+        bool      locked = (i > 0 && !camp->getArc(i - 1)->isCompleted());
         SDL_Color col    = locked ? gray : ((i == sel) ? gold : white);
 
         if (i == sel)
@@ -1121,13 +1121,13 @@ void ViewGraph::renderCampaign()
         if (locked)
         {
             snprintf(buf, sizeof(buf), "%2d  %-26s %-22s [Verrouille]",
-                     i + 1, arc->name.c_str(), "---");
+                     i + 1, arc->getName().c_str(), "---");
         }
         else
         {
             snprintf(buf, sizeof(buf), "%2d  %-26s %-22s %s",
-                     i + 1, arc->name.c_str(), arc->bossName.c_str(),
-                     arc->completed ? "[Termine]" : "");
+                     i + 1, arc->getName().c_str(), arc->getBossName().c_str(),
+                     arc->isCompleted() ? "[Termine]" : "");
         }
         renderTextSm(buf, 20, y, col);
     }
@@ -1149,24 +1149,24 @@ void ViewGraph::renderCampaignArc()
     int       sel  = camp->getCurrentEpIdx();
     char      buf[120];
 
-    snprintf(buf, sizeof(buf), "ARC : %s", arc->name.c_str());
+    snprintf(buf, sizeof(buf), "ARC : %s", arc->getName().c_str());
     renderText(buf, 320, 10, gold);
 
     snprintf(buf, sizeof(buf), "Boss : %s  |  Unlock : %s (%d%%)",
-             arc->bossName.c_str(),
-             arc->unlockCharName.empty() ? "Aucun" : arc->unlockCharName.c_str(),
-             static_cast<int>(arc->unlockChance * 100));
+             arc->getBossName().c_str(),
+             arc->getUnlockCharName().empty() ? "Aucun" : arc->getUnlockCharName().c_str(),
+             static_cast<int>(arc->getUnlockChance() * 100));
     renderTextSm(buf, 50, 60, white);
 
     renderLine(20, 90, 1004, 90, {80,80,80,255});
     renderTextSm("#  Nom                         Type           Statut", 20, 95, {180,180,180,255});
     renderLine(20, 115, 1004, 115, {80,80,80,255});
 
-    for (int i = 0; i < arc->nbEpisodes; i++)
+    for (int i = 0; i < arc->getNbEpisodes(); i++)
     {
-        Episode*  ep     = arc->episodes[i];
+        Episode*  ep     = arc->getEpisode(i);
         int       y      = 120 + i * 48;
-        bool      locked = (i > 0 && !arc->episodes[i - 1]->completed);
+        bool      locked = (i > 0 && !arc->getEpisode(i - 1)->isCompleted());
         SDL_Color col    = locked ? gray : ((i == sel) ? gold : white);
 
         if (i == sel)
@@ -1174,15 +1174,15 @@ void ViewGraph::renderCampaignArc()
 
         const char* type;
         if      (locked)         type = "[Verrouille]";
-        else if (ep->isBoss)     type = "[BOSS]      ";
-        else if (ep->isMiniBoss) type = "[Mini-boss] ";
+        else if (ep->getIsBoss())     type = "[BOSS]      ";
+        else if (ep->getIsMiniBoss()) type = "[Mini-boss] ";
         else                     type = "[Combat]    ";
 
         snprintf(buf, sizeof(buf), "%d  %-28s %s  %s",
                  i + 1,
-                 locked ? "???" : ep->name.c_str(),
+                 locked ? "???" : ep->getName().c_str(),
                  type,
-                 (!locked && ep->completed) ? "(Termine)" : "");
+                 (!locked && ep->isCompleted()) ? "(Termine)" : "");
         renderTextSm(buf, 20, y, col);
     }
 
@@ -1205,11 +1205,11 @@ void ViewGraph::renderBattlePrepa()
     char      buf[120];
 
     snprintf(buf, sizeof(buf), "PREPARATION — %s : %s",
-             arc->name.c_str(), ep ? ep->name.c_str() : "?");
+             arc->getName().c_str(), ep ? ep->getName().c_str() : "?");
     renderText(buf, 120, 10, gold);
 
     snprintf(buf, sizeof(buf), "Difficulte : %d  |  Equipe : %d / %d",
-             ep ? ep->difficulty : 0, p->getTeamSize(), p->getTeamMax());
+             ep ? ep->getDifficulty() : 0, p->getTeamSize(), p->getTeamMax());
     renderTextSm(buf, 50, 60, white);
 
     renderLine(20, 90, 1004, 90, {80,80,80,255});
@@ -1238,7 +1238,7 @@ void ViewGraph::renderBattlePrepa()
     if (ep)
     {
         const char* faction = "SoldatMarine";
-        const string& arcName = arc->name;
+        const string& arcName = arc->getName();
         if (arcName == "Orange Town" || arcName == "Village Sirop" || arcName == "Baratie")
             faction = "Pirate";
         else if (arcName == "Whiskey Peak" || arcName == "Alabasta" || arcName == "Little Garden")
@@ -1246,18 +1246,18 @@ void ViewGraph::renderBattlePrepa()
         else if (arcName == "Thriller Bark")
             faction = "Zombie";
 
-        if (ep->isBoss)
+        if (ep->getIsBoss())
         {
             const char* bossName = (arcName == "Romance Dawn") ? "Morgan" : "Boss";
-            snprintf(buf, sizeof(buf), "BOSS : %s  (PV ~%d)", bossName, 2000 + ep->difficulty * 150);
+            snprintf(buf, sizeof(buf), "BOSS : %s  (PV ~%d)", bossName, 2000 + ep->getDifficulty() * 150);
             renderTextSm(buf, 70, 450, {255, 80, 80, 255});
             snprintf(buf, sizeof(buf), "+ 2 gardes (%s)", faction);
             renderTextSm(buf, 70, 480, {200, 100, 100, 255});
         }
-        else if (ep->isMiniBoss)
+        else if (ep->getIsMiniBoss())
         {
             const char* mbName = (arcName == "Romance Dawn") ? "Helmeppo" : "Mini-Boss";
-            snprintf(buf, sizeof(buf), "MINI-BOSS : %s  (PV ~%d)", mbName, 1500 + ep->difficulty * 200);
+            snprintf(buf, sizeof(buf), "MINI-BOSS : %s  (PV ~%d)", mbName, 1500 + ep->getDifficulty() * 200);
             renderTextSm(buf, 70, 450, {255, 140, 60, 255});
             snprintf(buf, sizeof(buf), "+ 1 garde (%s)", faction);
             renderTextSm(buf, 70, 480, {200, 140, 80, 255});
@@ -1265,25 +1265,25 @@ void ViewGraph::renderBattlePrepa()
         else
         {
             snprintf(buf, sizeof(buf), "3 ennemis normaux (%s)  PV ~%d chacun",
-                     faction, 600 + ep->difficulty * 80);
+                     faction, 600 + ep->getDifficulty() * 80);
             renderTextSm(buf, 70, 450, {180, 180, 180, 255});
         }
-        snprintf(buf, sizeof(buf), "Difficulte : %d", ep->difficulty);
+        snprintf(buf, sizeof(buf), "Difficulte : %d", ep->getDifficulty());
         renderTextSm(buf, 70, 510, {160, 160, 100, 255});
 
         // Récompenses attendues
-        int baseB = ep->difficulty * 150;
-        if (ep->isMiniBoss) baseB = ep->difficulty * 300;
-        if (ep->isBoss)     baseB = ep->difficulty * 500;
-        int xpB = ep->difficulty * 100;
+        int baseB = ep->getDifficulty() * 150;
+        if (ep->getIsMiniBoss()) baseB = ep->getDifficulty() * 300;
+        if (ep->getIsBoss())     baseB = ep->getDifficulty() * 500;
+        int xpB = ep->getDifficulty() * 100;
         snprintf(buf, sizeof(buf), "Recompenses si victoire :  +%d berries   +%d XP", baseB, xpB);
         renderTextSm(buf, 70, 540, {100, 220, 100, 255});
-        if (ep->nbRewards > 0)
+        if (ep->getNbRewards() > 0)
         {
             int shown = 0;
-            for (int ri = 0; ri < ep->nbRewards && shown < 2; ri++)
+            for (int ri = 0; ri < ep->getNbRewards() && shown < 2; ri++)
             {
-                Reward* rw = ep->rewards[ri];
+                Reward* rw = ep->getReward(ri);
                 if (!rw || rw->getFragmentCharName().empty()) continue;
                 snprintf(buf, sizeof(buf), "  + %d frags %s  (%.0f%%)",
                          rw->getNbFragments(), rw->getFragmentCharName().c_str(),

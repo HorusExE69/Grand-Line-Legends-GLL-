@@ -343,14 +343,14 @@ void ViewText::renderCampaign()
         Arc*  arc    = camp->getArc(i);
         char  buf[80];
         char  marker = (i == sel) ? '>' : ' ';
-        bool  locked = (i > 0 && !camp->getArc(i - 1)->completed);
+        bool  locked = (i > 0 && !camp->getArc(i - 1)->isCompleted());
         const char* statut = locked ? "[Verrouille]" :
-                             (arc->completed ? "[Termine]" : "[En cours]");
+                             (arc->isCompleted() ? "[Termine]" : "[En cours]");
 
         snprintf(buf, sizeof(buf), "%c %2d  %-26s %-20s %s",
                  marker, i + 1,
-                 arc->name.c_str(),
-                 locked ? "---" : arc->bossName.c_str(),
+                 arc->getName().c_str(),
+                 locked ? "---" : arc->getBossName().c_str(),
                  statut);
         printAt(0, row, buf);
     }
@@ -369,23 +369,23 @@ void ViewText::renderCampaignArc()
     int       sel  = camp->getCurrentEpIdx();
 
     char buf[80];
-    snprintf(buf, sizeof(buf), "=== ARC : %s ===", arc->name.c_str());
+    snprintf(buf, sizeof(buf), "=== ARC : %s ===", arc->getName().c_str());
     printAt(0, 0, buf);
     hline(1);
 
     snprintf(buf, sizeof(buf), "Boss : %-20s  Unlock : %-15s (%d%%)",
-             arc->bossName.c_str(),
-             arc->unlockCharName.empty() ? "Aucun" : arc->unlockCharName.c_str(),
-             static_cast<int>(arc->unlockChance * 100));
+             arc->getBossName().c_str(),
+             arc->getUnlockCharName().empty() ? "Aucun" : arc->getUnlockCharName().c_str(),
+             static_cast<int>(arc->getUnlockChance() * 100));
     printAt(2, 2, buf);
 
-    if (arc->nbBanned > 0)
+    if (arc->getNbBanned() > 0)
     {
         string banned = "Bannis : ";
-        for (int i = 0; i < arc->nbBanned; i++)
+        for (int i = 0; i < arc->getNbBanned(); i++)
         {
             if (i > 0) banned += ", ";
-            banned += arc->bannedChars[i];
+            banned += arc->getBannedChar(i);
         }
         printAt(2, 3, banned);
     }
@@ -395,22 +395,22 @@ void ViewText::renderCampaignArc()
     hline(6);
 
     int row = 7;
-    for (int i = 0; i < arc->nbEpisodes && row < 20; i++, row++)
+    for (int i = 0; i < arc->getNbEpisodes() && row < 20; i++, row++)
     {
-        Episode*    ep     = arc->episodes[i];
+        Episode*    ep     = arc->getEpisode(i);
         char        marker = (i == sel) ? '>' : ' ';
-        bool        locked = (i > 0 && !arc->episodes[i - 1]->completed);
+        bool        locked = (i > 0 && !arc->getEpisode(i - 1)->isCompleted());
         const char* type;
         if      (locked)         type = "[Verrouille]";
-        else if (ep->isBoss)     type = "[BOSS]      ";
-        else if (ep->isMiniBoss) type = "[Mini-boss] ";
+        else if (ep->getIsBoss())     type = "[BOSS]      ";
+        else if (ep->getIsMiniBoss()) type = "[Mini-boss] ";
         else                     type = "[Combat]    ";
 
         snprintf(buf, sizeof(buf), "%c %2d  %-26s %s  %s",
                  marker, i + 1,
-                 locked ? "???" : ep->name.c_str(),
+                 locked ? "???" : ep->getName().c_str(),
                  type,
-                 (!locked && ep->completed) ? "Termine" : "");
+                 (!locked && ep->isCompleted()) ? "Termine" : "");
         printAt(0, row, buf);
     }
 
@@ -430,12 +430,12 @@ void ViewText::renderBattlePrepa()
     char      buf[80];
 
     snprintf(buf, sizeof(buf), "=== PREPARATION : %s - %s ===",
-             arc->name.c_str(), ep ? ep->name.c_str() : "?");
+             arc->getName().c_str(), ep ? ep->getName().c_str() : "?");
     printAt(0, 0, buf);
     hline(1);
 
     snprintf(buf, sizeof(buf), "Difficulte : %d  |  Votre equipe : %d / %d",
-             ep ? ep->difficulty : 0, p->getTeamSize(), p->getTeamMax());
+             ep ? ep->getDifficulty() : 0, p->getTeamSize(), p->getTeamMax());
     printAt(2, 2, buf);
 
     hline(3);

@@ -64,7 +64,7 @@ void Game::update(Event* ev)
 {
     assert(ev != nullptr);
 
-    switch (ev->type)
+    switch (ev->getType())
     {
         case EventType::SAVE_SELECT:
             state = GameState::SAVE_SELECT;
@@ -150,7 +150,7 @@ void Game::update(Event* ev)
             // Passer à l'épisode suivant; si arc terminé → retour à la liste
             Arc* arc   = campaign->getCurrentArc();
             int  epIdx = campaign->getCurrentEpIdx();
-            if (epIdx < arc->nbEpisodes - 1)
+            if (epIdx < arc->getNbEpisodes() - 1)
             {
                 campaign->episodeDown();
                 selectedIndex = campaign->getCurrentEpIdx();
@@ -174,7 +174,7 @@ void Game::update(Event* ev)
         {
             // Arc 0 toujours accessible ; arc i nécessite arc i-1 complété
             bool accessible = (selectedIndex == 0 ||
-                               campaign->getArc(selectedIndex - 1)->completed);
+                               campaign->getArc(selectedIndex - 1)->isCompleted());
             if (accessible)
             {
                 state = GameState::CAMPAIGN_ARC;
@@ -192,7 +192,7 @@ void Game::update(Event* ev)
         {
             Arc*  arc  = campaign->getCurrentArc();
             bool  accessible = (selectedIndex == 0 ||
-                                arc->episodes[selectedIndex - 1]->completed);
+                                arc->getEpisode(selectedIndex - 1)->isCompleted());
             if (accessible)
             {
                 campaign->selectEpisode(selectedIndex);
@@ -283,8 +283,8 @@ void Game::update(Event* ev)
         case EventType::SAVE_LOAD_2:
         case EventType::SAVE_LOAD_3:
         {
-            int slot = (ev->type == EventType::SAVE_LOAD_1) ? 1 :
-                       (ev->type == EventType::SAVE_LOAD_2) ? 2 : 3;
+            int slot = (ev->getType() == EventType::SAVE_LOAD_1) ? 1 :
+                       (ev->getType() == EventType::SAVE_LOAD_2) ? 2 : 3;
             if (SaveData::exists(SAVE_PATHS[slot-1])) {
                 saveSlot = slot;
                 // Repartir d'un état propre (level 1) avant d'appliquer la sauvegarde
@@ -337,7 +337,7 @@ void Game::startBattle()
 
     // Construire l'équipe ennemie selon la difficulté de l'épisode
     Episode* ep = campaign->getCurrentEpisode();
-    buildEnemyTeam(currentBattle->getEnemy(), ep ? ep->difficulty : 3);
+    buildEnemyTeam(currentBattle->getEnemy(), ep ? ep->getDifficulty() : 3);
 
     currentBattle->init();
 }
@@ -376,7 +376,7 @@ void Game::buildEnemyTeam(Player* enemy, int difficulty)
     const char* mbossName = "MiniBossNPC";
 
     if (arc) {
-        const string& a = arc->name;
+        const string& a = arc->getName();
         int epIdx = campaign->getCurrentEpIdx();
         if      (a == "Romance Dawn")   { faction={"SoldatMarine","def"}; bossName="Morgan";       mbossName="Helmeppo"; }
         else if (a == "Orange Town")    { faction={"PirateBaggy","atk"};  bossName="Baggy";        mbossName="Mohji"; }
@@ -423,7 +423,7 @@ void Game::buildEnemyTeam(Player* enemy, int difficulty)
     int nbNormal = 3 + difficulty/4; if (nbNormal > 8) nbNormal = 8;
     int nbGuards = 2 + difficulty/5; if (nbGuards > 7) nbGuards = 7;
 
-    if (ep && ep->isBoss) {
+    if (ep && ep->getIsBoss()) {
         int bossPV    = 2000 + 120*difficulty + 25*difficulty*difficulty;
         if (bossPV > 20000) bossPV = 20000;
         int bossSpeed = 55   + difficulty*2;
@@ -432,11 +432,11 @@ void Game::buildEnemyTeam(Player* enemy, int difficulty)
         int bossHakiA = 20 + difficulty;
         int bossHakiO = 10 + difficulty;
 
-        if (arc && arc->name == "Romance Dawn") {
+        if (arc && arc->getName() == "Romance Dawn") {
             bossPV = 1500 + difficulty*80;
             if (bossPV > 2000) bossPV = 2000;
         }
-        if (arc && arc->name == "Marine Ford") {
+        if (arc && arc->getName() == "Marine Ford") {
             bossPV    = 3000 + 200*difficulty + 40*difficulty*difficulty;
             if (bossPV > 35000) bossPV = 35000;
             bossSpeed = 75 + difficulty*2;
@@ -451,7 +451,7 @@ void Game::buildEnemyTeam(Player* enemy, int difficulty)
         for (int g = 0; g < nbGuards; g++)
             addNpc(enemy, faction.name, faction.type, basePV*2/3, baseSpeed, baseHakiA/2, baseHakiA/2, baseHakiO/2);
 
-    } else if (ep && ep->isMiniBoss) {
+    } else if (ep && ep->getIsMiniBoss()) {
         int mbPV    = 1000 + 60*difficulty + 12*difficulty*difficulty;
         if (mbPV > 10000) mbPV = 10000;
         int mbSpeed = 50  + difficulty*2;
@@ -478,16 +478,16 @@ void Game::applyRewards()
     if (!ep) return;
 
     // Berries de base pour chaque combat (proportionnel à la difficulté)
-    int baseReward = ep->difficulty * 60;
-    if (ep->isMiniBoss) baseReward = ep->difficulty * 120;
-    if (ep->isBoss)     baseReward = ep->difficulty * 200;
+    int baseReward = ep->getDifficulty() * 60;
+    if (ep->getIsMiniBoss()) baseReward = ep->getDifficulty() * 120;
+    if (ep->getIsBoss())     baseReward = ep->getDifficulty() * 200;
     player->addBerries(baseReward);
 
     string msg = "VICTOIRE !  +" + to_string(baseReward) + " berries";
 
-    for (int i = 0; i < ep->nbRewards; i++)
+    for (int i = 0; i < ep->getNbRewards(); i++)
     {
-        Reward* r = ep->rewards[i];
+        Reward* r = ep->getReward(i);
         if (!r) continue;
 
         int roll = rand() % 100;
@@ -507,7 +507,7 @@ void Game::applyRewards()
         }
     }
 
-    int xpGain = ep->difficulty * 40;
+    int xpGain = ep->getDifficulty() * 40;
     int prevLvl = player->getAccountLvl();
     player->addXP(xpGain);
     int newLvl = player->getAccountLvl();
@@ -540,7 +540,7 @@ void Game::moveSelectionDown()
         case GameState::CAMPAIGN:
             max = campaign->getNbArcs() - 1; break;
         case GameState::CAMPAIGN_ARC:
-            max = campaign->getCurrentArc()->nbEpisodes - 1; break;
+            max = campaign->getCurrentArc()->getNbEpisodes() - 1; break;
         case GameState::TEAM_CHANGE:
             max = player->getNbUnlock() - 1; break;
         default:

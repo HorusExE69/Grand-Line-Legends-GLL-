@@ -88,20 +88,20 @@ static void testResetCombatState()
     // Appliquer un effet de saignement
     Effect bleed(EffectType::Bleeding, TargetType::Enemy, 50, 2);
     c.applyEffect(&bleed);
-    assert(c.isBleeding == true);
-    assert(c.bleedingValue == 50);
+    assert(c.getIsBleeding() == true);
+    assert(c.getBleedingValue() == 50);
 
     // Appliquer un étourdissement
     Effect stun(EffectType::Stun, TargetType::Enemy, 0, 1);
     c.applyEffect(&stun);
-    assert(c.stunned == true);
+    assert(c.isStunned() == true);
 
     // Réinitialiser l'état de combat
     c.resetCombatState();
-    assert(c.isBleeding    == false);
-    assert(c.bleedingValue == 0);
-    assert(c.stunned       == false);
-    assert(c.resistValue   == 0);
+    assert(c.getIsBleeding()    == false);
+    assert(c.getBleedingValue() == 0);
+    assert(c.isStunned()        == false);
+    assert(c.getResistValue()   == 0);
 
     printf("[OK] Character : resetCombatState\n");
 }

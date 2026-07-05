@@ -20,6 +20,9 @@ Square::~Square(void)
 	fill=0;
 }
 
+int        Square::getX()      const { return x;      }
+Character* Square::getInmate() const { return inmate; }
+
 void Square::hold(Character* C)
 {
 	fill = 1;

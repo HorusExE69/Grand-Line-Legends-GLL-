@@ -27,19 +27,19 @@ static void testArcNames()
 {
     Campaign c;
     // Vérifier quelques arcs clés
-    assert(c.getArc(0)->name  == "Romance Dawn");
-    assert(c.getArc(9)->name  == "Alabasta");
-    assert(c.getArc(16)->name == "Marine Ford");
-    assert(c.getArc(17)->name == "Pantheon");
+    assert(c.getArc(0)->getName()  == "Romance Dawn");
+    assert(c.getArc(9)->getName()  == "Alabasta");
+    assert(c.getArc(16)->getName() == "Marine Ford");
+    assert(c.getArc(17)->getName() == "Pantheon");
     printf("[OK] Campaign : noms des arcs\n");
 }
 
 static void testArcBoss()
 {
     Campaign c;
-    assert(c.getArc(0)->bossName  == "Morgan");
-    assert(c.getArc(9)->bossName  == "Crocodile");
-    assert(c.getArc(15)->bossName == "Magellan");
+    assert(c.getArc(0)->getBossName()  == "Morgan");
+    assert(c.getArc(9)->getBossName()  == "Crocodile");
+    assert(c.getArc(15)->getBossName() == "Magellan");
     printf("[OK] Campaign : noms des boss\n");
 }
 
@@ -50,9 +50,9 @@ static void testArcEpisodes()
     for (int i = 0; i < NB_ARCS; i++)
     {
         Arc* arc = c.getArc(i);
-        assert(arc->nbEpisodes > 0);
+        assert(arc->getNbEpisodes() > 0);
         // Le dernier épisode doit être un boss
-        assert(arc->episodes[arc->nbEpisodes - 1]->isBoss);
+        assert(arc->getEpisode(arc->getNbEpisodes() - 1)->getIsBoss());
     }
     printf("[OK] Campaign : structure des episodes\n");
 }
@@ -108,9 +108,9 @@ static void testUnlockChance()
 {
     Campaign c;
     // Arc 0 : Zoro 100%
-    assert(c.getArc(0)->unlockChance == 1.0f);
+    assert(c.getArc(0)->getUnlockChance() == 1.0f);
     // Arc 1 : Nami 50%
-    assert(c.getArc(1)->unlockChance == 0.5f);
+    assert(c.getArc(1)->getUnlockChance() == 0.5f);
     printf("[OK] Campaign : chances de deblocage\n");
 }
 
@@ -119,10 +119,10 @@ static void testCompletion()
     Campaign c;
     c.selectArc(0);
     c.selectEpisode(0);
-    assert(!c.getCurrentEpisode()->completed);
+    assert(!c.getCurrentEpisode()->isCompleted());
 
     c.completeCurrentEpisode();
-    assert(c.getCurrentEpisode()->completed);
+    assert(c.getCurrentEpisode()->isCompleted());
     printf("[OK] Campaign : completion episode\n");
 }
 

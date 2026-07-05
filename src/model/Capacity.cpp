@@ -166,10 +166,10 @@ void Capacity::use()
 	for(int i = 0; i < nbTargets; i++)
 	{
 		Square* sq = tabTargets[i];
-		if(sq == nullptr || sq->inmate == nullptr)
+		if(sq == nullptr || sq->getInmate() == nullptr)
 			continue;
 
-		Character* c = sq->inmate;
+		Character* c = sq->getInmate();
 		c->applyEffect(eft);
 	}
 
@@ -189,3 +189,5 @@ TupleTC Capacity::getType() const { return typeC; }
 bool Capacity::getIsPassive() const { return isPassive; }
 bool Capacity::getActivated() const { return activated; }
 Effect* Capacity::getEffect() const { return eft; }
+
+void Capacity::setLauncher(Square* s) { launcher = s; }

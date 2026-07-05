@@ -352,6 +352,11 @@ int    Character::getLvl(void)    const { return lvl;    }
 int    Character::getSpeed(void)  const { return speed;  }
 int    Character::getHakiR(void)  const { return hakiR;  }
 int    Character::getHakiO(void)  const { return hakiO;  }
-int    Character::getHakiA(void)  const { return hakiA;  }
+int    Character::getHakiA(void)  const { return hakiA;       }
+int    Character::getResistValue()   const { return resistValue;  }
+int    Character::getBleedingValue() const { return bleedingValue;}
+bool   Character::getIsBleeding()    const { return isBleeding;   }
+bool   Character::isStunned()        const { return stunned;      }
+void   Character::setStunned(bool val)     { stunned = val;       }
 int    Character::getNbCapa()     const { return nbCapa;  }
 Capacity** Character::getTabCapa() const { return tabCapa; }

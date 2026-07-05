@@ -18,7 +18,7 @@
  */
 class Episode
 {
-    public:
+    private:
         std::string name;       ///< Nom de l'épisode
         int         difficulty; ///< Niveau de difficulté (nombre d'ennemis / leurs stats)
         bool        isMiniBoss; ///< Vrai si l'épisode est un mini-boss
@@ -28,12 +28,26 @@ class Episode
         Reward**    rewards;    ///< Tableau de récompenses possibles
         int         nbRewards;  ///< Nombre de récompenses dans le tableau
 
+    public:
         /// @brief Constructeur
         Episode(const std::string& n, int diff, bool miniBoss, bool boss);
         /// @brief Destructeur
         ~Episode();
+
         /// @brief Ajoute une récompense possible à l'épisode
         void addReward(Reward* r);
+
+        /// @brief Accesseurs
+        const std::string& getName()        const;
+        int                getDifficulty()  const;
+        bool               getIsMiniBoss()  const;
+        bool               getIsBoss()      const;
+        bool               isCompleted()    const;
+        int                getNbRewards()   const;
+        Reward*            getReward(int i) const;
+
+        /// @brief Mutateur
+        void setCompleted(bool val);
 };
 
 #endif

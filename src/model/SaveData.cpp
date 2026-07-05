@@ -83,9 +83,9 @@ void SaveData::save(const string& path, const Player& p, const Campaign& c)
     for (int a = 0; a < NB_ARCS; a++)
     {
         const Arc* arc = c.getArc(a);
-        f << arc->completed;
-        for (int e = 0; e < arc->nbEpisodes; e++)
-            f << " " << arc->episodes[e]->completed;
+        f << arc->isCompleted();
+        for (int e = 0; e < arc->getNbEpisodes(); e++)
+            f << " " << arc->getEpisode(e)->isCompleted();
         f << "\n";
     }
 }
@@ -175,12 +175,12 @@ bool SaveData::load(const string& path, Player& p, Campaign& c)
         int arcCompleted;
         f >> arcCompleted;
         Arc* arc = c.getArc(a);
-        arc->completed = (arcCompleted == 1);
-        for (int e = 0; e < arc->nbEpisodes; e++)
+        arc->setCompleted(arcCompleted == 1);
+        for (int e = 0; e < arc->getNbEpisodes(); e++)
         {
             int epCompleted;
             f >> epCompleted;
-            arc->episodes[e]->completed = (epCompleted == 1);
+            arc->getEpisode(e)->setCompleted(epCompleted == 1);
         }
     }
 

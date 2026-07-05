@@ -28,6 +28,17 @@ Episode::~Episode()
     delete[] rewards;
 }
 
+// Accesseurs
+const string& Episode::getName()        const { return name;              }
+int           Episode::getDifficulty()  const { return difficulty;        }
+bool          Episode::getIsMiniBoss()  const { return isMiniBoss;        }
+bool          Episode::getIsBoss()      const { return isBoss;            }
+bool          Episode::isCompleted()    const { return completed;         }
+int           Episode::getNbRewards()   const { return nbRewards;         }
+Reward*       Episode::getReward(int i) const { return rewards[i];        }
+
+void          Episode::setCompleted(bool val) { completed = val;          }
+
 // Ajoute une récompense au tableau (redimensionnement dynamique)
 void Episode::addReward(Reward* r)
 {

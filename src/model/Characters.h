@@ -46,7 +46,6 @@ class Character
         int      nbEffects;   ///< Nombre d'effets actifs
         int      maxEffects;  ///< Capacité du tableau d'effets
 
-    public:
         int  speed;           ///< Vitesse (détermine l'ordre d'attaque)
         int  resistValue;     ///< Valeur de résistance aux dégâts
         int  bleedingValue;   ///< Valeur de saignement actif
@@ -87,12 +86,19 @@ class Character
 
         std::string getName(void);
         int         getPV(void);
-        int         getPVBase(void) const;
-        int         getLvl(void)    const;
-        int         getSpeed(void)  const;
-        int         getHakiR(void)  const;
-        int         getHakiO(void)  const;
-        int         getHakiA(void)  const;
+        int         getPVBase(void)      const;
+        int         getLvl(void)         const;
+        int         getSpeed(void)       const;
+        int         getHakiR(void)       const;
+        int         getHakiO(void)       const;
+        int         getHakiA(void)       const;
+        int         getResistValue()     const;
+        int         getBleedingValue()   const;
+        bool        getIsBleeding()      const;
+        bool        isStunned()          const;
+
+        /// @brief Mutateurs état de combat
+        void setStunned(bool val);
 
         /// @brief Applique un effet de combat au personnage
         void applyEffect(Effect* e);

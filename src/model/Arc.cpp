@@ -65,3 +65,16 @@ bool Arc::isBanned(const string& charName) const
     }
     return false;
 }
+
+// Accesseurs
+const string& Arc::getName()            const { return name;          }
+const string& Arc::getBossName()        const { return bossName;      }
+const string& Arc::getUnlockCharName()  const { return unlockCharName;}
+float         Arc::getUnlockChance()    const { return unlockChance;  }
+int           Arc::getNbBanned()        const { return nbBanned;      }
+const string& Arc::getBannedChar(int i) const { return bannedChars[i];}
+int           Arc::getNbEpisodes()      const { return nbEpisodes;    }
+Episode*      Arc::getEpisode(int i)    const { return episodes[i];   }
+bool          Arc::isCompleted()        const { return completed;     }
+
+void          Arc::setCompleted(bool val)     { completed = val;      }
